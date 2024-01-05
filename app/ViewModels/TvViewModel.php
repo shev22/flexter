@@ -5,39 +5,41 @@ namespace App\ViewModels;
 use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Spatie\ViewModels\ViewModel;
+use Illuminate\Support\Facades\Cache;
 
 class TvViewModel extends ViewModel
 {
 
-    public $popularTv;
-    public $topRatedTv;
-    public $trending_tv;
-    public $genres;
+    // public $popularTv;
+    // public $topRatedTv;
+    // public $trending_tv;
+    // public $genres;
 
-    public function __construct($popularTv = null, $topRatedTv = null, $genres = null, $trending_tv = null)
-    {
-        $this->topRatedTv = $topRatedTv;
-        $this->popularTv = $popularTv;
-        $this->trending_tv = $trending_tv;
-        $this->genres = $genres;
-    }
+    // public function __construct($popularTv = null, $topRatedTv = null, $genres = null, $trending_tv = null)
+    // {
+    //     $this->topRatedTv = $topRatedTv;
+    //     $this->popularTv = $popularTv;
+    //     $this->trending_tv = $trending_tv;
+    //     $this->genres = $genres;
+    // }
 
     public function popularTv()
     {
-        return $this->formatTv($this->popularTv);
+        return $this->formatTv(Cache::get('popularTv'));
+       
     }
 
     public function topRatedTv()
     {
-        return $this->formatTv($this->topRatedTv);
+        // return $this->formatTv($this->topRatedTv);
     }
     public function trending()
     {
-        return $this->formatTv($this->trending_tv);
+        return $this->formatTv(Cache::get('trendingTv'));
     }
     public function genres()
     {
-        return collect($this->genres)->mapWithKeys(function ($genre) {
+        return collect(Cache::get('genresTv'))->mapWithKeys(function ($genre) {
             return [$genre['id'] => $genre['name']];
         });
     }

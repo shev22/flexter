@@ -10,9 +10,9 @@ class HomeViewModel extends ViewModel
     {
     }
 
-    public function trending_movies()
+    public function nowPlayingMovies()
     {
-      return (  $this->movies->trending()) ;
+      return (  $this->movies->nowPlayingMovies()) ;
     }
 
     public function trending_tv()
@@ -20,9 +20,9 @@ class HomeViewModel extends ViewModel
         return $this->tv->trending();
     }
 
-    public function up_coming()
+    public function trending()
     {
-        return $this->movies->up_coming();
+        return $this->movies->trending();
     }
 
 }

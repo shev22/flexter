@@ -6,8 +6,9 @@ use Illuminate\Http\Request;
 use App\ViewModels\MovieViewModel;
 use App\ViewModels\MoviesViewModel;
 use App\Http\Controllers\Controller;
-use App\Http\Controllers\Services\MediaService;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
+use App\Http\Controllers\Services\MediaService;
 
 class MoviesController extends Controller
 {
@@ -21,17 +22,19 @@ class MoviesController extends Controller
      */
     public function movies($page = 1)
     {
+   
 
-        $popularMovies = $this->mediaService->popularMovies($page);
 
-        $genres = $this->mediaService->movie_genres();
 
-        $nowPlayingMovies = $this->mediaService->nowPlayingMovies();
+        $this->mediaService->trending_movies();
+        $this->mediaService->popularMovies($page);
+        $this->mediaService->movie_genres();
+        $this->mediaService->nowPlayingMovies();
 
         $viewModel = new MoviesViewModel(
-            $popularMovies,
-            $genres,
-            $nowPlayingMovies,
+            // $popularMovies,
+            // $genres,
+            // $nowPlayingMovies,
 
         );
 

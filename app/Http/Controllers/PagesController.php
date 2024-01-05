@@ -17,34 +17,34 @@ class PagesController extends Controller
      * Display a listing of the resource.
      */
     public function __construct(
-        private MediaService $mediaService
+      
     ) {
     }
 
     public function index()
     {
-
-        $movie_genres = $this->mediaService->movie_genres();
-        $tv_genres = $this->mediaService->tv_genres();
-        $up_coming = $this->mediaService->up_comingMovies();
-        $trending_movies = $this->mediaService->trending_movies();
-        $trending_tv = $this->mediaService->trending_tv();
+        // $this->mediaService->
+        // $movie_genres = $this->mediaService->movie_genres();
+        // $tv_genres = $this->mediaService->tv_genres();
+        // $up_coming = $this->mediaService->up_comingMovies();
+        // $trending_movies = $this->mediaService->trending_movies();
+        // $trending_tv = $this->mediaService->trending_tv();
 
         $moviesViewModel = new MoviesViewModel(
-            null,
-            $movie_genres,
-            null,
-            $up_coming,
-            $trending_movies,
+            // null,
+            // $movie_genres,
+            // null,
+            // $up_coming,
+            // $trending_movies,
 
         );
 
 
         $tvViewModel = new TvViewModel(
-            null,
-            null,
-            $tv_genres,
-            $trending_tv,
+            // null,
+            // null,
+            // $tv_genres,
+            // $trending_tv,
         );
 
         $viewModel = new HomeViewModel($moviesViewModel,  $tvViewModel,);
@@ -59,19 +59,19 @@ class PagesController extends Controller
         return view('search', ['query' => $query ]);
     }
 
-    public function play( $slug, $id)
-    {
+    // public function play( $slug, $id)
+    // {
        
-        $result ="https://vidsrc.to/embed/movie/".$id;
+    //     $result ="https://vidsrc.to/embed/movie/".$id;
 
-        $data = file_get_contents(  $result);
+    //     $data = file_get_contents(  $result);
       
-        // $movie['740']['hash'] =  $result['data']['movie']['torrents'][0]['hash'];
-        // $movie['1080']['hash'] =  $result['data']['movie']['torrents'][1]['hash'];
-        // $movie['title'] = str_replace( ' ', '+', $result['data']['movie']['title_long']);
+    //     // $movie['740']['hash'] =  $result['data']['movie']['torrents'][0]['hash'];
+    //     // $movie['1080']['hash'] =  $result['data']['movie']['torrents'][1]['hash'];
+    //     // $movie['title'] = str_replace( ' ', '+', $result['data']['movie']['title_long']);
 
-        return view('play',['result'=>  $data]);
-    }
+    //     return view('play',['result'=>  $data]);
+    // }
 
     /**
      * Show the form for creating a new resource.

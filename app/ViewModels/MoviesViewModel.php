@@ -6,29 +6,30 @@ use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Spatie\ViewModels\ViewModel;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 class MoviesViewModel extends ViewModel
 {   
-    public $popularMovies;
+    // public $popularMovies;
     public $top_rated;
-    public $trending_movies;
+    // public $trending_movies;
     public $up_coming;
-    public $genres;
+    // public $genres;
 
 
-    public function __construct(  $popularMovies = null, $genres = null, $top_rated = null, $up_coming = null, $trending_movies = null)
-    {
-        $this->popularMovies = $popularMovies;
-        $this->top_rated = $top_rated;
-        $this->up_coming = $up_coming;
-        $this->genres = $genres;
-        $this->trending_movies = $trending_movies;
+    // public function __construct(  $popularMovies = null, $genres = null, $top_rated = null, $up_coming = null, $trending_movies = null)
+    // {
+    //     $this->popularMovies = $popularMovies;
+    //     $this->top_rated = $top_rated;
+    //     $this->up_coming = $up_coming;
+    //     $this->genres = $genres;
+    //     $this->trending_movies = $trending_movies;
     
-    }
+    // }
 
     public function popularMovies()
     {
-        return $this->formatMovies($this->popularMovies);
+        return $this->formatMovies( Cache::get('movies-popular'));
     }
 
     public function top_rated()
@@ -38,13 +39,19 @@ class MoviesViewModel extends ViewModel
 
     public function trending()
     {
-     return $this->formatMovies($this->trending_movies);
+        dd(Cache::get('movies-trending'));
+     return $this->formatMovies( Cache::get('movies-trending'));
     }
 
+    public function nowPlayingMovies()
+    {
+       
+     return $this->formatMovies( Cache::get('movies-nowplaying'));
+    }
 
     public function genres()
     {
-        return collect($this->genres)->mapWithKeys(function ($genre) {
+        return collect(Cache::get('movies-genre'))->mapWithKeys(function ($genre) {
             return [$genre['id'] => $genre['name']];
         });
     }

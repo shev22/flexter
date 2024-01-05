@@ -10,7 +10,7 @@
                 <div class=" MS-content" style="  white-space: nowrap;  overflow:hidden; ">
 
 
-                    @foreach ($up_coming as $movie)
+                    @foreach ($trending as $movie)
                         <div class="featured-content item"
                             style="background: linear-gradient(to bottom, rgba(0,0,0,0), #0f0f0f), url('https://image.tmdb.org/t/p/w1280/{{ $movie['backdrop_path'] }}');  background-size: cover;  display: inline-block;  position: relative;  overflow: hidden;  white-space: normal;   width: 100%; border_radius:15px   ">
 
@@ -39,14 +39,14 @@
                 <h2 class="movie-list-title">TRENDING MOVIES</h2>
                 <div class="movie-list-wrapper">
                     <div class="movie-list MS-content">
-                        @foreach ($trending_movies as $movie)
+                        @foreach ($trending as $movie)
                             <x-home-card :movie="$movie" />
                         @endforeach
                     </div>
 
                 </div>
             </div>
-      {{--
+      
 
             <div class="movie-list-container" id="exampleSlider2">
                 <h2 class="movie-list-title">TRENDING SHOWS </h2>
@@ -64,7 +64,7 @@
                         <button class=" MS-right arrow-right"><i class="fas fa-chevron-right "></i></button>
                     </div>
                 </div>
-            </div> --}}
+            </div>
 
             {{-- <div class="featured-content"
                 style="background: linear-gradient(to bottom, rgba(0,0,0,0), #151515), url('img/f-2.jpg');">

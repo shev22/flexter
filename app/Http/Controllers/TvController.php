@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\ViewModels\TvViewModel;
 use App\ViewModels\TvShowViewModel;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\Services\MediaService;
 
 class TvController extends Controller
@@ -16,16 +17,17 @@ class TvController extends Controller
     }
     public function tv($page = 1)
     {
-        $popularTv = $this->mediaService->popularTv($page);
+      
+        //  $this->mediaService->popularTv($page);
 
-        $topRatedTv =$this->mediaService->topRatedTv();
+        // $topRatedTv =$this->mediaService->tv_genres();
 
-        $genres = $this->mediaService->tv_genres();
+        //  $genres = $this->mediaService->trending_tv();
 
         $viewModel = new TvViewModel(
-            $popularTv,
-            $topRatedTv,
-            $genres,
+            // $popularTv,
+            // $topRatedTv,
+            // $genres,
         );
 
         return view('tv.tv',  $viewModel );
