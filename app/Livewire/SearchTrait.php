@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Http;
 
 
@@ -45,22 +46,25 @@ trait SearchTrait
                 'release_date' => $this->releaseDate($result['media_type'], $result),
                 'vote_average' => $this->voteAverage($result['media_type'], $result),
                 'language' => $this->language($result['media_type'], $result),
-                // 'genre' => $this->genre($result['media_type'], $result),
+                 'slug' => $this->slug($result['media_type'], $result),
             ];
         });
     }
 
 
-
-    // private function genre($resource)
-    // {
-     
-
-
-
-
-   
-    // }
+    private function slug($mediaType, $result)
+    {
+        switch ($mediaType) {
+            case $mediaType == 'tv':
+            case  $mediaType == 'person':
+                return  Str::of( $result['name'])->slug('-');
+            case $mediaType == 'movie':
+                return  Str::of( $result['title'])->slug('-');
+                break;
+            default:
+                return null;
+        }
+    }
 
 
     private function image($mediaType, $result)

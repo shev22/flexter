@@ -3,6 +3,7 @@
 namespace App\ViewModels;
 
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Spatie\ViewModels\ViewModel;
 
 class TvShowViewModel extends ViewModel
@@ -40,7 +41,7 @@ class TvShowViewModel extends ViewModel
         ])->only([
             'poster_path', 'id', 'genres', 'name', 'vote_average', 'overview', 'first_air_date', 'credits' ,
             'videos', 'images', 'crew', 'cast', 'images', 'created_by','seasons'
-        ]);
+        ])->put('media','tv');
     }
 
     
@@ -57,7 +58,7 @@ class TvShowViewModel extends ViewModel
                 'release_date' => Carbon::parse($tv['first_air_date'])->format('M d, Y'),
             ])->only([
                 'poster_path', 'id', 'name', 'vote_average', 'overview', 'release_date'
-            ]);
+            ])->put('slug',  Str::of( $tv['name'])->slug('-'));;
         });
     }
 }

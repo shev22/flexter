@@ -62,13 +62,15 @@ class PagesController extends Controller
     public function play( $slug, $id)
     {
        
-        $result = Http::get("https://yts.mx/api/v2/movie_details.json?imdb_id=".$id)->json();
+        $result ="https://vidsrc.to/embed/movie/".$id;
 
-        $movie['740']['hash'] =  $result['data']['movie']['torrents'][0]['hash'];
-        $movie['1080']['hash'] =  $result['data']['movie']['torrents'][1]['hash'];
-        $movie['title'] = str_replace( ' ', '+', $result['data']['movie']['title_long']);
+        $data = file_get_contents(  $result);
+      
+        // $movie['740']['hash'] =  $result['data']['movie']['torrents'][0]['hash'];
+        // $movie['1080']['hash'] =  $result['data']['movie']['torrents'][1]['hash'];
+        // $movie['title'] = str_replace( ' ', '+', $result['data']['movie']['title_long']);
 
-        return view('play',['movie'=> $movie]);
+        return view('play',['result'=>  $data]);
     }
 
     /**

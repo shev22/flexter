@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <div class="container actor-card">
         <div class="content-container " style="padding-top: 50px; ">
             <div class="card">

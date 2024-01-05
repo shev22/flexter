@@ -20,6 +20,7 @@
      
             @include('layouts.navigation')
             @include('layouts.sidebar')
+            @include('layouts.menubar')
 
             <!-- Page Heading -->
             {{-- @if (isset($header))
@@ -34,15 +35,16 @@
             <main>
                 {{ $slot }}
             </main>
-            <script src="https://cdn.jsdelivr.net/npm/@webtor/embed-sdk-js/dist/index.min.js" charset="utf-8" async></script>
-
-            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
-           <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.js"></script>
-            {{-- <script src="{{ asset('js/multislider/jquery-2.2.4.min.js') }}" ></script> --}}
-            <script src="{{ asset('js/multislider/multislider.min.js') }}"></script>  
+        
+            {{-- <script src="https://cdn.jsdelivr.net/npm/webtorrent@latest/webtorrent.min.js"></script> --}}
+            {{-- <script src="https://cdn.jsdelivr.net/npm/@webtor/embed-sdk-js/dist/index.min.js" charset="utf-8" async></script> --}}
+          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  
+           <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.js"></script> 
+            <script src="{{ asset('js/multislider/jquery-2.2.4.min.js') }}" ></script>
+          <script src="{{ asset('js/multislider/multislider.min.js') }}"></script>  
        
       
-        {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script> 
-        <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.js"></script>     --}}
+    {{-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>  --}}
+        <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.js"></script> 
     </body>
 </html>

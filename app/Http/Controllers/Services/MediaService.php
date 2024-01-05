@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Services;
 
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Cache;
 
 
 class MediaService
@@ -29,6 +30,12 @@ class MediaService
         return Http::withToken(config('services.tmdb.token'))
             ->get('https://api.themoviedb.org/3/movie/popular?page='.$page.'?append_to_response=credits,videos,images')
             ->json()['results'];
+        // return Cache::get('movies-page');
+        // // Cache::rememberForever('movie-genre', function(){
+        // //     return Http::withToken(config('services.tmdb.token'))
+        // //     ->get('https://api.themoviedb.org/3/genre/movie/list')
+        // //     ->json()['genres'];
+        // // });
     }
 
     public function top_ratedMovies()
@@ -48,9 +55,12 @@ class MediaService
 
     public function movie_genres()
     {
+        Cache::rememberForever('movie-genre', function(){
         return Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/genre/movie/list')
-            ->json()['genres'];
+        ->get('https://api.themoviedb.org/3/genre/movie/list')
+        ->json()['genres'];
+    });
+    // return Cache::get('movie-genre');
     }
 
 

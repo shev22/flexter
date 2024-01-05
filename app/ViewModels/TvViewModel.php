@@ -3,6 +3,7 @@
 namespace App\ViewModels;
 
 use Carbon\Carbon;
+use Illuminate\Support\Str;
 use Spatie\ViewModels\ViewModel;
 
 class TvViewModel extends ViewModel
@@ -57,7 +58,7 @@ class TvViewModel extends ViewModel
                 'genres' => $genresFormatted,
             ])->only([
                 'poster_path', 'id', 'media_type', 'genre_ids', 'name', 'vote_average', 'overview', 'first_air_date', 'genres',
-            ]);
+            ])->put('slug',  Str::of( $tvshow['name'])->slug('-'));
         });
     }
 }

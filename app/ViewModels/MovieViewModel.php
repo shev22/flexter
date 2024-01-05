@@ -25,7 +25,7 @@ class MovieViewModel extends ViewModel
 
     public function movie()
     {
-        
+      
         return collect($this->movie)->merge([
             'poster_path' => $this->movie['poster_path']
                 ? 'https://image.tmdb.org/t/p/w500/' . $this->movie['poster_path']
@@ -47,13 +47,13 @@ class MovieViewModel extends ViewModel
         
         ])->only([
             'poster_path', 'id', 'genres', 'title', 'vote_average', 'overview', 'release_date', 'credits',
-            'videos', 'images', 'crew', 'images', 'runtime', 'imdb_id', 'cast'
-        ])->put('slug',  Str::of( $this->movie['title'])->slug('-'));
+            'videos', 'images', 'crew', 'images', 'runtime', 'cast', 'media'
+        ])->put('media','movie');
     }
 
     public function related()
     {
-        // dd($this->related);
+        //  dd($this->related);
 
         return collect($this->related)->map(function ($movie) {
 
@@ -69,7 +69,7 @@ class MovieViewModel extends ViewModel
             ])->only([
                 'poster_path', 'id', 'title', 'vote_average', 'overview', 'release_date'
 
-            ]);
+            ])->put('slug',  Str::of( $movie['title'])->slug('-'));
         });
     }
 }

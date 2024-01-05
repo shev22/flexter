@@ -23,9 +23,9 @@
 
     </span>
     @if ($movie['media_type'] == 'movie')
-    <a href="{{ route('movie.show', $movie['id']) }}" class="movie-list-item-button">Watch</a>  
+    <a href="{{ route('movie.show', ['slug'=>$movie['slug'], 'id'=>$movie['id']]) }}" class="movie-list-item-button">Watch</a>  
     @else
-    <a href="{{ route('tv.show', $movie['id']) }}" class="movie-list-item-button">Watch</a>
+    <a href="{{ route('tv.show', ['slug'=>$movie['slug'], 'id'=>$movie['id']]) }}" class="movie-list-item-button">Watch</a>
     @endif
    
 </div>

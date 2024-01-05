@@ -2,7 +2,7 @@
 
 
     <div class="card">
-        <a href="{{ route('tv.show', $tvshow['id']) }}">
+        <a href="{{ route('tv.show', ['slug'=>$tvshow['slug'], 'id'=>$tvshow['id']]) }}">
         <img src="{{ $tvshow['poster_path'] }}" alt="">
         <div class="content">
             <h3>{{ $tvshow['name'] }}</h3>

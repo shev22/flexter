@@ -1,5 +1,5 @@
-<x-landing-layout>
-
+<x-app-layout>
+{{-- 
 
     <div class="container">
         <div class="content-container">
@@ -217,5 +217,7 @@
                 </div>
             </div>
         </div>
-    </div>
-</x-landing-layout>
+    </div> --}}
+    
+ --}}
+</x-app-layout>

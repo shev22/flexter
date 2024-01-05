@@ -62,45 +62,136 @@
 
 $(document).ready(function () {
 
-$('#exampleSlider').multislider({
-  duration:10000,
-  continuous:true
-});
 
+  // TOGGLE
+  const ball = document.querySelector(".toggle-ball");
+  const items = document.querySelectorAll(
+    ".container,.search-results, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
+  );
 
-$('#exampleSlider2').multislider({
-  interval:6000,
-  slideAll:true
-});
-
-$('#exampleSlider1').multislider({
-
-  interval:7000,
-  slideAll:true
-});
-
-
-
-$('#movie-show-media ').multislider({
-
-  duration:10000,
-  continuous:true
-});
-
-
-// TOGGLE
-
-const ball = document.querySelector(".toggle-ball");
-const items = document.querySelectorAll(
-  ".container,.search-results, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
-);
-
-ball.addEventListener("click", () => {
-  items.forEach((item) => {
-    item.classList.toggle("active");
+  ball.addEventListener("click", () => {
+    items.forEach((item) => {
+      item.classList.toggle("active");
+    });
+    ball.classList.toggle("active");
   });
-  ball.classList.toggle("active");
-});
+
+
+
+  //side men bar
+
+
+  $(".menu-dropdown").click(function () {
+    event.stopPropagation();
+    $('.menubar').animate({ width: 'toggle' }, 200).css({ display: 'flex' });
+  });
+
+
+  $(document).on('click', function (e) {
+    if ($(e.target).closest(".menubar").length === 0) {
+      $(".menubar").slideUp('fast');
+    }
+  });
+
+
+
+  $(".login").click(function () {
+    event.stopPropagation();
+    $(".login-form-container ").slideToggle('fast');
+    $(".register-form-container").slideUp('fast');
+    $(".recover-form-container").slideUp('fast');
+
+  });
+
+  $(document).on('click', function (e) {
+    if ($(e.target).closest(".login-form-container ").length === 0) {
+      $(".login-form-container ").slideUp('fast');
+    }
+  });
+
+  $(".register").click(function () {
+    event.stopPropagation();
+    $(".register-form-container").slideToggle('fast');
+    $(".login-form-container ").slideUp('fast');
+    $(".recover-form-container").slideUp('fast');
+  });
+
+
+  $(document).on('click', function (e) {
+    if ($(e.target).closest(".register-form-container").length === 0) {
+      $(".register-form-container").slideUp('fast');
+    }
+  });
+
+
+  $(".recover").click(function () {
+    event.stopPropagation();
+    $(".login-form-container ").slideUp('fast');
+    $(".recover-form-container").slideDown('fast');
+ 
+  });
+
+
+  $(document).on('click', function (e) {
+    if ($(e.target).closest(".recover-form-container").length === 0) {
+      $(".recover-form-container").slideUp('fast');
+    }
+  });
+
+
+
+
+  
+  $(".profile").click(function () {
+    event.stopPropagation();
+    $(".profile-dropdown-container ").slideToggle('fast');
+  
+ 
+  });
+
+
+  $(document).on('click', function (e) {
+    if ($(e.target).closest(".profile-dropdown-container").length === 0) {
+      $(".profile-dropdown-container").slideUp('fast');
+    }
+  });
+
+
+
+
+
+
+
+
+
+
+
+  $(".stream").click(function () {
+
+
+    $(".movie_card").fadeOut(1000);
+    $(".modal-frame").fadeIn();
+  });
+
+  $(".modal-close").click(function () {
+    $(".modal-frame").slideUp();
+    $(".movie_card").fadeIn();
+
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

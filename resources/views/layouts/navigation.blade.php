@@ -101,6 +101,8 @@
 <div class="navbar">
     <div class="navbar-container">
         <div class="logo-container">
+
+            {{-- <img src="img/logo/logo-5.png" alt="" width="80"> --}}
             <h1 class="logo"><a href="{{ route('/') }}">Flexter</a> </h1>
         </div>
         <div class="menu-container">
@@ -114,11 +116,11 @@
                 </x-nav-link>
 
                 <x-nav-link :href="route('tv')" :selected="request()->routeIs('tv')">
-                    {{ __('TV Shows') }}
+                    {{ __('Series') }}
                 </x-nav-link>
 
-                
-                 <x-auth-navlink :href="route('actors.index')" :selected="request()->routeIs('actors.index')">
+
+                <x-auth-navlink :href="route('actors.index')" :selected="request()->routeIs('actors.index')">
                     {{ __('Actors') }}
                 </x-auth-navlink>
 
@@ -134,7 +136,8 @@
               
                 </x-nav-link>  --}}
             </ul>
-                <livewire:search-dropdown />
+            <livewire:search-dropdown />
+          
         </div>
 
 
@@ -142,15 +145,15 @@
         <div class="profile-container">
 
             @auth
-                <img class="profile-picture" src="img/profile.jpg" alt="">
+                <img class="profile-picture" src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt="">
                 <div class="profile-text-container">
-                    <span class="profile-text">Profile</span>
+                    <span class="profile-text profile" style="font-weight:bold">{{ Auth::user()->name }}</span>
                     <i class="fas fa-caret-down"></i>
                 </div>
             @else
                 <div class="profile-text-container">
-                    <span class="profile-text "><a class="auth">Log in</a> </span>
-                    <span class="profile-text"><a class="auth"> Register</a></span>
+                    <span class="profile-text "><a class="auth login" >Log in</a> | <a class="auth register"> Register</a></span>
+                    {{-- <span class="profile-text"></span> --}}
 
                 </div>
             @endauth
@@ -159,6 +162,17 @@
                 <i class="fas fa-sun toggle-icon"></i>
                 <div class="toggle-ball"></div>
             </div>
+            <div class="menu-dropdown" >
+                <i class='fa fa-bars'></i>
+            </div>
+   
         </div>
+  
+      
     </div>
+    <x-register/>
+    <x-login/>
+    <x-recover/>
+    <x-profile-dropdown/>
+    {{-- <x-auth-session-status class="mb-4" :status="session('status')" /> --}}
 </div>

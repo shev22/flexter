@@ -1,5 +1,5 @@
 <div class="search-container" x-data="{ isOpen: true }" @click.away="isOpen = false">
-    <form wire:submit="searchQuery">
+    <form wire:submit="searchQuery" >
 
         <input type="search" required wire:model.live="query">
         <span wire:loading> <x-spinner /></span>
@@ -13,7 +13,7 @@
             <ul>
                 @foreach ($searchResults as $key => $result)
                     <li class="search-results-item">
-                        <a href="{{ route($result['route'], $result['id']) }}">
+                        <a href="{{ route($result['route'],  ['slug'=>$result['slug'], 'id'=>$result['id']]) }}">
                             <img src="{{ $result['poster_path'] }}" alt="poster">
                             <span style="margin-left: 22px">
                                 <div>

@@ -2,7 +2,7 @@
     <div class="container">
         <div class="content-container">
             <div class="movie-container">
-                <h1 class="browse-movie-list">BROWSE MOVIES</h1>
+                <h3 class="browse-movie-list">BROWSE MOVIES</h3>
                 <section class="main-section">
                     @foreach ($popularMovies as $movie)
                         <x-movie-card :movie="$movie" />

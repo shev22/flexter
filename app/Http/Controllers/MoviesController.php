@@ -58,8 +58,9 @@ class MoviesController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(?string $id = null)
+    public function show($slug, $id)
     {
+       
         $movie = Http::withToken(config('services.tmdb.token'))
             ->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images')
             ->json();
@@ -71,11 +72,11 @@ class MoviesController extends Controller
             ->json()['results'];
 
 
-        // dd(  $related );
+  
 
 
         $viewModel = new MovieViewModel($movie,  $related);
-
+   
         return view('movies.show', $viewModel);
     }
 
