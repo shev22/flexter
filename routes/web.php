@@ -48,7 +48,7 @@ require __DIR__.'/auth.php';
 Route::get('/', [PagesController::class, 'index'])->name('/');
 
 
-Route::get('/movies/page/{page?}',[MoviesController::class, 'movies']);
+//  Route::get('/movies/page/{page?}',[MoviesController::class, 'movies']);
 Route::get('movies', [MoviesController::class, 'movies'])->name('movies');
 Route::get('/movie/{slug}/{id}', [MoviesController::class, 'show'])->name('movie.show');
 

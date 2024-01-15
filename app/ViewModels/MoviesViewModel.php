@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 
 class MoviesViewModel extends ViewModel
-{   
+{
     // public $popularMovies;
     public $top_rated;
     // public $trending_movies;
@@ -24,29 +24,31 @@ class MoviesViewModel extends ViewModel
     //     $this->up_coming = $up_coming;
     //     $this->genres = $genres;
     //     $this->trending_movies = $trending_movies;
-    
+
     // }
 
     public function popularMovies()
     {
-        return $this->formatMovies( Cache::get('movies-popular'));
+   
+       
+        //  $this->formatMovies(Cache::get('movies-popular'));
     }
 
     public function top_rated()
     {
-     return $this->formatMovies($this->top_rated);
+        return $this->formatMovies($this->top_rated);
     }
 
     public function trending()
     {
-        dd(Cache::get('movies-trending'));
-     return $this->formatMovies( Cache::get('movies-trending'));
+       
+        return $this->formatMovies(Cache::get('movies-trending'));
     }
 
     public function nowPlayingMovies()
     {
-       
-     return $this->formatMovies( Cache::get('movies-nowplaying'));
+        // dd(Cache::get('movies-nowplaying'));
+        return $this->formatMovies(Cache::get('movies-nowplaying'));
     }
 
     public function genres()
@@ -64,21 +66,21 @@ class MoviesViewModel extends ViewModel
 
     private function formatMovies($movies)
     {
-   
-        return collect($movies)->map(function($movie) {
-            $genresFormatted = collect($movie['genre_ids'])->mapWithKeys(function($value) {
+        
+        return collect($movies)->map(function ($movie) {
+            $genresFormatted = collect($movie['genre_ids'])->mapWithKeys(function ($value) {
                 return [$value => $this->genres()->get($value)];
             })->implode(', ');
 
             return collect($movie)->merge([
-                'poster_path' => 'https://image.tmdb.org/t/p/w500/'.$movie['poster_path'],
+                'poster_path' => 'https://image.tmdb.org/t/p/w500/' . $movie['poster_path'],
                 'backdrop_path' => $movie['backdrop_path'],
-                'vote_average' => round( $movie['vote_average'], 1),
+                'vote_average' => round($movie['vote_average'], 1),
                 'release_date' => Carbon::parse($movie['release_date'])->format('M d, Y'),
                 'genres' => $genresFormatted,
             ])->only([
-                'poster_path', 'id', 'genre_ids', 'title', 'vote_average', 'overview', 'release_date', 'genres','media_type','backdrop_path'
-            ])->put('slug',  Str::of( $movie['title'])->slug('-'));
+                'poster_path', 'id', 'genre_ids', 'title', 'vote_average', 'logo', 'overview', 'release_date', 'genres', 'media_type', 'backdrop_path'
+            ])->put('slug',  Str::of($movie['title'])->slug('-'));
         });
     }
 }

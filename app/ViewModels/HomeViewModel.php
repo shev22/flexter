@@ -12,17 +12,22 @@ class HomeViewModel extends ViewModel
 
     public function nowPlayingMovies()
     {
-      return (  $this->movies->nowPlayingMovies()) ;
+      return $this->movies->nowPlayingMovies() ;
+    }
+
+    public function trending_movies()
+    {
+        return $this->movies->trending();
     }
 
     public function trending_tv()
     {
         return $this->tv->trending();
     }
-
-    public function trending()
+    
+    public function topRatedTv()
     {
-        return $this->movies->trending();
+        return  $this->tv->topRatedTv();
     }
 
 }

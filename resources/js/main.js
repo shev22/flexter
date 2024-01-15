@@ -103,11 +103,11 @@ $(document).ready(function () {
 
   });
 
-  $(document).on('click', function (e) {
-    if ($(e.target).closest(".login-form-container ").length === 0) {
-      $(".login-form-container ").slideUp('fast');
-    }
-  });
+  // $(document).on('click', function (e) {
+  //   if ($(e.target).closest(".login-form-container ").length === 0) {
+  //     $(".login-form-container ").slideUp('fast');
+  //   }
+  // });
 
   $(".register").click(function () {
     event.stopPropagation();
@@ -117,11 +117,11 @@ $(document).ready(function () {
   });
 
 
-  $(document).on('click', function (e) {
-    if ($(e.target).closest(".register-form-container").length === 0) {
-      $(".register-form-container").slideUp('fast');
-    }
-  });
+  // $(document).on('click', function (e) {
+  //   if ($(e.target).closest(".register-form-container").length === 0) {
+  //     $(".register-form-container").slideUp('fast');
+  //   }
+  // });
 
 
   $(".recover").click(function () {
@@ -132,29 +132,82 @@ $(document).ready(function () {
   });
 
 
-  $(document).on('click', function (e) {
-    if ($(e.target).closest(".recover-form-container").length === 0) {
-      $(".recover-form-container").slideUp('fast');
-    }
-  });
+  // $(document).on('click', function (e) {
+  //   if ($(e.target).closest(".recover-form-container").length === 0) {
+  //     $(".recover-form-container").slideUp('fast');
+  //   }
+  // });
 
 
-
-
-  
   $(".profile").click(function () {
     event.stopPropagation();
     $(".profile-dropdown-container ").slideToggle('fast');
   
- 
   });
-
 
   $(document).on('click', function (e) {
-    if ($(e.target).closest(".profile-dropdown-container").length === 0) {
-      $(".profile-dropdown-container").slideUp('fast');
+    if ($(e.target).closest(".login-form-container, .register-form-container, .profile-dropdown-container, .filter-content-genre, .filter-content-year, .recover-form-container").length === 0) {
+      $(".login-form-container, .register-form-container, .profile-dropdown-container, .filter-content-genre, .filter-content-year, .recover-form-container").slideUp('fast');
     }
   });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  /****
+   * Movie filter secrtion
+   * 1.10.2023
+   */
+
+  $(".genre-filter").click(function () {
+    event.stopPropagation();
+    $(".filter-content-genre").slideToggle('fast');
+    $(".filter-content-year").slideUp('fast')
+  });
+
+  $(".year-filter").click(function () {
+    event.stopPropagation();
+    $(".filter-content-genre").slideUp('fast')
+    $(".filter-content-year").slideToggle('fast');
+  });
+
+
+
+  $(".show-nowplaying").click(function () {
+    event.stopPropagation();
+    $(".nowplaying-movies").slideUp('fast');
+    $(".porpular-moviesr").hide('fast')
+  });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

@@ -147,14 +147,10 @@
                 </div>
                 </div>
           
-                
+                <a class="stream">
+                    <i class="pulse fa fa-play-circle" ></i>
+                </a>
                     @if ($movie['videos']['results'])
-                    <a class="stream">
-
- 
-                        <i class="pulse fa fa-play-circle" ></i>
-                    </a>
-
                     <div class="blur_back">
                         
                          <div class="iframe-wapper">

@@ -588,8 +588,8 @@ body {
     height: 60vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     padding: 50px;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
+    /* border-top-right-radius: 5px;
+    border-top-left-radius: 5px; */
 }
 
 .featured-title {
@@ -599,7 +599,7 @@ body {
 }
 
 .featured-desc {
-    width: 500px;
+    width: 70%;
     color: rgb(204, 204, 204);
     margin: 20px 0;
     /* font-style: italic; */
@@ -841,14 +841,131 @@ body {
 /*--------------------------------------------------------------
 	# Movies list section
 	--------------------------------------------------------------*/
+.filter-tabs {
+    margin: 10px 0 5px 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.section-nav button {
+    padding: 3px;
+    border-radius: 5px;
+    /* font-weight: bold; */
+}
+
+.section-nav button:hover {
+    cursor: pointer;
+    color: #535353;
+}
+
+/* .filter-container{
+        display: flex;
+        position: relative;
+    }
+
+    .filter-container .wrapper{
+        margin: 0 auto;
+    } */
+
+.filter-nav button {
+    padding: 3px;
+    border-radius: 5px;
+    /* font-weight: bold; */
+}
+
+.filter-nav button:hover {
+    cursor: pointer;
+    color: #535353;
+}
+
+.active-filter{
+    background: #494848;
+    color: #fff;
+    border: 0;
+    padding: 3px;
+    border-radius: 5px;
+}
+
+
+
+
+.filter-content-genre {
+    margin-top: 5px;
+    color: white;
+    display: none;
+    backdrop-filter: blur(50px);
+    border-radius: 10px;
+    z-index: 3;
+    position: absolute;
+    right: 12.5%;
+}
+
+.filter-content-genre ul {
+    padding: 13px 15px;
+    margin: auto;
+    font-weight: bold;
+    font-size: 13.5px;
+    column-count: 3;
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+}
+
+.filter-content-genre ul li {
+    margin: 0px 5px 8px 0px;
+    list-style: none;
+}
+
+.filter-content-year ul li:hover {
+    color: #296104;
+    cursor: pointer;
+}
+
+.filter-content-year {
+    color: white;
+    display: none;
+    backdrop-filter: blur(50px);
+    border-radius: 10px;
+    margin-top: 5px;
+    right: 19%;
+
+    z-index: 3;
+    position: absolute;
+}
+
+.filter-content-year ul {
+    padding: 13px 15px;
+    margin: auto;
+    font-weight: bold;
+    font-size: 13.5px;
+    column-count: 3;
+    -moz-column-count: 3;
+    -webkit-column-count: 3;
+}
+
+.filter-content-year ul li {
+    margin: 0px 8px 8px 0px;
+    list-style: none;
+}
+
+.filter-content-year ul li:hover {
+    color: #296104;
+    cursor: pointer;
+}
 
 .browse-movie-list {
-    margin-left: 100px;
     color: rgb(82, 168, 25);
+   margin-right: 40px;
+   
 }
+
+
+
+
 
 .movie-container {
     padding-top: 2rem;
+    width: 90%;
+    margin: 0 auto;
 }
 
 .movie-container .main-section {
@@ -861,31 +978,31 @@ body {
 
 .movie-container .card {
     position: relative;
-    width: 185px;
-    height: 250px;
+    width: 160px;
+    height: 220px;
     box-shadow: 2px 2px 6px 0px rgba(0, 0, 0, 0.3);
     border-radius: 20px;
-    margin: 10px;
-    margin-bottom: 30px;
+    margin: 5px;
+    margin-bottom: 10px;
 }
 
 .movie-container .card:hover {
     cursor: pointer;
-    transform: scale(1.1);
+    transform: scale(1.08);
     transition: transform 0.4s ease-in-out;
 }
 
 .movie-container .card img {
     width: 100%;
     height: 100%;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 .card .content {
     position: absolute;
     width: 100%;
     height: auto;
-    border-radius: 20px;
+    border-radius: 15px;
     padding-bottom: 1px;
     bottom: 0;
     border-radius: 0px 0px 20px 20px;
@@ -897,16 +1014,20 @@ body {
     content: "";
     width: 100%;
     height: 100%;
-    background: rgb(185, 185, 185, 0.1);
-    backdrop-filter: blur(3px);
+    background: rgba(16, 15, 15, 0.1);
+    backdrop-filter: blur(5px);
     border-radius: 0px 0px 20px 20px;
     z-index: -1;
 }
 
+.movie-container .card .content:hover {
+    backdrop-filter: blur(30px);
+}
+
 .movie-container .content h3 {
-    color: #dfdfdf;
+    color: #fff;
     padding: 5px 0px 0px 10px;
-    font-size: 15px;
+    font-size: 14px;
 }
 
 /* .content h3 span{
@@ -918,9 +1039,9 @@ body {
 	} */
 
 .movie-container .content p {
-    color: #fff;
+    color: rgb(235, 233, 233);
     padding: 0px 0px 5px 10px;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 .movie-container .content h6 {
@@ -1409,7 +1530,7 @@ body {
         width: 50%;
     }
     .info_section {
-        background: linear-gradient(to right, #0d0d0c 50%, transparent 100%);
+        background: linear-gradient(to right, #0d0d0c 50%, transparent 70%);
     }
     .blur_back {
         width: 80%;
@@ -1418,6 +1539,9 @@ body {
 }
 
 @media screen and (width >= 1540px) {
+    .featured-title {
+        width: 350px;
+    }
     .blur_back {
         width: 60%;
         background-position: -100% 10% !important;
@@ -1826,4 +1950,78 @@ body {
 .actor-card .credits ul li a:hover {
     color: #7e7e7e;
     text-decoration: underline;
+}
+
+.paginator-container {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    transform: translateY(-50%);
+    z-index: 3;
+    padding-top: 15px;
+}
+
+.pagination {
+    list-style: none;
+    display: inline-block;
+    padding: 0;
+}
+
+.pagination li {
+    display: inline;
+    text-align: center;
+}
+
+.pagination button {
+    float: left;
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    padding: 5px 12px;
+    color: #fff;
+    margin-left: -1px;
+    border: 1px solid transparent;
+    line-height: 1.5;
+}
+
+.pagination button:active {
+    outline: none;
+}
+
+.modal button {
+    margin: 0 5px;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    border-radius: 100%;
+    background-color: #53676e;
+    transform: translateY(0);
+    transition: all 0.3s ease-out;
+}
+
+.modal button.prev {
+    border-radius: 50px 0 0 50px;
+    width: 100px;
+}
+
+.modal button.next {
+    border-radius: 0 50px 50px 0;
+    width: 100px;
+}
+
+.modal button:hover {
+    background-color: #77cd3e;
+    color: #fff;
+    font-weight: 1000;
+    transform: translateY(8px);
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+.modal button.active,
+.modal button:active {
+    background-color: #479e0d;
 }

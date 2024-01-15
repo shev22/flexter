@@ -20,7 +20,7 @@ class TvShowViewModel extends ViewModel
 
     public function tvshow()
     {
-        // dd(  $this->tvshow );
+        //  dd(  $this->tvshow );
         return collect($this->tvshow)->merge([
             'poster_path' => $this->tvshow['poster_path']
                 ? 'https://image.tmdb.org/t/p/w500/'.$this->tvshow['poster_path']

@@ -12,7 +12,17 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule): void
     {
-        // $schedule->command('inspire')->hourly();
+        $schedule->command('daily:movies-buffer')
+        ->everyMinute()
+        ->appendOutputTo('scheduler.log');
+
+        $schedule->command('daily:series-buffer')
+        ->everyMinute()
+        ->appendOutputTo('scheduler.log');
+
+        // $schedule->command('cache:daily')
+        // ->everyMinute()
+        // ->appendOutputTo('scheduler.log');
     }
 
     /**

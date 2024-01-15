@@ -2,12 +2,39 @@
 
 namespace App\Http\Controllers\Services;
 
-use Illuminate\Support\Facades\Http;
+
+use App\Repositories\GenreRepository;
 use Illuminate\Support\Facades\Cache;
+use App\Repositories\PorpularRepository;
+use App\Repositories\TopRatedRepository;
+use App\Repositories\TrendingRepository;
+use App\Repositories\UpComingRepository;
+use App\Repositories\NowPlayingRepository;
 
 
 class MediaService
 {
+
+
+
+    public function __construct(
+        private GenreRepository $genre,
+        private PorpularRepository $porpular,
+        private UpComingRepository $upComing,
+        private TopRatedRepository $topRated,
+        private TrendingRepository $trending,
+        private NowPlayingRepository $nowPlaying,
+
+    ) {
+    }
+
+
+
+
+
+
+
+
 
     /**
      * MOVIES SECTION
@@ -17,78 +44,71 @@ class MediaService
 
     public function trending_movies()
     {
-        
-        // return Http::withToken(config('services.tmdb.token'))
-        //     ->get('https://api.themoviedb.org/3/trending/movie/day')
-            // ->json()['results'];
-            Cache::rememberForever('movies-trending', function(){
-                return Http::withToken(config('services.tmdb.token'))
-                ->get('https://api.themoviedb.org/3/trending/movie/day')
-                ->json()['results'];
-            });
-            
+        return Cache::rememberForever('movies-trending', function () {
+            return  $this->trending->trending('movie', 'day');
+        });
     }
 
 
-    public function popularMovies($page = 1)
+    public function popularMovies()
     {
-        abort_if($page > 500, 204);
-        // return Http::withToken(config('services.tmdb.token'))
-        //     ->get('https://api.themoviedb.org/3/movie/popular?page='.$page.'?append_to_response=credits,videos,images')
-        //     ->json()['results'];
-      
-        Cache::rememberForever('movies-popular', function() use($page){
-            return Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/movie/popular?page='.$page.'?append_to_response=credits,videos,images')
-                 ->json()['results'];
+        // return   $this->porpular->porpular('movie', 200);
+
+        return  Cache::rememberForever('movies-popular', function () {
+            return   $this->porpular->porpular('movie', 300);
         });
     }
 
     public function top_ratedMovies()
     {
-        return Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/movie/top_rated')
-            ->json()['results'];
+
+        return Cache::rememberForever('movies-toprated', function () {
+            return $this->topRated->topRated('movie');
+        });
     }
 
     public function up_comingMovies()
     {
 
-        // return  Http::withToken(config('services.tmdb.token'))
-        //     ->get('https://api.themoviedb.org/3/movie/upcoming')
-        //     ->json()['results'];
-
-            // Cache::rememberForever('movie-upcoming', function(){
-            //     return Http::withToken(config('services.tmdb.token'))
-            //     ->get('https://api.themoviedb.org/3/movie/upcoming')
-            //     ->json()['results'];
-    
-            // });
+        return Cache::rememberForever('movies-upcoming', function () {
+            return    $this->upComing->upComing('movie');
+        });
     }
 
     public function movie_genres()
     {
-        Cache::rememberForever('movies-genre', function(){
-        return Http::withToken(config('services.tmdb.token'))
-        ->get('https://api.themoviedb.org/3/genre/movie/list')
-        ->json()['genres'];
-    });
-    // return Cache::get('movie-genre');
+
+        return  Cache::rememberForever('movies-genre', function () {
+            return   $this->genre->genre('movie');
+        });
+        // return Cache::get('movie-genre');
     }
 
 
     public function nowPlayingMovies()
     {
-            Cache::rememberForever('movies-nowplaying', function(){
-                return Http::withToken(config('services.tmdb.token'))
-                ->get('https://api.themoviedb.org/3/movie/now_playing')
-                ->json()['results'];
-    
-            });
+
+        return  Cache::rememberForever('movies-nowplaying', function () {
+            return   $this->nowPlaying->nowPlaying('movie');
+        });
     }
 
 
-
+    // public function logo($mediaType, $id)
+    // {
+    //     $mediaLogo = Http::withToken(config('services.tmdb.token'))
+    //         ->get('https://api.themoviedb.org/3/' . $mediaType . '/' . $id . '?append_to_response=credits,videos,images')
+    //         ->json()['images'];
+    //     if ($mediaLogo !== []) {
+    //         if ($mediaLogo['logos'] !== []) {
+    //             return $mediaLogo['logos'][0]['file_path'];
+    //         } else {
+    //             return false;
+    //         }
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
 
 
@@ -99,69 +119,35 @@ class MediaService
      */
     public function trending_tv()
     {
-        // return Http::withToken(config('services.tmdb.token'))
-        //     ->get('https://api.themoviedb.org/3/trending/tv/day')
-        //     ->json()['results'];
-            Cache::rememberForever('trendingTv', function(){
-                return Http::withToken(config('services.tmdb.token'))
-                ->get('https://api.themoviedb.org/3/trending/tv/day')
-                    ->json()['results'];
-    
-            });
-    }
-    
-    public function popularTv($page = 1)
-    {
-        // return Http::withToken(config('services.tmdb.token'))
-        //     ->get('https://api.themoviedb.org/3/tv/popular?page='.$page)
-        //     ->json()['results'];
-            Cache::rememberForever('popularTv', function() use($page){
-                return Http::withToken(config('services.tmdb.token'))
-                ->get('https://api.themoviedb.org/3/tv/popular?page='.$page)
-            ->json()['results'];
-    
-            });
+
+        Cache::rememberForever('tv-trending', function () {
+            return $this->trending->trending('tv', 'day');
+        });
     }
 
-    // public function topRatedTv()
-    // {
-    //     return Http::withToken(config('services.tmdb.token'))
-    //         ->get('https://api.themoviedb.org/3/tv/top_rated')
-    //         ->json()['results'];
-    // }
+    public function popularTv()
+    {
+
+        Cache::rememberForever('tv-popular', function () {
+            return  $this->porpular->porpular('tv', 250);
+        });
+    }
+
+    public function topRatedTv()
+    {
+
+        Cache::rememberForever('tv-toprated', function () {
+            return $this->topRated->topRated('tv');
+        });
+    }
 
 
     public function tv_genres()
     {
-        // return Http::withToken(config('services.tmdb.token'))
-        //     ->get('https://api.themoviedb.org/3/genre/tv/list')
-        //     ->json()['genres'];
-            Cache::rememberForever('genresTv', function(){
-                return Http::withToken(config('services.tmdb.token'))
-                ->get('https://api.themoviedb.org/3/genre/tv/list')
-                ->json()['genres'];
-    
-            });
+
+        Cache::rememberForever('tv-genre', function () {
+            return $this->genre->genre('tv');
+        });
     }
-
-
-
-    // public function stream()
-    // {
-    //     # code...
-    // }
-    // public function stream()
-    // {
-    //     # code...
-    // }
-    // public function stream()
-    // {
-    //     # code...
-    // }
-
-
-
-
-
 
 }

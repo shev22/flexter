@@ -112,11 +112,11 @@
                 </x-nav-link>
 
                 <x-nav-link :href="route('movies')" :selected="request()->routeIs('movies')">
-                    {{ __('Movies') }}
+                    {{ __(' Popular Movies') }}
                 </x-nav-link>
 
                 <x-nav-link :href="route('tv')" :selected="request()->routeIs('tv')">
-                    {{ __('Series') }}
+                    {{ __('Popular Series') }}
                 </x-nav-link>
 
 

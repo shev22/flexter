@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\Client\Pool;
 use App\ViewModels\MovieViewModel;
 use App\ViewModels\MoviesViewModel;
 use App\Http\Controllers\Controller;
@@ -20,16 +21,16 @@ class MoviesController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function movies($page = 1)
+    public function movies($page = 2)
     {
    
+        // Cache::flush();
 
-
-
-        $this->mediaService->trending_movies();
-        $this->mediaService->popularMovies($page);
-        $this->mediaService->movie_genres();
-        $this->mediaService->nowPlayingMovies();
+        // $this->mediaService->logo('movie', 817187);
+        // $this->mediaService->trending_movies();
+        // $this->mediaService->popularMovies($page);
+        // $this->mediaService->movie_genres();
+        // $this->mediaService->nowPlayingMovies();
 
         $viewModel = new MoviesViewModel(
             // $popularMovies,
@@ -64,19 +65,28 @@ class MoviesController extends Controller
     public function show($slug, $id)
     {
        
-        $movie = Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images')
-            ->json();
+     
+      
+        // $movie = Http::withToken(config('services.tmdb.token'))
+        //     ->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images')
+        //     ->json();
+        // $related =  Http::withToken(config('services.tmdb.token'))
+        //     ->get('https://api.themoviedb.org/3/movie/' . $id . '/similar')
+        //     ->json()['results'];
 
-  
+     
+        $responses = Http::pool(fn (Pool $pool) => [
+            $pool->withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images'),
+            $pool->withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/movie/' . $id . '/similar'),
+     
+        ]);
 
-        $related =  Http::withToken(config('services.tmdb.token'))
-            ->get('https://api.themoviedb.org/3/movie/' . $id . '/similar')
-            ->json()['results'];
+        $movie = $responses[0]->json();
+        $related = $responses[1]->json()['results'];
 
 
-  
 
+        // dump(  $movie,      $related , $time - $time2);
 
         $viewModel = new MovieViewModel($movie,  $related);
    

@@ -7,8 +7,9 @@ use App\Livewire\SearchTrait;
 use App\ViewModels\TvViewModel;
 use App\ViewModels\HomeViewModel;
 use App\ViewModels\MoviesViewModel;
-use Illuminate\Support\Facades\Http;
+
 use App\Http\Controllers\Services\MediaService;
+
 
 class PagesController extends Controller
 {
@@ -17,39 +18,33 @@ class PagesController extends Controller
      * Display a listing of the resource.
      */
     public function __construct(
-      
+        private MediaService $buffer
     ) {
     }
 
     public function index()
     {
-        // $this->mediaService->
-        // $movie_genres = $this->mediaService->movie_genres();
-        // $tv_genres = $this->mediaService->tv_genres();
-        // $up_coming = $this->mediaService->up_comingMovies();
-        // $trending_movies = $this->mediaService->trending_movies();
-        // $trending_tv = $this->mediaService->trending_tv();
 
-        $moviesViewModel = new MoviesViewModel(
-            // null,
-            // $movie_genres,
-            // null,
-            // $up_coming,
-            // $trending_movies,
+            // $time  = time ();
+        // $this->buffer->trending_tv();
+        // $this->buffer->topRatedTv();
+        // $this->buffer->tv_genres();
+        // $this->buffer->trending_movies();
+        // $this->buffer->popularMovies();
+        // $this->buffer->up_comingMovies();
+        // $this->buffer->movie_genres();
+        // $this->buffer->nowPlayingMovies();
+        // $this->buffer->years();
+ 
+        // dump(time() - $time);
+        // Cache::put('test', 57);
 
-        );
+        // (Cache::forget('years'));
 
-
-        $tvViewModel = new TvViewModel(
-            // null,
-            // null,
-            // $tv_genres,
-            // $trending_tv,
-        );
-
+   //  Cache::flush();
+        $moviesViewModel = new MoviesViewModel;
+        $tvViewModel = new TvViewModel;
         $viewModel = new HomeViewModel($moviesViewModel,  $tvViewModel,);
-
-        //    dd( $viewModel );
 
         return view('index', $viewModel);
     }
@@ -59,19 +54,6 @@ class PagesController extends Controller
         return view('search', ['query' => $query ]);
     }
 
-    // public function play( $slug, $id)
-    // {
-       
-    //     $result ="https://vidsrc.to/embed/movie/".$id;
-
-    //     $data = file_get_contents(  $result);
-      
-    //     // $movie['740']['hash'] =  $result['data']['movie']['torrents'][0]['hash'];
-    //     // $movie['1080']['hash'] =  $result['data']['movie']['torrents'][1]['hash'];
-    //     // $movie['title'] = str_replace( ' ', '+', $result['data']['movie']['title_long']);
-
-    //     return view('play',['result'=>  $data]);
-    // }
 
     /**
      * Show the form for creating a new resource.

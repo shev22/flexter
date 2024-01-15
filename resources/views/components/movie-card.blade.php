@@ -3,7 +3,14 @@
         <img src="{{ $movie['poster_path'] }}" alt="">
         <div class="content">
             <h3>{{ $movie['title'] }}</h3>
-            <p> {{ $movie['genres'] }}</p>
+            <p>
+                @foreach ($movie['genre_ids'] as $genre)
+                    {{ $this->genres()->get($genre) }}
+                    @if (!$loop->last)
+                        ,
+                    @endif
+                @endforeach
+            </p>
             <h6>
                 <span
                     style="	color: #000;

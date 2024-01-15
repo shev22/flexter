@@ -1,0 +1,41 @@
+
+   Error 
+
+  Call to undefined method GuzzleHttp\Exception\ConnectException::json()
+
+  at app\Repositories\PorpularRepository.php:51
+     47▕                 ->map(fn ($page) => $pool->withToken(config('services.tmdb.token'))->get($url . "?page={$page}"));
+     48▕         });
+     49▕ 
+     50▕          $data = collect($responses)->map(function($response){ return $response
+  ➜  51▕             ->json()['results'];});
+     52▕         foreach ($data as $item) {
+     53▕             foreach ($item as $value) {
+     54▕                     array_push($media,  $value);
+     55▕             }
+
+  1   [internal]:0
+      App\Repositories\PorpularRepository::App\Repositories\{closure}(Object(GuzzleHttp\Exception\ConnectException))
+  2   vendor\laravel\framework\src\Illuminate\Collections\Arr.php:560
+
+
+   Error 
+
+  Call to undefined method GuzzleHttp\Exception\ConnectException::json()
+
+  at app\Repositories\PorpularRepository.php:51
+     47▕                 ->map(fn ($page) => $pool->withToken(config('services.tmdb.token'))->get($url . "?page={$page}"));
+     48▕         });
+     49▕ 
+     50▕          $data = collect($responses)->map(function($response){ return $response
+  ➜  51▕             ->json()['results'];});
+     52▕         foreach ($data as $item) {
+     53▕             foreach ($item as $value) {
+     54▕                     array_push($media,  $value);
+     55▕             }
+
+  1   [internal]:0
+      App\Repositories\PorpularRepository::App\Repositories\{closure}(Object(GuzzleHttp\Exception\ConnectException))
+  2   vendor\laravel\framework\src\Illuminate\Collections\Arr.php:560
+
+5to load movies<br>43 to load series<br>3to load movies<br>0 to load series<br>4to load movies<br>0 to load series<br>
