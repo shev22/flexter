@@ -1,5 +1,39 @@
 
 
+// function setbackground()
+// {
+//   $.ajaxSetup({
+//   headers: {
+//       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//   }
+// });
+
+// $.ajax({
+//   method: "POST",
+//   url: "/background",
+//   success: function (response) {
+// const ball = document.querySelector(".toggle-ball");
+// const items = document.querySelectorAll(
+// ".container,.search-results, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
+// );
+//     if(response.nightmode == true)
+//     {
+//         items.forEach((item) => {
+//             item.classList.toggle("active",1200);
+//           });
+//            ball.classList.toggle("active",2000);
+//     }
+
+//   }
+
+// })
+
+// }
+
+
+
+
+
 
 // const arrowsRight = document.querySelectorAll(".arrow-right");
 // const arrowsLeft = document.querySelectorAll(".arrow-left");
@@ -64,23 +98,101 @@ $(document).ready(function () {
 
 
   // TOGGLE
-  const ball = document.querySelector(".toggle-ball");
-  const items = document.querySelectorAll(
-    ".container,.search-results, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
-  );
+  // const ball = document.querySelector(".toggle-ball");
+  // const items = document.querySelectorAll(
+  //   ".container,.search-results, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
+  // );
 
-  ball.addEventListener("click", () => {
-    items.forEach((item) => {
-      item.classList.toggle("active");
+  // ball.addEventListener("click", () => {
+  //   items.forEach((item) => {
+  //     item.classList.toggle("active");
+  //   });
+  //   // ball.classList.toggle("active");
+  // });
+
+
+
+
+
+
+
+
+
+  $(".toggle-ball").on("click", function (e) {
+    e.preventDefault();
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
     });
-    ball.classList.toggle("active");
-  });
+
+    $.ajax({
+        method: "POST",
+        url: "/settings",
+        success: function (response) {
+          const ball = document.querySelector(".toggle-ball");
+          const items = document.querySelectorAll(
+            ".container,.search-results, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
+          )
+          var nightmode = (response.nightmode);
+          var status = (response.status);
+          console.log(status)
+          if(status == 'success')
+          {
+            items.forEach((item) => {
+              item.classList.toggle("active");
+            });
+            ball.classList.toggle("active");
+          }
+      
+        }
+
+    })
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+  /**
+   * Animation on scroll function and init
+   */
+  // function aos_init() {
+  //   AOS.init({
+  //     duration: 1000,
+  //     easing: 'ease-in-out',
+  //     once: true,
+  //     mirror: false
+  //   });
+  // }
+
+
+
+
 
 
 
   //side men bar
-
-
   $(".menu-dropdown").click(function () {
     event.stopPropagation();
     $('.menubar').animate({ width: 'toggle' }, 200).css({ display: 'flex' });
@@ -173,6 +285,7 @@ $(document).ready(function () {
 
   $(".genre-filter").click(function () {
     event.stopPropagation();
+
     $(".filter-content-genre").slideToggle('fast');
     $(".filter-content-year").slideUp('fast')
   });
@@ -185,11 +298,11 @@ $(document).ready(function () {
 
 
 
-  $(".show-nowplaying").click(function () {
-    event.stopPropagation();
-    $(".nowplaying-movies").slideUp('fast');
-    $(".porpular-moviesr").hide('fast')
-  });
+  // $(".show-nowplaying").click(function () {
+  //   event.stopPropagation();
+  //   $(".nowplaying-movies").slideUp('fast');
+  //   $(".porpular-moviesr").hide('fast')
+  // });
 
 
 

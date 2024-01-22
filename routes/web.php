@@ -40,6 +40,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
+    Route::get('/wishlist', [PagesController::class, 'wishlist'])->name('wishlist');
 });
 
 require __DIR__.'/auth.php';
@@ -63,3 +65,7 @@ Route::get('/actors/{slug}/{id}', [ActorsController::class, 'show'])->name('acto
 
 Route::get('/search/{query?}',  [PagesController::class, 'search'])->name('search');
 Route::get('stream/{slug}/{id}',  [PagesController::class, 'play'])->name('stream');
+
+Route::post('settings',  [PagesController::class, 'settings'])->name('settings');
+Route::post('background',  [PagesController::class, 'checkActiveBackground'])->name('background');
+

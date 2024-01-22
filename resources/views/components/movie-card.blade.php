@@ -1,14 +1,22 @@
 <div class="card">
     <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
-        <img src="{{ $movie['poster_path'] }}" alt="">
-        <div class="content">
+
+        <form wire:submit="wishlist({{ $movie }})"  >
+            <button>  <i  class="wishlist  fas fa-bookmark {{ $this->isWishListed($movie['id']) ? 'wishlisted' : '' }}"></i></button>
+          </form>
+  
+     <img src="{{ $movie['poster_path'] }}" alt="">
+      
+
+     
+      <div class="content">
             <h3>{{ $movie['title'] }}</h3>
             <p>
                 @foreach ($movie['genre_ids'] as $genre)
-                    {{ $this->genres()->get($genre) }}
-                    @if (!$loop->last)
+                    {{ $this->genres()->get($genre) }} 
+                    {{-- @if (!$loop->last)
                         ,
-                    @endif
+                    @endif --}}
                 @endforeach
             </p>
             <h6>
@@ -18,7 +26,8 @@
                     font-size:10px;
                 background: yellow;
                 padding: 1px 3px;
-                border-radius: 5px;">IMDB</span><i
+                border-radius: 5px;">IMDB</span>
+                <i
                     class='fa fa-star'></i>{{ $movie['vote_average'] }} | {{ $movie['release_date'] }}
             </h6>
         </div>

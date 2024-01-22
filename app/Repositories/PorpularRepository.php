@@ -53,31 +53,7 @@ class PorpularRepository{
 
 
 
-            
-        // foreach ($data as $item) {
-        //     foreach ($item as $value) {
-        //             array_push($media,  $value);
-        //     }
-        // }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+     
 
     }
 }

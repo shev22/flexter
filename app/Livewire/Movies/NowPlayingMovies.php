@@ -1,18 +1,18 @@
 <?php
 
-namespace App\Livewire;
-
+namespace App\Livewire\Movies;
 use Carbon\Carbon;
 use Livewire\Component;
 use Illuminate\Support\Str;
 use Livewire\WithPagination;
+use App\Models\WishListModel;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 
-class PopularMovies extends Component
+class NowPlayingMovies extends Component
 {
     use WithPagination;
 
-    public $isFiltering = false;
     public $twothousands = [];
     public $sortByGenre = [];
     public $setWeekendDays;
@@ -28,22 +28,43 @@ class PopularMovies extends Component
         });
     }
 
-    public function updatedIsFiltering()
+    public function wishlist($movie)
     {
 
+        if (Auth::check()) {
+            $movie['user_id'] = Auth::id();
+            $result = WishListModel::where('id', $movie['id'])->where('user_id', Auth::id())->first();
+
+            if (!$result) {
+                WishListModel::create($movie);
+            } else {
+                $result->delete();
+            }
+        }
+    }
+
+    public function isWishListed($id)
+    {
+        if (Auth::check()) {
+            if (WishListModel::where('id', $id)->where('user_id', Auth::id())->first()) {
+                return true;
+            } else {
+                return false;
+            }
+        }
     }
 
 
     public function loadMore()
     {
-        $this->itemsPerPage +=20;
+        $this->itemsPerPage += 10;
     }
     
 
     public function render()
     {
-
-        $cachedData= collect(Cache::get('movies-popular'))
+        
+        $cachedData= (collect(Cache::get('movies-nowplaying')))
        ->when($this->sortByGenre !== [], function ($e) {
             $data = [];
             foreach ($e as $value) {
@@ -53,13 +74,13 @@ class PopularMovies extends Component
                 }
             }
 
-            return collect($data) ;
+            return collect($data) ; 
         });
 
-   
+//    dd( $cachedData);
+// 
 
-
-    $popular = (collect($cachedData))  
+    $nowPlaying = (collect($cachedData)->take($this->itemsPerPage))  
         ->map(function ($cachedData) {
         return collect($cachedData)->merge([
             'poster_path' => 'https://image.tmdb.org/t/p/w500/' . $cachedData['poster_path'],
@@ -73,12 +94,12 @@ class PopularMovies extends Component
 
      return   $e->whereIn('year', $this->twothousands);
 
-})
+});
 
 
 // dd($popularMovies);
 
-    ->take($this->itemsPerPage);
-        return view('livewire.popular-movies', ['popular' => $popular]);
+    // ->take($this->itemsPerPage);
+        return view('livewire.movies.now-playing-movies', ['nowPlaying' => $nowPlaying]);
     }
 }

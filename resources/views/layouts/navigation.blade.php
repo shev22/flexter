@@ -98,8 +98,8 @@
         </div>
     </div>
 </nav> --}}
-<div class="navbar">
-    <div class="navbar-container">
+<div class="navbar"  >
+    <div class="navbar-container ">
         <div class="logo-container">
 
             {{-- <img src="img/logo/logo-5.png" alt="" width="80"> --}}
@@ -112,11 +112,11 @@
                 </x-nav-link>
 
                 <x-nav-link :href="route('movies')" :selected="request()->routeIs('movies')">
-                    {{ __(' Popular Movies') }}
+                    {{ __('  Movies') }}
                 </x-nav-link>
 
                 <x-nav-link :href="route('tv')" :selected="request()->routeIs('tv')">
-                    {{ __('Popular Series') }}
+                    {{ __('Series') }}
                 </x-nav-link>
 
 

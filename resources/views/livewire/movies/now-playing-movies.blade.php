@@ -3,7 +3,9 @@
 
 
 >
-    <x-filter /> 
+{{-- <img src="img/logo/nowplaying.png" width="260px" style="padding: 30px 0 0 80px"> --}}
+{{-- <img src="img/logo/popular.png" width="220px" style="padding: 30px 0 0 80px"> --}}
+ <x-filter-movies /> 
     <section class="main-section">
         @foreach ($nowPlaying as $movie)
             <x-movie-card :movie="$movie" />

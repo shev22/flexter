@@ -25,6 +25,7 @@ class TvViewModel extends ViewModel
 
     public function popularTv()
     {
+    
         return $this->formatTv(Cache::get('tv-popular'));
        
     }
@@ -34,7 +35,8 @@ class TvViewModel extends ViewModel
      return $this->formatTv(Cache::get('tv-toprated')) ;
     }
     public function trending()
-    {
+    {    
+        // dd(Cache::get('tv-popular'));
         return $this->formatTv(Cache::get('tv-trending'));
     }
     public function genres()
@@ -46,8 +48,6 @@ class TvViewModel extends ViewModel
 
     private function formatTv($tv)
     {
-
-       
         return collect($tv)->map(function ($tvshow) {
             $genresFormatted = collect($tvshow['genre_ids'])->mapWithKeys(function ($value) {
                 return [$value => $this->genres()->get($value)];

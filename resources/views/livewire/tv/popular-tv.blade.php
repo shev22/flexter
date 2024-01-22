@@ -1,8 +1,10 @@
 <div class="movie-container">
-    <x-filter />
-    <section class="main-section" x-data  >
+    {{-- {{ dd($popular) }} --}}
+{{-- <img src="img/logo/popular.png" width="220px" style="padding: 30px 0 0 80px"> --}}
+ <x-filter-tv />
+    <section class="main-section">
         @foreach ($popular as $movie)
-            <x-movie-card :movie="$movie" />
+            <x-tv-card :tvshow="$movie"/>
         @endforeach
         <div x-data="{
             observe() {

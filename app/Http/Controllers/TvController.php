@@ -8,14 +8,18 @@ use App\ViewModels\TvShowViewModel;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\Services\MediaService;
+use App\Http\Controllers\Services\PagesService;
 
 class TvController extends Controller
 {
+
     public function __construct(
-        private MediaService $mediaService
+        private PagesService $nightMode
     ) {
     }
-    public function tv($page = 1)
+
+
+    public function tv()
     {
       
         //  $this->mediaService->popularTv($page);
@@ -24,13 +28,13 @@ class TvController extends Controller
 
         //  $genres = $this->mediaService->trending_tv();
 
-        $viewModel = new TvViewModel(
-            // $popularTv,
-            // $topRatedTv,
-            // $genres,
-        );
+        // $viewModel = new TvViewModel(
+        //     // $popularTv,
+        //     // $topRatedTv,
+        //     // $genres,
+        // );
 
-        return view('tv.tv',  $viewModel );
+        return view('tv.tv', ['nightMode'=>$this->nightMode->checkActiveBackground()]);
     }
     /**
      * Show the form for creating a new resource.

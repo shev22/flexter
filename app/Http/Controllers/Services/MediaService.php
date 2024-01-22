@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Services;
 
 
 use App\Repositories\GenreRepository;
+use App\Repositories\OnAirRepository;
 use Illuminate\Support\Facades\Cache;
 use App\Repositories\PorpularRepository;
 use App\Repositories\TopRatedRepository;
 use App\Repositories\TrendingRepository;
 use App\Repositories\UpComingRepository;
 use App\Repositories\NowPlayingRepository;
+use App\Repositories\AiringTodayRepository;
 
 
 class MediaService
@@ -18,12 +20,15 @@ class MediaService
 
 
     public function __construct(
+
+        private OnAirRepository $onAir,
         private GenreRepository $genre,
         private PorpularRepository $porpular,
         private UpComingRepository $upComing,
         private TopRatedRepository $topRated,
         private TrendingRepository $trending,
         private NowPlayingRepository $nowPlaying,
+        private AiringTodayRepository $airingToday,
 
     ) {
     }
@@ -55,23 +60,23 @@ class MediaService
         // return   $this->porpular->porpular('movie', 200);
 
         return  Cache::rememberForever('movies-popular', function () {
-            return   $this->porpular->porpular('movie', 300);
+            return   $this->porpular->porpular('movie', 500);
         });
     }
 
     public function top_ratedMovies()
     {
-
+       
         return Cache::rememberForever('movies-toprated', function () {
-            return $this->topRated->topRated('movie');
+            return $this->topRated->topRated('movie', 455);
         });
     }
 
     public function up_comingMovies()
     {
-
+        // $this->upComing->upComing('movie', 100);
         return Cache::rememberForever('movies-upcoming', function () {
-            return    $this->upComing->upComing('movie');
+            return    $this->upComing->upComing('movie', 47);
         });
     }
 
@@ -89,26 +94,9 @@ class MediaService
     {
 
         return  Cache::rememberForever('movies-nowplaying', function () {
-            return   $this->nowPlaying->nowPlaying('movie');
+            return   $this->nowPlaying->nowPlaying('movie', 148);
         });
     }
-
-
-    // public function logo($mediaType, $id)
-    // {
-    //     $mediaLogo = Http::withToken(config('services.tmdb.token'))
-    //         ->get('https://api.themoviedb.org/3/' . $mediaType . '/' . $id . '?append_to_response=credits,videos,images')
-    //         ->json()['images'];
-    //     if ($mediaLogo !== []) {
-    //         if ($mediaLogo['logos'] !== []) {
-    //             return $mediaLogo['logos'][0]['file_path'];
-    //         } else {
-    //             return false;
-    //         }
-    //     } else {
-    //         return false;
-    //     }
-    // }
 
 
 
@@ -127,9 +115,9 @@ class MediaService
 
     public function popularTv()
     {
-
+        // return  $this->porpular->porpular('tv', 50);
         Cache::rememberForever('tv-popular', function () {
-            return  $this->porpular->porpular('tv', 250);
+            return  $this->porpular->porpular('tv', 500);
         });
     }
 
@@ -137,10 +125,25 @@ class MediaService
     {
 
         Cache::rememberForever('tv-toprated', function () {
-            return $this->topRated->topRated('tv');
+            return $this->topRated->topRated('tv', 94);
         });
     }
 
+    public function airingToday()
+    {
+        // return  $this->airingToday->airingToday('tv', 16);
+        Cache::rememberForever('tv-airingtoday', function () {
+            return  $this->airingToday->airingToday('tv', 16);
+        });
+    }
+
+    public function onAir()
+    {
+        // return $this->onAir->onAir('tv', 100);
+        Cache::rememberForever('tv-onair', function () {
+            return $this->onAir->onAir('tv', 57);
+        });
+    }
 
     public function tv_genres()
     {
@@ -150,4 +153,13 @@ class MediaService
         });
     }
 
+
+
+   public function trendingAll()
+   {
+    
+    return Cache::rememberForever('all-trending', function () {
+        return  $this->trending->trending('all', 'day');
+    });
+   }
 }

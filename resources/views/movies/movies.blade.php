@@ -1,9 +1,10 @@
 <x-app-layout>
 {{-- 
     {{ dd($popularMovies) }} --}}
-    <div class="container">
-        <div class="content-container" >
-            <livewire:movies-view  />
+    <div class="container {{ !$nightMode ? 'active': '' }}">
+        <div class="content-container" data-aos="fade-up"
+        data-aos-duration="500">
+            <livewire:movies.movies-view  />
 
         </div>
 

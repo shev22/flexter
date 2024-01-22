@@ -10,18 +10,27 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\Services\MediaService;
+use App\Http\Controllers\Services\PagesService;
 
 class MoviesController extends Controller
 {
+    
+
     public function __construct(
-        private MediaService $mediaService
+        private PagesService $nightMode
     ) {
     }
+
+
+
+
+
+
 
     /**
      * Show the form for creating a new resource.
      */
-    public function movies($page = 2)
+    public function movies()
     {
    
         // Cache::flush();
@@ -32,15 +41,9 @@ class MoviesController extends Controller
         // $this->mediaService->movie_genres();
         // $this->mediaService->nowPlayingMovies();
 
-        $viewModel = new MoviesViewModel(
-            // $popularMovies,
-            // $genres,
-            // $nowPlayingMovies,
-
-        );
 
 
-        return view('movies.movies',  $viewModel);
+        return view('movies.movies', ['nightMode'=>$this->nightMode->checkActiveBackground()]);
     }
 
 

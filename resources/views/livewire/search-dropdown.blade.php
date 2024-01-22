@@ -8,11 +8,11 @@
 
 
     @if (strlen($query) >= 2 && $searchResults->count() > 0)
-        <div class="search-results" x-show.transition.opacity="isOpen">
+        <div class="search-results " x-show.transition.opacity="isOpen">
 
             <ul>
                 @foreach ($searchResults as $key => $result)
-                    <li class="search-results-item">
+                    <li class="search-results-item {{ !$nightMode ? 'active': '' }}">
                         <a href="{{ route($result['route'],  ['slug'=>$result['slug'], 'id'=>$result['id']]) }}">
                             <img src="{{ $result['poster_path'] }}" alt="poster">
                             <span style="margin-left: 22px">

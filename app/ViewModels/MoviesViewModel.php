@@ -27,17 +27,17 @@ class MoviesViewModel extends ViewModel
 
     // }
 
-    public function popularMovies()
-    {
+    // public function popularMovies()
+    // {
    
        
-        //  $this->formatMovies(Cache::get('movies-popular'));
-    }
+    //     //  $this->formatMovies(Cache::get('movies-popular'));
+    // }
 
-    public function top_rated()
-    {
-        return $this->formatMovies($this->top_rated);
-    }
+    // public function top_rated()
+    // {
+    //     return $this->formatMovies($this->top_rated);
+    // }
 
     public function trending()
     {
@@ -58,10 +58,10 @@ class MoviesViewModel extends ViewModel
         });
     }
 
-    public function up_coming()
-    {
-        return $this->formatMovies($this->up_coming);
-    }
+    // public function up_coming()
+    // {
+    //     return $this->formatMovies($this->up_coming);
+    // }
 
 
     private function formatMovies($movies)
