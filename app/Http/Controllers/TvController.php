@@ -7,16 +7,11 @@ use App\ViewModels\TvViewModel;
 use App\ViewModels\TvShowViewModel;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
-use App\Http\Controllers\Services\MediaService;
-use App\Http\Controllers\Services\PagesService;
+
 
 class TvController extends Controller
 {
 
-    public function __construct(
-        private PagesService $nightMode
-    ) {
-    }
 
 
     public function tv()
@@ -34,7 +29,7 @@ class TvController extends Controller
         //     // $genres,
         // );
 
-        return view('tv.tv', ['nightMode'=>$this->nightMode->checkActiveBackground()]);
+        return view('tv.tv');
     }
     /**
      * Show the form for creating a new resource.

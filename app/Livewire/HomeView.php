@@ -2,48 +2,73 @@
 
 namespace App\Livewire;
 
-use Carbon\Carbon;
 use Livewire\Component;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Cache;
-use App\Livewire\Movies\TrendingMovies;
+use App\Livewire\Traits\FormatDataTrait;
+use App\Livewire\Traits\MediaTrait;
 
 class HomeView extends Component
 {
-    private function releaseDate($mediaType, $array)
+    use FormatDataTrait;
+    use MediaTrait;
+
+    public $popular;
+    public $trending;
+    public $upcoming;
+    public $nowPlayingMovies;
+
+    public $airingToday;
+    public $onair;
+    public $popularTv;
+
+
+    public function mount()
     {
-       if($mediaType == 'movie')
-       {
-         return Carbon::parse($array['release_date'])->format('M d, Y');
-       }else{
-        return Carbon::parse($array['first_air_date'])->format('M d, Y');
-       }
+     
+        $this->trending = $this->formatData(Cache::get('all-trending'), '');
+        $this->popular = $this->formatData(Cache::get('movies-popular')->take(30), 'movie');
+        $this->upcoming = $this->formatData(Cache::get('movies-upcoming')->take(30), 'movie');
+        $this->nowPlayingMovies = $this->formatData(Cache::get('movies-nowplaying')->take(50), 'movie');
+
+        $this->airingToday = $this->formatData(Cache::get('tv-airingtoday'), 'tv');
+        $this->onair = $this->formatData(Cache::get('tv-onair')->take(30), 'tv');
+        $this->popularTv = $this->formatData(Cache::get('tv-popular')->take(30), 'tv');
+     
     }
 
+    public function genres()
+    {
+        return $this->getGenres(Cache::get('movies-genre'));
+    }
 
+    public function wishlist($movie)
+    {
+    
+        $this->wish_list($movie);
+    }
+
+    public function isWishListed($id)
+    {
+        return $this->is_WishListed($id);
+    }
 
 
     public function render()
     {
-         
-        $cachedData= Cache::get('all-trending');
-   
+        // $trending = $this->formatData(Cache::get('all-trending'), '');
+        // $popular = $this->formatData(Cache::get('movies-popular')->take(28), 'movie');
+        // $upcoming = $this->formatData(Cache::get('movies-upcoming')->take(12), 'movie');
+        // $nowPlayingMovies = $this->formatData(Cache::get('movies-nowplaying')->take(50), 'movie');
+
+        // $airingToday = $this->formatData(Cache::get('tv-airingtoday'), 'tv');
+        // $onair = $this->formatData(Cache::get('tv-onair')->take(28), 'tv');
+        // $popularTv = $this->formatData(Cache::get('tv-popular')->take(12), 'tv');
 
 
-    $trending = (collect($cachedData))  
-        ->map(function ($cachedData) {
-        return collect($cachedData)->merge([
-             'title'=> $cachedData['media_type'] == 'movie' ? $cachedData['title'] : $cachedData['name'],
-            'poster_path' => 'https://image.tmdb.org/t/p/w500/' . $cachedData['poster_path'],
-            'backdrop_path' => $cachedData['backdrop_path'],
-            'vote_average' => round($cachedData['vote_average'], 1),
-            'release_date' => $this->releaseDate($cachedData['media_type'], $cachedData),
-        ])->only([
-            'poster_path', 'id', 'genre_ids','name','title', 'vote_average', 'logo', 'overview', 'first_air_date', 'release_date', 'genres', 'media_type', 'backdrop_path'
-        ])->put('slug',  Str::of($cachedData['media_type'] == 'movie' ? $cachedData['title'] : $cachedData['name'])->slug('-'));
-    }) ;
 
 
-        return view('livewire.home-view', ['trending'=> $trending]);
+
+
+        return view('livewire.home-view');
     }
 }

@@ -5,27 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\Client\Pool;
 use App\ViewModels\MovieViewModel;
-use App\ViewModels\MoviesViewModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cache;
-use App\Http\Controllers\Services\MediaService;
 use App\Http\Controllers\Services\PagesService;
 
 class MoviesController extends Controller
 {
     
-
-    public function __construct(
-        private PagesService $nightMode
-    ) {
-    }
-
-
-
-
-
-
 
     /**
      * Show the form for creating a new resource.
@@ -43,7 +29,7 @@ class MoviesController extends Controller
 
 
 
-        return view('movies.movies', ['nightMode'=>$this->nightMode->checkActiveBackground()]);
+        return view('movies.movies');
     }
 
 
@@ -89,7 +75,7 @@ class MoviesController extends Controller
 
 
 
-        // dump(  $movie,      $related , $time - $time2);
+        //  dd(  $movie,      $related  );
 
         $viewModel = new MovieViewModel($movie,  $related);
    

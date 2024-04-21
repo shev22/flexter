@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TvController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\ActorsController;
 use App\Http\Controllers\MoviesController;
@@ -42,6 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/wishlist', [PagesController::class, 'wishlist'])->name('wishlist');
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 });
 
 require __DIR__.'/auth.php';
@@ -60,12 +62,12 @@ Route::get('tv', [TvController::class, 'tv'])->name('tv');
 Route::get('/tv/{slug}/{id}', [TvController::class, 'show'])->name('tv.show');
 
 Route::get('/actors', [ActorsController::class, 'index'])->name('actors.index');
-Route::get('/actors/page/{page?}',[ActorsController::class, 'index']);
 Route::get('/actors/{slug}/{id}', [ActorsController::class, 'show'])->name('actors.show');
 
 Route::get('/search/{query?}',  [PagesController::class, 'search'])->name('search');
-Route::get('stream/{slug}/{id}',  [PagesController::class, 'play'])->name('stream');
 
-Route::post('settings',  [PagesController::class, 'settings'])->name('settings');
-Route::post('background',  [PagesController::class, 'checkActiveBackground'])->name('background');
+ Route::get('/toprated',  [PagesController::class, 'toprated'])->name('toprated');
+
+Route::post('night-mode',  [PagesController::class, 'nightMode'])->name('settings');
+// Route::post('background',  [PagesController::class, 'checkActiveBackground'])->name('background');
 

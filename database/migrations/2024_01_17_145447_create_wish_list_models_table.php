@@ -14,16 +14,12 @@ return new class extends Migration
         Schema::create('wish_list_models', function (Blueprint $table) {
             $table->unsignedBigInteger('id');
             $table->unsignedBigInteger("user_id");
-            $table->string('backdrop_path');
-            $table->json('genre_ids');
-            $table->longText('overview');
+            $table->string('media_type');
             $table->string('poster_path');
             $table->string('release_date');
             $table->string('title');
             $table->tinyInteger('vote_average');
             $table->string('slug');
-            $table->string('year');
-
             $table->foreign("user_id")->references("id")->on('users')->onDelete('cascade');;
 
             $table->timestamps();

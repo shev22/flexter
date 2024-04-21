@@ -1,4 +1,4 @@
-<div class="search-container" x-data="{ isOpen: true }" @click.away="isOpen = false">
+<div class="search-container" x-data="{ isOpen: true }">
     <form wire:submit="searchQuery" >
 
         <input type="search" required wire:model.live="query">
@@ -8,16 +8,16 @@
 
 
     @if (strlen($query) >= 2 && $searchResults->count() > 0)
-        <div class="search-results " x-show.transition.opacity="isOpen">
+        <div class="search-results" x-show.transition.opacity="isOpen">
 
             <ul>
                 @foreach ($searchResults as $key => $result)
-                    <li class="search-results-item {{ !$nightMode ? 'active': '' }}">
+                    <li class="search-results-item ">
                         <a href="{{ route($result['route'],  ['slug'=>$result['slug'], 'id'=>$result['id']]) }}">
                             <img src="{{ $result['poster_path'] }}" alt="poster">
                             <span style="margin-left: 22px">
                                 <div>
-                                    <h4>
+                                    <h4 >
                                         {{ $result['title'] }}
 
                                     </h4>

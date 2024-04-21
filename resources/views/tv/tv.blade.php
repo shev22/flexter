@@ -1,8 +1,8 @@
 <x-app-layout>
-    <div class="container {{ !$nightMode ? 'active': '' }}" >
-        <div class="content-container" data-aos="fade-up"
-        data-aos-duration="500">
+    <div class="container {{ session('nightmode') ? 'active': '' }}" >
+        <div class="content-container" >
             <livewire:tv.tv-view />
         </div>
     </div>
+    @include('layouts.footer')
 </x-app-layout>

@@ -1,0 +1,70 @@
+<?php
+
+/**
+ * 05.02.2024 9:20pm
+ * Francis Okoroafor
+ */
+
+namespace App\Livewire\Traits;
+
+use Carbon\Carbon;
+use Illuminate\Support\Str;
+
+
+
+
+
+trait FormatDataTrait
+{
+
+
+
+
+    public function formatData($media, $mediaType)
+    {
+        // dd($media['poster_path'], $mediaType);
+        return (
+            (collect($media))
+            ->map(function ($media) use ($mediaType) {
+
+                if (isset($media['release_date'])) {
+                    $release_date = $media['release_date'];
+                } elseif (isset($media['first_air_date'])) {
+                    $release_date = $media['first_air_date'];
+                } else {
+                    $release_date = 'Untitled';
+                }
+
+                if (isset($media['title'])) {
+                    $title = $media['title'];
+                } elseif (isset($media['name'])) {
+                    $title = $media['name'];
+                } else {
+                    $title = 'Untitled';
+                }
+
+                if (isset($media['media_type'])) {
+                    $media_type = $media['media_type'];
+                } else {
+                    $media_type = $mediaType;
+                }
+
+        
+                return collect($media)->merge([
+
+                    'title' => $title,
+                    'poster_path' => $media['poster_path']
+                        ? 'https://image.tmdb.org/t/p/w500/' . $media['poster_path']
+                        : 'https://fakeimg.pl/600x400/080505/4f4d4d?text=image&font=lobster',
+                    'backdrop_path' => $media['backdrop_path'],
+                    'genre_ids' => json_encode( $media['genre_ids']),
+                    'vote_average' => round($media['vote_average'], 1),
+                    'release_date' => Carbon::parse($release_date)->format('M , Y'),
+                ])->only([
+                    'poster_path', 'id', 'name', 'title', 'vote_average', 'logo', 'genre_ids', 'overview', 'first_air_date', 'original_language' ,'release_date', 'media_type', 'backdrop_path','popularity','vote_count'
+                ])->put('slug',  Str::of($title)->slug('-'))
+                    ->put('year', Carbon::parse($release_date)->format('Y'))
+                    ->put('media_type',   $media_type);
+            }));
+    }
+}

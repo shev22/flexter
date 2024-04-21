@@ -25,18 +25,6 @@ class WishList extends Component
         });
     }
 
-
-    public function isWishListed($id)
-    {
-        if (Auth::check()) {
-            if (WishListModel::where('id', $id)->where('user_id', Auth::id())->first()) {
-                return true;
-            } else {
-                return false;
-            }
-        }
-    }
-
     public function wishlist($movie)
     {
         if (Auth::check()) {

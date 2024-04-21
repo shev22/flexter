@@ -2,61 +2,76 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TvModel;
 use App\Models\Settings;
+use App\Models\MovieModel;
 use Illuminate\Http\Request;
-use App\Livewire\SearchTrait;
 use App\ViewModels\TvViewModel;
-use App\ViewModels\HomeViewModel;
 
+use App\ViewModels\HomeViewModel;
 use App\ViewModels\MoviesViewModel;
+use App\Livewire\Traits\SearchTrait;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\Services\MediaService;
-use App\Http\Controllers\Services\PagesService;
+
 
 
 class PagesController extends Controller
 {
     use SearchTrait;
+
     /**
      * Display a listing of the resource.
      */
     public function __construct(
         private MediaService $buffer,
-        private PagesService $nightMode
     ) {
     }
     public function index()
-    {
-        // dd($this->nightMode->checkActiveBackground());
-        // $time  = time ();
-        //   dd( $this->buffer->trendingAll());
+    {   
+       // Cache::flush();
+        // // dd($this->nightMode->checkActiveBackground());
+       // // $time  = time ();
+      // ( $this->buffer->trendingAll());
         //     ( $this->buffer->airingToday());
         //   ($this->buffer->onAir()); ;
         // $this->buffer->trending_tv();
         //     $this->buffer->topRatedTv();
-        //     $this->buffer->tv_genres();
-        //    $this->buffer->popularTv();
+        //      $this->buffer->tv_genres();
+        //   $this->buffer->popularTv();
         // $this->buffer->trending_movies();
-        //    ($this->buffer->popularMovies()) ;
-        //     $this->buffer->up_comingMovies();
-        //     $this->buffer->movie_genres();
-        // $this->buffer->nowPlayingMovies();
+        //  ($this->buffer->popularMovies()) ;
+        //   $this->buffer->up_comingMovies();
+         //   $this->buffer->movie_genres();
+        //  $this->buffer->nowPlayingMovies();
         // $this->buffer->top_ratedMovies();
-        // dump(time() - $time);
-        //   dd(7867);
+    // //  ($this->buffer->changes_movies()) ;
+        // ($this->buffer->getActors()) ;
+        //($this->buffer->movies()) ;
+      //  ($this->buffer->topRated()) ;
+        //    ($this->buffer->tv()) ;
 
-        // Cache::put('test', 57);
+ //dd( Cache::get('all-trending' ) );
+            // dump(time() - $time);
+        //    dd($this->buffer->discover());
+       // $data = [2];
+//         Cache::put('data',  $data );
 
-        // (Cache::forget('tv-popular'));
+//             $test = [2,253];
+//         Cache::put('test', $test);
+ //dd(Cache::get('all-trending'));
+        // (Cache::forget('movies-changes'));
 
-        //  Cache::flush();
+        
         // $moviesViewModel = new MoviesViewModel;
         // $tvViewModel = new TvViewModel;
         // $viewModel = new HomeViewModel($moviesViewModel,  $tvViewModel,);
 
-        return view('index',['nightMode'=>$this->nightMode->checkActiveBackground()]);
+        return view('index');
     }
+
+    
 
     public function search($query = null)
     {
@@ -68,31 +83,54 @@ class PagesController extends Controller
         return view('wishlist');
     }
 
-
-    public function settings()
+    public function toprated()
     {
-        $settings = Settings::where('user_id', Auth::id())->where('config_block_id', 1)->first();
-        $data = json_decode($settings->config_data);
-
-        if ($data->nightmode == true) {
-            $data->nightmode = false;
-            $settings->config_data = json_encode($data);
-            $settings->save();
-        } else {
-            $data->nightmode = true;
-            $settings->config_data = json_encode($data);
-            $settings->save();
-        }
-
-        $result = [
-            "nightmode" =>   $data->nightmode ,
-            "status" => "success",
-        ];
-       return response()->json($result);
-
+        return view('toprated');
     }
 
-   
+
+    public function nightMode()
+    {
+        //  $nightmode = ['nightmode'=> true];
+        //     session()->put('nightmode', $nightmode);
+
+        // if (Auth::check()) {
+        //     $settings = Settings::where('user_id', Auth::id())->where('config_block_id', 1)->first();
+
+        //     $data = json_decode($settings->config_data);
+
+        //     if ($data->nightmode == true) {
+        //         $data->nightmode = false;
+        //         $settings->config_data = json_encode($data);
+        //         $settings->save();
+        //     } else {
+        //         $data->nightmode = true;
+        //         $settings->config_data = json_encode($data);
+        //         $settings->save();
+        //     }
+
+        //     $result = [
+        //         "nightmode" =>   $data->nightmode,
+        //         "status" => "success",
+        //     ];
+        // } else {
+        //     $result = [
+        //         "status" => "fail",
+        //     ];
+        // }
+
+        // return response()->json($result);
+        //  dd(session('nightmode'));
+
+
+        if (session('nightmode') == false || session('nightmode') == null) {
+            session()->put('nightmode', true);
+        } else {
+            session()->put('nightmode', false);
+        }
+    }
+
+
 
 
 

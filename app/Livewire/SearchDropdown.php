@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Livewire\Traits\SearchTrait;
 
 class SearchDropdown extends Component
 {
@@ -13,14 +14,6 @@ class SearchDropdown extends Component
 
     public function searchQuery()
     {
-
-
-       
-        $query = 1;
-        // $this->redirectRoute('search', ['query' => $this->query]);
-
-        // $this->redirect(SearchPage::class, ['query' => $query]);
-
         return redirect()->route('search', ['query' => $this->query]);
     }
 

@@ -2,6 +2,7 @@
 
 namespace App\ViewModels;
 
+use Illuminate\Support\Str;
 use Spatie\ViewModels\ViewModel;
 
 class ActorsViewModel extends ViewModel
@@ -28,7 +29,7 @@ class ActorsViewModel extends ViewModel
                 )->implode(', '),
             ])->only([
                 'name', 'id', 'profile_path', 'known_for',
-            ]);
+            ])->put('slug',  Str::of($actor['name'])->slug('-'));
         });
     }
 

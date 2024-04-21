@@ -1,45 +1,33 @@
 <x-app-layout>
-    <div class="container ">
-        <div class="content-container" data-aos="zoom-in-up">
-
-     <livewire:home-view >
-    
-
+    <div class="container {{ session('nightmode') ? 'active' : '' }}">
+        <div class="content-container">
+            <livewire:home-view>
         </div>
-    </div> 
 
-
-
-
+    </div>
+    @include('layouts.footer')
 </x-app-layout>
+
 @if (request()->routeIs('/'))
     <script>
-        // $('#exampleSlider').multislider({
-        //     duration: 10000,
-        //     continuous: true
-        // });
+        $(document).ready(function() {
+            $('#featured-slider').multislider({
+                interval: 6000,
+                duration: 200
+            });
 
+            $('#trending').multislider({
+                // continuous: true,
+                // duration: 20000,
+                // slideAll:true,
+                interval: 3000,
+            });
 
-        // $('#exampleSlider2').multislider({
-        //     interval: 6000,
-        //     slideAll: true
-        // });
-
-        $('#exampleSlider1').multislider({
-
-            interval: 7000,
-            slideAll: true
+            $('#airing-today').multislider({
+                interval: 3000,
+            });
         });
 
-        // $('#exampleSlider4').multislider({
-        //     interval: 6000,
-        //     slideAll: true
-        // });
 
-        // $('#exampleSlider3').multislider({
-
-        //     interval: 7000,
-        //     slideAll: true
-        // });
     </script>
 @endif

@@ -1,6 +1,6 @@
 <div class="profile-dropdown-container" style="display: none">
     <ul>
-        <li style="   border-top-right-radius: 15px; border-top-left-radius: 15px;">
+        <li style="   border-top-right-radius: 8px; border-top-left-radius: 8px;">
         <a href="{{ route('profile.edit') }}">  Profile</a>  
         </li>
         <li style="   border-bottom-right-radius: 15px; border-bottom-left-radius: 15px;">

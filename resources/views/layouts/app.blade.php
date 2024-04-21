@@ -15,7 +15,7 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Scripts -->
+
     @vite(['resources/js/main.js', 'resources/js/app.js', 'resources/css/style.css'])
 
 </head>
@@ -40,15 +40,13 @@
         {{ $slot }}
     </main>
 
-
+  
+    
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/infinite-scroll@4/dist/infinite-scroll.pkgd.js"></script>
-    <script src="{{ asset('js/multislider/jquery-2.2.4.min.js') }}"></script>
     <script src="{{ asset('js/multislider/multislider.min.js') }}"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
-    <script>
-        AOS.init();
-    </script>
+    {{-- <script> AOS.init();</script> --}}
+
 
 
 </body>

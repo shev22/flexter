@@ -7,23 +7,40 @@ use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
 
 class Kernel extends ConsoleKernel
 {
+
     /**
      * Define the application's command schedule.
      */
     protected function schedule(Schedule $schedule): void
     {
-        $schedule->command('daily:movies-buffer')
-        ->everyMinute()
+        $schedule->command('app:buffer1')
+        ->timezone('Europe/Minsk')
+        ->dailyAt("14:03")
         ->appendOutputTo('scheduler.log');
 
-        $schedule->command('daily:series-buffer')
-        ->everyMinute()
+        $schedule->command('app:buffer2')
+            ->timezone('Europe/Minsk')
+        ->dailyAt("14:23")
         ->appendOutputTo('scheduler.log');
 
-        // $schedule->command('cache:daily')
-        // ->everyMinute()
-        // ->appendOutputTo('scheduler.log');
+        $schedule->command('app:buffer3')
+            ->timezone('Europe/Minsk')
+        ->dailyAt("17:15")
+        ->appendOutputTo('scheduler.log');
+
+        $schedule->command('app:buffer5')
+            ->timezone('Europe/Minsk')
+        ->dailyAt("13:03")
+        ->appendOutputTo('scheduler.log');
+
+        $schedule->command('app:buffer4')
+            ->timezone('Europe/Minsk')
+        ->dailyAt("15:09")
+        ->appendOutputTo('scheduler.log');
+
+
     }
+
 
     /**
      * Register the commands for the application.

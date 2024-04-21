@@ -3,15 +3,18 @@
 namespace App\Providers;
 
 
-use Illuminate\Support\Collection;
 
+
+use App\Models\Settings;
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 
-
 class AppServiceProvider extends ServiceProvider
 {
+
     /**
      * Register any application services.
      */
@@ -38,5 +41,6 @@ class AppServiceProvider extends ServiceProvider
                 ]
             );
         });
+
     }
 }
