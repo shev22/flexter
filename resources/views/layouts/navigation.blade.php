@@ -38,10 +38,10 @@
 
 
 
-        <div class="profile-container">
+        <div class="profile-container ">
             {{-- <i class='fas fa-bell'></i> --}}
             @auth
-                <img class="profile-picture" src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}" alt="">
+                <img class="profile-picture" src="https://ui-avatars.com/api/?name={{ Auth::user()->name }}"   >
                 <div class="profile-text-container">
                     <span class="profile-text profile" style="font-weight:bold">{{ Auth::user()->name }}</span>
                     <i class="fas fa-caret-down"></i>
@@ -59,8 +59,8 @@
                 <i class="fas fa-sun toggle-icon"></i>
                 <div class="toggle-ball {{ session('nightmode') ? 'active' : '' }}"></div>
             </div>
-            <div class="menu-dropdown">
-                <i class='fa fa-bars'></i>
+            <div class="menu-dropdown ">
+                <i class='fa fa-bars '></i>
             </div>
 
         </div>

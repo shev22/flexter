@@ -55,7 +55,7 @@
                 </div>
     
                 <div class="card credits" style="margin-top: 5%; height:auto">
-                    <h3 style="padding: 10px ; margin-left: 45%" class="{{ session('nightmode') ? 'active' : '' }}" >CREDITS</h3>
+                    <h3 style="padding: 10px ; margin-left: 45%" class="{{ session('nightmode') ? 'active' : '' }}" >FILMOGRAFY</h3>
                     <ul>
                         @foreach ($credits as $credit)
                         <li>     {{ $credit['release_year'] }} &middot;
