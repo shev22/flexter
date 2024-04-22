@@ -19,7 +19,7 @@
 
 
         <button wire:click="filterByLatest" @class(['active-filter' => $this->latest])>
-            Recently updated
+            Recently Added
 
         </button>
 
