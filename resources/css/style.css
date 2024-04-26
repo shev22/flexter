@@ -1061,7 +1061,7 @@ body {
 	--------------------------------------------------------------*/
 .filter-panel {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
     justify-content: space-around;
     padding: 5px 0;
     position: sticky;
@@ -1072,7 +1072,6 @@ body {
 }
 .filter-panel-mobile {
     display: none;
- 
 }
 .filter-container {
     display: flex;
@@ -1233,7 +1232,6 @@ input:focus {
 .browse-movie-list {
     color: #fff;
     margin-right: 5px;
-   
 }
 
 .movie-container {
@@ -1405,9 +1403,9 @@ input:focus {
     font-weight: 400;
 }
 .main-section .content h6 .imdb {
-	color: #000;
-    font-weight:bold;
-    font-size:10px;
+    color: #000;
+    font-weight: bold;
+    font-size: 10px;
     background: yellow;
     padding: 0.1px 1px;
     border-radius: 2.5px;
@@ -1416,7 +1414,7 @@ input:focus {
 .main-section .content h6 .fa {
     color: yellow;
     font-size: 10px;
-    margin-left:1px;
+    margin-left: 1px;
     margin-right: 1px;
 }
 
@@ -1938,7 +1936,8 @@ input:focus {
 
 .actor-card .card {
     width: 95%;
-    height: 80vh;
+    /* height: auto; */
+    display: flex;
     /* background: transparent; */
     left: 0;
     right: 0;
@@ -1956,11 +1955,11 @@ input:focus {
 
 .actor-card .card_left {
     width: 30%;
-    height: 100%;
+
     border-radius: 10px 0 0 10px;
     -webkit-border-radius: 10px 0 0 10px;
     -moz-border-radius: 10px 0 0 10px;
-    float: left;
+
     overflow: hidden;
 }
 .actor-card .card_left img {
@@ -1971,8 +1970,7 @@ input:focus {
 }
 .actor-card .card_right {
     width: 70%;
-    float: left;
-    /* background: #0f0f0f; */
+
     height: 100%;
     border-radius: 0 10px 10px 0;
     -webkit-border-radius: 0 10px 10px 0;
@@ -1981,12 +1979,11 @@ input:focus {
 .actor-card .card_right h1 {
     font-family: "Montserrat", sans-serif;
     font-weight: 400;
-    text-align: left;
+    /* text-align: left; */
 
     font-size: 40px;
     margin: 30px 0 0 0;
     padding: 0 0 0 40px;
-    letter-spacing: 1px;
 }
 .actor-card .card_right__details ul {
     list-style-type: none;
@@ -2012,80 +2009,27 @@ input:focus {
     font-size: 15px;
     padding: 0 40px 0 40px;
     letter-spacing: 1px;
-    margin: 10px 0 10px 0;
+    margin: 10px 0;
     line-height: 23px;
     text-align: justify;
 }
-.actor-card .card_right__review a {
+
+.card_right__social{
+    padding: 10px 10px 10px 40px;
+}
+
+.card_right__social a {
+
     text-decoration: none;
-    font-family: "Montserrat", sans-serif;
-    font-size: 14px;
-    padding: 0 0 0 40px;
-    color: #ffda00;
-    margin: 0;
-}
-.actor-card .card_right__button {
-    padding: 0 0 0 40px;
-    margin: 30px 0 0 0;
-}
-/* .actor-card .card_right__button a {
-	 color: #ffda00;
-	 text-decoration: none;
-	 font-family: 'Montserrat', sans-serif;
-	 border: 2px solid #ffda00;
-	 padding: 10px 10px 10px 40px;
-	 font-size: 12px;
-	 background: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/343086/COMdoWZ.png);
-	 background-size: 12px 12px;
-	 background-repeat: no-repeat;
-	 background-position: 7% 50%;
-	 border-radius: 5px;
-	 -webkit-transition-property: all;
-	 transition-property: all;
-	 -webkit-transition-duration: 0.5s;
-	 transition-duration: 0.5s;
-}
-.actor-card .card_right__button a:hover {
-	 color: #000;
-	 background-color: #ffda00;
-	 background-image: url(https://s3-us-west-2.amazonaws.com/s.cdpn.io/343086/rFQ5dHA.png);
-	 background-size: 12px 12px;
-	 background-repeat: no-repeat;
-	 background-position: 10% 50%;
-	 cursor: pointer;
-	 -webkit-transition-property: all;
-	 transition-property: all;
-	 -webkit-transition-duration: 0.5s;
-	 transition-duration: 0.5s;
-}
-   */
-.actor-card .credits:hover {
-    transform: scale(1.01);
-    transition: transform 0.4s ease-in-out;
-}
+    margin-right: 3px;
+ 
 
-.actor-card .credits ul {
-    padding: 50px;
-    column-count: 6;
-    -moz-column-count: 6;
-    -webkit-column-count: 6;
-}
+    -webkit-transition-property: all;
+    transition-property: all;
+    -webkit-transition-duration: 0.5s;
+    transition-duration: 0.5s;
+  }
 
-.actor-card .credits ul li {
-    color: #8a8888;
-    padding: 2px;
-    margin: 0px 15px 15px 0px;
-}
-
-.actor-card .credits ul li a {
-    color: #919090;
-    text-decoration: none;
-}
-
-.actor-card .credits ul li a:hover {
-    color: #686767;
-    text-decoration: underline;
-}
 
 .paginator-container {
     position: relative;
@@ -2203,8 +2147,7 @@ input:focus {
     }
     .filter-panel .search-filter {
         width: 400px;
-     }
-    
+    }
 }
 
 @media screen and (max-width: 1222px) {
@@ -2242,10 +2185,8 @@ input:focus {
     }
     .filter-panel button {
         padding: 2px 10px;
-    
     }
     .filter-panel .search-filter {
-  
         margin: 0px;
     }
 }
@@ -2300,10 +2241,26 @@ input:focus {
 
     .filter-panel .search-filter {
         width: 250px;
-       
     }
-   
-
+    .actor-card .card_left {
+        width: 50%;
+    }
+    .actor-card .card_right {
+        width: 50%;
+    }
+    .actor-card .card_right h1 {
+        padding: 0 0 0 20px;
+    }
+    .actor-card .card_right__details ul {
+        padding: 0 0 10px 20px;
+    }
+    .actor-card .card_right__review p {
+        padding: 0 20px 0 20px;
+        line-height: 21px;
+        font-size: 13px;
+        overflow-y: auto;
+        height: 80%;
+    }
 }
 
 @media screen and (max-width: 985px) {
@@ -2319,12 +2276,9 @@ input:focus {
     }
     .filter-panel {
         display: none;
-     
     }
     .filter-panel-mobile {
         display: flex;
-  
-     
     }
     .filter-panel .search-filter {
         margin: 3px;
@@ -2356,10 +2310,7 @@ input:focus {
     .movie-list-container-trending .content h4 {
         font-size: 16px;
     }
-    .movie-list-container .movie-list-item {
-        width: 200px;
-        height: 260px;
-    }
+
     .recently-updated .wrapper h4 {
         font-size: 14px;
     }
@@ -2367,6 +2318,18 @@ input:focus {
         width: 80%;
         max-height: 190px;
         overflow-y: auto;
+    }
+    .actor-card .card_right h1 {
+        font-size: 30px;
+    }
+
+    .actor-card .card_right__details ul li {
+        font-size: 14px;
+    }
+}
+@media screen and (min-width: 571px) {
+    .actor-card .card {
+        height: 80vh;
     }
 }
 
@@ -2406,36 +2369,40 @@ input:focus {
     }
 
     .filter-panel .search-filter {
-      width: 180px;
+        width: 180px;
     }
     .main-section .card {
         width: 140px;
         margin-bottom: 20px;
     }
 
-    .main-section .content h3 {
+    .movie-list-container .movie-list-item {
+        width: 140px;
+        height: 220px;
+    }
 
+    .main-section .content h3 {
         font-size: 13px;
     }
-    
-    
+
     .main-section .content p {
         font-size: 11px;
     }
     .main-section .content h6 span {
         font-size: 10px;
-  ;
     }
 
-    
+    .actor-card .card {
+        flex-direction: column;
+    }
 
+    .actor-card .card_left {
+        width: 100%;
+    }
 
-
-
-
-
-
-
+    .actor-card .card_right {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 430px) {
@@ -2489,11 +2456,8 @@ input:focus {
         display: none;
     }
     .filter-panel .search-filter {
-       width: 120px;
+        width: 120px;
     }
-   
-
-
 }
 
 @media only screen and (max-height: 500px) {

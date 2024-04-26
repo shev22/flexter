@@ -17,33 +17,32 @@
                         <div class="featured-content-detail">
 
 
-                        
-                                @if ($movie['logo'] == false)
+
+                            @if ($movie['logo'] == false)
                                 <h1 class="featured-title"> {{ $movie['title'] }}</h1>
                             @else
                                 <img class="featured-title" src="https://image.tmdb.org/t/p/original/{{ $movie['logo'] }}"
                                     alt="">
                             @endif
-                   
-                        
+
+
 
                             <div>
-                                <h5 >
-                                     <span class="imdb"> IMDB </span>
-                                        <i style="margin: 3px; color:yellow" class='fa fa-star'> </i>
+                                <h5>
+                                    <span class="imdb"> IMDB </span>
+                                    <i style="margin: 3px; color:yellow" class='fa fa-star'> </i>
 
-                                        <span style="color: #2ce3b2">
-                                            {{ $movie['vote_average'] }} |
-                                            {{ $movie['release_date'] }} | 
-                                            {{ ucfirst($movie['media_type']) }} |                                   
-                                    @foreach (json_decode($movie['genre_ids']) as $genre)                           
-                                            {{ ($this->genres()->get($genre)) }}
+                                    <span style="color: #c0f8e9">
+                                        {{ $movie['vote_average'] }} |
+                                        {{ $movie['release_date'] }} |
+                                        {{ ucfirst($movie['media_type']) }} |
+                                        @foreach (json_decode($movie['genre_ids']) as $genre)
+                                            {{ $this->genres()->get($genre) }}
                                             @if (!$loop->last)
                                                 ,
                                             @endif
-                                  
-                                    @endforeach
-                                </span>
+                                        @endforeach
+                                    </span>
                                 </h5>
 
                                 <div>
