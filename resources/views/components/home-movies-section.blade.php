@@ -124,16 +124,16 @@
                                 <img src="{{ $movie['poster_path'] }}" alt="poster">
                                 <span style="margin-left: 22px">
                                     <div>
-                                        <h4 class="auth  {{ session('nightmode') ? 'active' : '' }}">
+                                        <h4 class="auth {{ session('nightmode') ? 'active' : '' }}">
                                             {{ $movie['title'] }}
 
                                         </h4>
                                     </div>
                                     <div>
-                                        <ul class="search-detail" style="font-size: 12px">
+                                        <ul class="search-detail" style="font-size: 12px; color:rgb(99, 99, 99)">
                                             <li>
                                                
-                                                <i style="color: rgb(218, 218, 7) ; margin: 2px; font-size:10px;"
+                                                <i style="color: rgb(243, 190, 15) ; margin: 2px; font-size:10px;"
                                                     class='fa fa-star'></i>
                                                 <span>{{ $movie['vote_average'] }}</span>
                                             </li>

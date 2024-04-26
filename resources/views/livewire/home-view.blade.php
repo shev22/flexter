@@ -1,19 +1,23 @@
 <div>
-   
-    <div id="featured-slider"  >
-        <div class="MS-content" >
+
+    <div id="featured-slider">
+        <div class="MS-content">
             @foreach ($trending as $movie)
-                <div class="item " >
+                <div class="item ">
 
                     <div class="featured-content">
-                            <img  src="https://image.tmdb.org/t/p/w1280/{{ $movie['backdrop_path']  }}" style="width:100%; height:100%; "> 
-                   
-                            {{-- <button class="wishlist-featured-button" wire:click="wishlist({{ $movie }})" style=" font-size: 25px;" wire:ignore> 
+                        <img src="https://image.tmdb.org/t/p/w1280/{{ $movie['backdrop_path'] }}"
+                            style="width:100%; height:100%; ">
+
+                        {{-- <button class="wishlist-featured-button" wire:click="wishlist({{ $movie }})" style=" font-size: 25px;" wire:ignore> 
                                 <i class="wishlist-featured  fas fa-bookmark {{ $this->isWishListed($movie['id']) ? 'wishlisted' : '' }}"></i>
                             </button> --}}
-                     
-                    
+
+
                         <div class="featured-content-detail">
+
+
+
                             @if ($movie['logo'] == false)
                                 <h1 class="featured-title"> {{ $movie['title'] }}</h1>
                             @else
@@ -21,44 +25,45 @@
                                     alt="">
                             @endif
 
-                            <div >
-                                <h5 style=" color: #e9e9e9(221, 221, 221);"> <span
-                                    style="	color: #000;
-                                        font-weight:bold;
-                                        font-size:10px;
-                                        background: yellow;
-                                        padding: 0.5px 1px;
-                                        border-radius: 2.5px;">IMDB</span><i
-                                    style="margin: 3px; color:yellow"
-                                    class='fa fa-star'></i>{{ $movie['vote_average'] }} |
-
-                                {{ $movie['release_date'] }} | {{ucfirst($movie['media_type'])  }} |
 
 
-                                @foreach (json_decode($movie['genre_ids'] ) as $genre)
-                                    {{ $this->genres()->get($genre) }}
-                                    @if (!$loop->last)
-                                        ,
+                            <div>
+                                <h5>
+                                    <span class="imdb"> IMDB </span>
+                                    <i style="margin: 3px; color:yellow" class='fa fa-star'> </i>
+
+                                    <span style="color: #c0f8e9">
+                                        {{ $movie['vote_average'] }} |
+                                        {{ $movie['release_date'] }} |
+                                        {{ ucfirst($movie['media_type']) }} |
+                                        @foreach (json_decode($movie['genre_ids']) as $genre)
+                                            {{ $this->genres()->get($genre) }}
+                                            @if (!$loop->last)
+                                                ,
+                                            @endif
+                                        @endforeach
+                                    </span>
+                                </h5>
+
+                                <div>
+                                    <p class="featured-desc"> {{ $movie['overview'] }}</p>
+
+                                    @if ($movie['media_type'] == 'tv')
+                                        <a href="{{ route('tv.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}"
+                                            class="featured-button">
+                                        @else
+                                            <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}"
+                                                class="featured-button">
                                     @endif
-                                @endforeach
-                            </h5>
+                                    WATCH
+                                    </a>
+                                </div>
 
-                            <div >
-                                 <p class="featured-desc"> {{ $movie['overview'] }}</p>
+                            </div>
 
-                            @if ($movie['media_type'] == 'tv')
-                                <a href="{{ route('tv.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}"
-                                    class="featured-button">
-                                @else
-                                    <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}"
-                                        class="featured-button">
-                            @endif
-                            WATCH
-                        </a>
-                            </div>
-                            
-                            </div>
-                           
+
+
+
                         </div>
                     </div>
                 </div>
@@ -73,16 +78,16 @@
 
     <hr style="width:98%; margin:0 auto; opacity:0.1">
 
-    <div  x-data="{ activeTab: 0 }" >
+    <div x-data="{ activeTab: 0 }">
         <div class="home-section-controls">
             <div class="buttons">
-            <button @click="activeTab = 0" :class="{ 'active-filter': activeTab === 0 }">Movies</button>
-            <button @click="activeTab = 1" :class="{ 'active-filter': activeTab === 1 }">Series</button>
+                <button @click="activeTab = 0" :class="{ 'active-filter': activeTab === 0 }">Movies</button>
+                <button @click="activeTab = 1" :class="{ 'active-filter': activeTab === 1 }">Series</button>
             </div>
-         
+
             <div style="margin: 0 auto">
-               
-                <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}"  >
+
+                <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}">
                     <i class='fas fa-fire-alt' style='color:rgb(255, 72, 0)'></i>
                     Trending Now
                     <i class='fas fa-fire-alt' style='color:rgb(255, 72, 0)'></i>
@@ -92,14 +97,14 @@
 
 
         <div class="movie-section " x-show="activeTab === 0" x-cloak>
-            
+
             <x-home-movies-section :nowPlaying="$nowPlayingMovies" :popular="$popular" :upcoming="$upcoming" />
         </div>
 
         <div class="tv-section  " x-show="activeTab === 1" x-cloak>
             <x-home-tv-section :airingToday="$airingToday" :onair="$onair" :popularTv="$popularTv" />
         </div>
-       <hr style=" opacity:0.1">
+        <hr style=" opacity:0.1">
     </div>
 
 </div>

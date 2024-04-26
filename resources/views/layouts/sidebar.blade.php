@@ -49,7 +49,7 @@
 
 
 
-    <i class=" fas fa-tv  left-menu-icon  {{ session('nightmode') ? 'active' : '' }} "></i>
+    {{-- <i class=" fas fa-tv  left-menu-icon  {{ session('nightmode') ? 'active' : '' }} "></i> --}}
 
     <i class=" fas fa-hourglass-start left-menu-icon {{ session('nightmode') ? 'active' : '' }}"></i>
 

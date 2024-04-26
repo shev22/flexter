@@ -5,7 +5,7 @@
         <div class="logo-container">
 
             {{-- <img src="img/logo/logo-5.png" alt="" width="80"> --}}
-            <h1 class="logo"><a href="{{ route('/') }}">Flexter</a> </h1>
+            <h1 class="logo"><a href="{{ route('/') }}">flexter</a> </h1>
         </div>
         <div class="menu-container ">
             <ul class="menu-list">

@@ -6,10 +6,7 @@
             <h3 class="browse-movie-list">Top Rated</h3>
         </div>
 
-        <span style="margin-right:30px">
-            <button wire:click="updateShowmovies" class="{{ $this->showmovies ? 'active-filter' : '' }}">Movies</button>
-            <button wire:click="updateShowtv" class="{{ $this->showtv ? 'active-filter' : '' }}">Series</button>
-        </span>
+
 
         <div class="">
 
@@ -18,23 +15,18 @@
             </button>
 
 
-
-            <button>
-                Country
-            </button>
-
-
             <button wire:click="filterByLatest" @class(['active-filter' => $this->latest])>
-                Recently updated
+                Recently Added
             </button>
 
-        </div>
+            <span style="margin: 0 10px">
+                <button wire:click="updateShowmovies"
+                    class="{{ $this->showmovies ? 'active-filter' : '' }}">Movies</button>
+                <button wire:click="updateShowtv" class="{{ $this->showtv ? 'active-filter' : '' }}">Series</button>
+            </span>
 
-
-        <div class="checkbox-filter" style="display: flex; ">
-
-            <div class="genre-wrapper">
-                <button class="genre-filter {{ $this->sortByGenre ? 'active-filter' : '' }}" style="margin-right: 2px">
+            <span class="genre-wrapper">
+                <button class="genre-filter {{ $this->sortByGenre ? 'active-filter' : '' }}">
                     Genre
                     <i class="fas fa-caret-down"></i>
                 </button>
@@ -49,9 +41,10 @@
                         @endforeach
                     </ul>
                 </div>
-            </div>
+            </span>
 
-            <div class="year-wrapper" style=" margin-right:2px">
+
+            <span class="year-wrapper">
                 <button class="year-filter {{ $this->sortByYears ? 'active-filter' : '' }}">
                     Year
                     <i class="fas fa-caret-down"></i>
@@ -79,10 +72,9 @@
                         </li>
                     </ul>
                 </div>
-            </div>
+            </span>
 
-
-            <div class="year-wrapper" style=" margin-right:2px">
+            <span class="year-wrapper">
                 <button class="language-filter {{ $this->language ? 'active-filter' : '' }}">
                     Language
                     <i class="fas fa-caret-down"></i>
@@ -99,12 +91,12 @@
 
                     </ul>
                 </div>
-            </div>
+            </span>
 
 
-            <div class="rating-wrapper" style="">
+            <span class="rating-wrapper" style="">
                 <button class="rating-filter {{ $this->sortByImdb ? 'active-filter' : '' }}">
-                    Sort by IMDB Rating
+                    IMDB
                     <i class="fas fa-caret-down"></i>
                 </button>
 
@@ -127,9 +119,13 @@
 
                     </ul>
                 </div>
-            </div>
+            </span>
 
         </div>
+
+        {{-- 
+        <div class="checkbox-filter" style="display: flex; ">
+        </div> --}}
     </div>
 
 

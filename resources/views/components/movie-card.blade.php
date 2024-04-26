@@ -18,16 +18,15 @@
                 @endforeach
             </p>
             <h6>
-                <span
-                    style="	color: #000;
-                    font-weight:bold;
-                    font-size:10px;
-                background: yellow;
-                padding: 0.5px 1px;
-                border-radius: 2.5px;">IMDB</span>
-                <i class='fa fa-star'></i><span>{{ $movie['vote_average'] }}</span> | {{ $movie['release_date'] }}
+                <span class="imdb" >IMDB</span>
+                <i class='fa fa-star'></i>
+                <span>
+                    {{ $movie['vote_average'] }}
+                    | {{ $movie['release_date'] }}
+                </span> 
             </h6>
         </div>
     </a>
 </div>
+
 

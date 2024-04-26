@@ -24,4 +24,24 @@ PHP Fatal error:  Allowed memory size of 536870912 bytes exhausted (tried to all
   2   [internal]:0
       App\Http\Controllers\Services\MediaService::App\Http\Controllers\Services\{closure}()
 
-1117to load movies MediaBuffer3<br>601to load movies MediaBuffer1<br>
+1117to load movies MediaBuffer3<br>601to load movies MediaBuffer1<br>629to load movies MediaBuffer1<br>
+   Error 
+
+  Call to undefined method GuzzleHttp\Exception\ConnectException::json()
+
+  at app\Repositories\PorpularRepository.php:73
+     69▕         }
+     70▕         $responses = Utils::unwrap($promises);
+     71▕ 
+     72▕         return collect($responses)->map(function ($response) {
+  ➜  73▕             if (array_key_exists("results", $response->json())) {
+     74▕                 return $response["results"];
+     75▕             }
+     76▕         })->collapse();
+     77▕     }
+
+  1   [internal]:0
+      App\Repositories\PorpularRepository::App\Repositories\{closure}(Object(GuzzleHttp\Exception\ConnectException))
+  2   vendor\laravel\framework\src\Illuminate\Collections\Arr.php:560
+
+516to load movies MediaBuffer2<br>1161to load movies MediaBuffer3<br>22to load movies MediaBuffer5<br>348to load movies MediaBuffer5<br>21to load movies MediaBuffer4<br>3to load movies MediaBuffer4<br>
