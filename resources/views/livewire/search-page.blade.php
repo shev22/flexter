@@ -3,25 +3,23 @@
 
 
     
-<div class="filter-panel">
+<div class="filter-panel" style="display: flex">
     <div class="section-nav">
         <h3 class="browse-movie-list">Search Panel</h3>
     </div>
 
-    <div class="">
-
-     <input type="text"  wire:model.live="query" style="width: 700px; height:30px; border-radius:10px; border:none; background:rgb(212, 212, 212); text-align:center;font-weight:bold" placeholder="Live search...">
-    </div>
+   
 
 
-    <div class="checkbox-filter" style="display: flex; ">
 
-        <div class="">
+        <div  style="display: flex;flex-wrap:wrap;">
+            <input type="text" class="search-filter" wire:model.live="query"  placeholder="Live search..." style="margin-right: 10px; ">
+
             <button id="watchlist-movies" class="active-filter">Movies</button>
             <button id="watchlist-tv">Series</button>
             <button id="watchlist-actors">Actors</button>
         </div>
-    </div>
+  
 </div>
 
 
@@ -85,14 +83,12 @@
                             <h3>{{ $movie['title'] }}</h3>
 
                             <h6>
-                                <span
-                                    style="	color: #000;
-                                                font-weight:bold;
-                                                font-size:10px;
-                                            background: yellow;
-                                            padding: 0.5px 1px;
-                                            border-radius: 2.5px;">IMDB</span>
-                                <i class='fa fa-star'></i>{{ $movie['vote_average'] }} | {{ $movie['release_date'] }}
+                                <span class="imdb" >IMDB</span>
+                                <i class='fa fa-star'></i>
+                                <span>
+                                    {{ $movie['vote_average'] }}
+                                    | {{ $movie['release_date'] }}
+                                </span> 
                             </h6>
                         </div>
                     </a>

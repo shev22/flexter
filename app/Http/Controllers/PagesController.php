@@ -30,6 +30,9 @@ class PagesController extends Controller
     }
     public function index()
     {   
+
+        // $movies =  TvModel::all()->pluck('id')->toArray();
+        // dump(count($movies));
        // Cache::flush();
         // // dd($this->nightMode->checkActiveBackground());
        // // $time  = time ();

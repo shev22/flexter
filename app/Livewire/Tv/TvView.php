@@ -164,7 +164,8 @@ class TvView extends Component
                 $e->orderBy('year', 'DESC');
             })
             ->when($this->search, function ($e) {
-                $e->where('title', 'like', '%' . $this->search . '%');
+                $e->where('title', 'like', '%' . $this->search . '%')
+                ->orWhere('year', 'like', '%' . $this->search . '%');
             })
             ->when($this->language, function ($e) {
                 $e->whereIn('original_language', $this->language);

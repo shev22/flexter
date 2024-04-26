@@ -269,7 +269,7 @@ class MediaService
         $merged = $merged->merge(Cache::get('movies-popular'));
         $merged = $merged->merge(Cache::get('movies-toprated'));
         $movies =  MovieModel::all()->pluck('id')->toArray();
-        dump(count($movies));
+        // dump(count($movies));
         foreach (array_chunk($this->formatData($merged, 'movie')->unique('id')->toArray(), 1000) as $t) {
             collect($t)->map(function ($movie) use ($movies) {
                 if (!in_array($movie['id'], $movies)) {

@@ -38,7 +38,10 @@ class HomeView extends Component
 
     public function genres()
     {
-        return $this->getGenres(Cache::get('movies-genre'));
+        $movie_genre = $this->getGenres(Cache::get('movies-genre'));
+        $tv_genre = $this->getGenres(Cache::get('tv-genre'));
+        $genre =  $movie_genre->union($tv_genre );
+        return( $genre);
     }
 
     public function wishlist($movie)
