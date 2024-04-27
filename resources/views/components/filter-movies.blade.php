@@ -33,7 +33,7 @@
         <div class="genre-wrapper">
             <button class="genre-filter {{ $this->sortByGenre ? 'active-filter' : '' }}">
                 Genre
-                {{-- <i class="fas fa-caret-down"></i> --}}
+                <i class="fas fa-caret-down"></i>
             </button>
 
             <div class="filter-content-genre" wire:ignore.self>
@@ -51,27 +51,31 @@
         <div class="year-wrapper">
             <button class="year-filter {{ $this->sortByYears ? 'active-filter' : '' }}">
                 Year
-                {{-- <i class="fas fa-caret-down"></i> --}}
+                <i class="fas fa-caret-down"></i>
             </button>
 
             <div class="filter-content-year" wire:ignore.self>
                 <ul>
                     @for ($i = (int) date('Y'); $i >= 1990; $i--)
                         <li>
-                            <input type="checkbox" value="{{ $i }}" wire:model.live="sortByYears">
+                            <input type="checkbox" value="{{ $i }}" wire:model.live="sortByYears"
+                            @if (  $this->earlier)
+                            disabled
+                            @endif 
+                            >
                             {{ $i }}
                         </li>
                     @endfor
-                    <li>
-                        <input type="checkbox" value=" 1980's" wire:model.live="eighties">
+                    {{-- <li>
+                        <input type="checkbox" value=" 1980's" wire:model.live="eighties" {{ $this->sortByYears ? 'disabled' : '' }}>
                         1980's
                     </li>
                     <li>
-                        <input type="checkbox" value=" 1970's" wire:model.live="seventies">
+                        <input type="checkbox" value=" 1970's" wire:model.live="seventies" {{ $this->sortByYears ? 'disabled' : '' }}>
                         1970's
-                    </li>
+                    </li> --}}
                     <li>
-                        <input type="checkbox" value=" earlier" wire:model.live="earlier">
+                        <input type="checkbox" value=" earlier" wire:model.live="earlier" {{ $this->sortByYears ? 'disabled' : '' }}>
                         Earlier
                     </li>
                 </ul>
@@ -82,7 +86,7 @@
         <div class="year-wrapper">
             <button class="language-filter {{ $this->language ? 'active-filter' : '' }}">
                 Language
-                {{-- <i class="fas fa-caret-down"></i> --}}
+                <i class="fas fa-caret-down"></i>
             </button>
 
             <div class="filter-content-language" wire:ignore.self>
@@ -102,7 +106,7 @@
         <div class="rating-wrapper" style="">
             <button class="rating-filter {{ $this->sortByImdb ? 'active-filter' : '' }}">
                 Sort by IMDB Rating
-                {{-- <i class="fas fa-caret-down"></i> --}}
+                <i class="fas fa-caret-down"></i>
             </button>
 
             <div class="filter-content-rating radio-filter" wire:ignore.self>
@@ -161,7 +165,7 @@
         <div class="genre-wrapper">
             <button class="genre-filter {{ $this->sortByGenre ? 'active-filter' : '' }}">
                 Genre
-                {{-- <i class="fas fa-caret-down"></i> --}}
+                <i class="fas fa-caret-down"></i>
             </button>
 
 
@@ -180,27 +184,27 @@
         <div class="year-wrapper">
             <button class="year-filter {{ $this->sortByYears ? 'active-filter' : '' }}">
                 Year
-                {{-- <i class="fas fa-caret-down"></i> --}}
+                <i class="fas fa-caret-down"></i>
             </button>
 
             <div class="filter-content-year" wire:ignore.self>
                 <ul>
                     @for ($i = (int) date('Y'); $i >= 1990; $i--)
                         <li>
-                            <input type="checkbox" value="{{ $i }}" wire:model.live="sortByYears">
+                            <input type="checkbox" value="{{ $i }}" wire:model.live="sortByYears"   @if ($this->earlier) disabled @endif>
                             {{ $i }}
                         </li>
                     @endfor
-                    <li>
+                    {{-- <li>
                         <input type="checkbox" value=" 1980's" wire:model.live="eighties">
                         1980's
                     </li>
                     <li>
                         <input type="checkbox" value=" 1970's" wire:model.live="seventies">
                         1970's
-                    </li>
+                    </li> --}}
                     <li>
-                        <input type="checkbox" value=" earlier" wire:model.live="earlier">
+                        <input type="checkbox" value=" earlier" wire:model.live="earlier" {{ $this->sortByYears ? 'disabled' : '' }}>
                         Earlier
                     </li>
                 </ul>
@@ -209,7 +213,7 @@
         <div class="year-wrapper">
             <button class="language-filter {{ $this->language ? 'active-filter' : '' }}">
                 Language
-                {{-- <i class="fas fa-caret-down"></i> --}}
+                <i class="fas fa-caret-down"></i>
             </button>
 
             <div class="filter-content-language" wire:ignore.self>
@@ -229,7 +233,7 @@
         <div class="rating-wrapper" style="">
             <button class="rating-filter {{ $this->sortByImdb ? 'active-filter' : '' }}">
                 IMDB
-                {{-- <i class="fas fa-caret-down"></i> --}}
+                <i class="fas fa-caret-down"></i>
             </button>
 
             <div class="filter-content-rating radio-filter" wire:ignore.self>

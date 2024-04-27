@@ -147,6 +147,7 @@
                                     </div>
                                 </span>
                             </a>
+                        
                         </li>
                     @endforeach
                 </ul>

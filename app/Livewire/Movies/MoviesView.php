@@ -16,8 +16,8 @@ class MoviesView extends Component
     public $popularity = false;
     public $latest     = false;
     public $search;
-    public $eighties;
-    public $seventies;
+    // public $eighties;
+    // public $seventies;
     public $earlier;
     public $sortByImdb;
     public $language    = [];
@@ -121,14 +121,14 @@ class MoviesView extends Component
                 $e->orderBy('year', 'DESC');
             })
   
-            ->when($this->eighties, function ($e) {
-                $e->whereBetween('year', [1980, 1989]);
-            })
-            ->when($this->seventies, function ($e) {
-                $e->whereBetween('year', [1970, 1979]);
-            })
+            // ->when($this->eighties, function ($e) {
+            //     $e->whereBetween('year', [1980, 1989]);
+            // })
+            // ->when($this->seventies, function ($e) {
+            //     $e->whereBetween('year', [1970, 1979]);
+            // })
             ->when($this->earlier, function ($e) {
-                $e->where('year','<', 1970);
+                $e->where('year','<', 1990);
             })
 
 

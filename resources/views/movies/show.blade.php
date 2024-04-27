@@ -159,7 +159,7 @@
                         </h4>
                         <span class="minutes">{{ $movie['runtime'] }} min</span>
                         <p class="type">{{ $movie['genres'] }}</p>
-                        <p class="type">{{ $movie['cast'] }}</p>
+                        {{-- <p class="type">{{ $movie['cast'] }}</p> --}}
 
                     </div>
                     <div class="movie_desc">
@@ -167,13 +167,11 @@
                             {{ $movie['overview'] }}
                         </p>
                     </div>
-                    {{-- <div class="movie_social">
-                        <ul>
-                          <li><i class="material-icons">share</i></li>
-                          <li><i class="material-icons"></i></li>
-                          <li><i class="material-icons">chat_bubble</i></li>
-                        </ul>
-                      </div> --}}
+                    <div class="movie_social">
+
+                        <p><span style="color: #86a7b7;text-decoration:underline">Casts</span><br> {{ $movie['cast'] }}
+                        </p>
+                    </div>
                 </div>
 
                 {{-- <div class="blur_back tomb_back"></div> --}}
@@ -237,7 +235,7 @@
 
 
 
-            <div class="comment-similar" >
+            <div class="comment-similar">
 
                 <div class="movie-comment-container" style="padding: 10px">
                     <h3 class="movie-list-title {{ session('nightmode') ? 'active' : '' }}" style="padding:10px">MOVIE
@@ -260,7 +258,7 @@
                         var disqus_config = function() {
                             this.page.url = ' {{ Request::url() }}'; // Replace PAGE_URL with your page's canonical URL variable
                             this.page.identifier =
-                            {{ $movie['id'] }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                                {{ $movie['id'] }}; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
                         };
 
                         (function() { // DON'T EDIT BELOW THIS LINE
@@ -272,20 +270,20 @@
                         })();
                     </script>
 
-                </div> 
+                </div>
 
                 <div class="recently-updated" style="width: 25%">
                     <h3 class="movie-list-title {{ session('nightmode') ? 'active' : '' }}" style="padding: 10px">
-                    SIMILAR MOVIES
+                        SIMILAR MOVIES
 
 
                         <i class='fa fa-film'></i>
 
                     </h3>
-                    <div class="wrapper" >
-                        <ul >
+                    <div class="wrapper">
+                        <ul>
                             @foreach ($related as $key => $movie)
-                                <li class="search-results-item" >
+                                <li class="search-results-item">
                                     <a
                                         href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
                                         <img src="{{ $movie['poster_path'] }}" alt="poster">
@@ -319,39 +317,41 @@
                 </div>
 
                 <div class="movie-list-container recently-updated-moblie" style=" margin-top:50px">
-                    <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}" style="padding:5px;">               SIMILAR MOVIES
+                    <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}" style="padding:5px;">
+                        SIMILAR MOVIES
                         <i class='fa fa-film'></i>
                     </h3>
-                    <div class="movie-list " >
+                    <div class="movie-list ">
                         @foreach ($related as $movie)
-                        <div class="movie-list-item item" >
-                            <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
-                            
-                                <img src="{{ $movie['poster_path'] }}" alt="poster" class="movie-list-item-img">
-                        
-                          
-                                <div class="movie-list-item-detail " >
-                                    <h4 >{{ $movie['title'] }}</h4>
-                                    <p ><span style="color: #000;
+                            <div class="movie-list-item item">
+                                <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
+
+                                    <img src="{{ $movie['poster_path'] }}" alt="poster" class="movie-list-item-img">
+
+
+                                    <div class="movie-list-item-detail ">
+                                        <h4>{{ $movie['title'] }}</h4>
+                                        <p><span
+                                                style="color: #000;
                                         font-weight:bold;
                                         font-size:10px;
                                         background: yellow;
                                         padding: 0.5px 1px;
                                         border-radius: 2.5px;">IMDB</span>
-                                        <i style="margin: 3px; color:yellow" class='fa fa-star'>
-                                        </i>{{ $movie['vote_average'] }}
-                                        |
-                                        {{ $movie['release_date'] }}
-                                    </p>
-                        
-                                    <small>{{  $movie['overview'] }}</small>
-                                </div>
-                            </a>
-                        
-                        </div>
+                                            <i style="margin: 3px; color:yellow" class='fa fa-star'>
+                                            </i>{{ $movie['vote_average'] }}
+                                            |
+                                            {{ $movie['release_date'] }}
+                                        </p>
+
+                                        <small>{{ $movie['overview'] }}</small>
+                                    </div>
+                                </a>
+
+                            </div>
                         @endforeach
                     </div>
-        
+
                 </div>
             </div>
 
