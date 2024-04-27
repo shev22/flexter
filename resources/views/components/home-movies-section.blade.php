@@ -8,8 +8,8 @@
             <div class=" MS-content ">
                 @foreach ($nowPlaying as $movie)
                     {{-- <x-homemovie-card :movie="$movie" /> --}}
+                    <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
                     <div class="movie-list-item item" >
-                        <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
                             <form wire:submit="wishlist({{ $movie }})">
                                 <button class="wishlist-button" > 
                     
@@ -43,9 +43,10 @@
                     
                                 {{-- <small>{{  $movie['overview'] }}</small> --}}
                             </div>
-                        </a>
+                       
                     
                     </div>
+                </a>
                 @endforeach
             </div>
             <div class="MS-controls">
@@ -104,7 +105,7 @@
 
         </div>
 
-        <div class="recently-updated" >
+        <div class="recently-updated"  style="width: 30%">
             <h3 class="movie-list-title {{ session('nightmode') ? 'active' : '' }}" style="padding: 0 5px">
                 RECENTLY UPDATED
 
