@@ -22,6 +22,7 @@
                       
                             <div class="content" >
                                 <h4 >{{ $movie['title'] }}</h4>
+                                
                                 <p ><span style="color: #000;
                                     font-weight:bold;
                                     font-size:10px;
