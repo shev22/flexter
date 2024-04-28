@@ -18,7 +18,7 @@ class MediaBuffer3
     {
         $this->mediaService->popularMovies();
         $this->mediaService->getActors();
-        $this->mediaService->topRated();
+       
 
         // for ($i = 0; $i < 1000; $i++) {
         //     $promises[] = Http::async()->get("https://vidsrc.xyz/movies/latest/page-$i.json");

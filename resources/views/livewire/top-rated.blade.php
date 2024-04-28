@@ -83,7 +83,7 @@
 
                 <div class="filter-content-language" wire:ignore.self>
                     <ul>
-                        @foreach ($this->languages() as $key => $value)
+                        @foreach ($this->languages() ? $this->languages() : []  as $key => $value)
                             <li>
                                 <input type="checkbox" value="{{ $value['iso_639_1'] }}" wire:model.live="language">
                                 {{ $value['english_name'] }}
@@ -210,7 +210,7 @@
 
                 <div class="filter-content-language" wire:ignore.self>
                     <ul>
-                        @foreach ($this->languages() as $key => $value)
+                        @foreach ($this->languages() ? $this->languages() : []  as $key => $value)
                             <li>
                                 <input type="checkbox" value="{{ $value['iso_639_1'] }}" wire:model.live="language">
                                 {{ $value['english_name'] }}

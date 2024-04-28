@@ -18,7 +18,7 @@ class MediaBuffer4
         $this->mediaService->movies();
         $this->mediaService->tv();
         $this->mediaService->actors();
-     
+        $this->mediaService->topRated();
     }
 
 

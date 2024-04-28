@@ -264,8 +264,8 @@ class MediaService
     {  
         
        
-        $merged = Cache::get('movies-nowplaying')->merge(Cache::get('movies-upcoming'));
-        $merged = $merged->merge(Cache::get('movies-trending'));
+        $merged = Cache::get('movies-trending')->merge(Cache::get('movies-nowplaying'));
+        $merged = $merged->merge(Cache::get('movies-upcoming'));
         $merged = $merged->merge(Cache::get('movies-popular'));
         $merged = $merged->merge(Cache::get('movies-toprated'));
         $movies =  MovieModel::all()->pluck('id')->toArray();
@@ -304,9 +304,9 @@ class MediaService
     {
 
 
-        $merged = Cache::get('tv-trending')->merge(Cache::get('tv-popular'));
+        $merged = Cache::get('tv-trending')->merge(Cache::get('tv-airingtoday'));
         $merged = $merged->merge(Cache::get('tv-onair'));
-        $merged = $merged->merge(Cache::get('tv-airingtoday'));
+        $merged = $merged->merge(Cache::get('tv-popular'));
         $merged = $merged->merge(Cache::get('tv-toprated'));
         $tvs =  TvModel::all()->pluck('id')->toArray();
 

@@ -31,9 +31,9 @@ class PagesController extends Controller
     public function index()
     {   
 
-        // $movies =  TvModel::all()->pluck('id')->toArray();
+        // $movies =  MovieModel::all()->pluck('id')->toArray();
         // dump(count($movies));
-       // Cache::flush();
+       //Cache::flush();
         // // dd($this->nightMode->checkActiveBackground());
        // // $time  = time ();
       // ( $this->buffer->trendingAll());
