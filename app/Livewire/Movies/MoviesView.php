@@ -93,6 +93,11 @@ class MoviesView extends Component
     public function render()
     {
 
+
+        // $movies = MovieModel::get()->take(1);
+        // dd(  json_encode( json_decode($movies[0]->genre_ids)))     ;
+
+
         $movies = MovieModel::when($this->sortByImdb, function ($e) {
 
             $e->when($this->sortByImdb == 'acending', function ($e2) {
@@ -113,13 +118,13 @@ class MoviesView extends Component
          * Sort by years
          */
             ->when($this->sortByYears, function ($e) {
-
-                $e->whereIn('year', $this->sortByYears);
+                $e->whereIn('year', $this->sortByYears)
+                ->when($this->earlier, function($e){
+                    $e->orWhere('year','<', 1990);
+                });
             })
 
-            ->when($this->latest, function ($e) {
-                $e->orderBy('year', 'DESC');
-            })
+          
   
             // ->when($this->eighties, function ($e) {
             //     $e->whereBetween('year', [1980, 1989]);
@@ -131,25 +136,9 @@ class MoviesView extends Component
                 $e->where('year','<', 1990);
             })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+            ->when($this->latest, function ($e) {
+                $e->orderBy('year', 'DESC');
+            })
 
             ->when($this->popularity, function ($e) {
                 $e->orderBy('popularity', 'DESC');
@@ -160,6 +149,7 @@ class MoviesView extends Component
             ->when($this->search, function ($e) {
                 $e->where('title', 'like', '%' . $this->search . '%')
                 ->orWhere('year', 'like', '%' . $this->search . '%');
+              
             })
             ->when($this->language, function ($e) {
                 $e->whereIn('original_language', $this->language);
@@ -170,15 +160,50 @@ class MoviesView extends Component
 
             ->when($this->sortByGenre, function ($e) {
              
-                $e->get()->each(function ( $item, int $key) {
-               
-                        // dd( );
+                // $e->get()->each(function ( $item, int $key) use($e){
+             //  dd($this->sortByGenre);
+                     
+// dd( $item['genre_ids']);
 
-                if (count(array_intersect($this->sortByGenre, json_decode($item['genre_ids']))) > 0) {
-                    //    dd($item);
-                    }
 
-                });
+
+                            // foreach($e as $genre)
+                            // {
+                            // foreach($this->sortByGenre as $item)
+                            // {
+                            //    // $e->orWhereJsonContains('genre_ids', $genre);
+
+                            //    if()
+                            //    {
+
+                            //    }
+                            // }
+                            //  }
+                            // foreach ($e as $value) {
+
+                            //     dd($value);
+                                // if (count(array_intersect($this->sortByGenre, $value['genre_ids'])) > 0) {
+                                //    return $value;
+                                // }
+                            // }
+
+                   
+
+// return $e->genre_ids;
+                // });
+
+                $e->whereJsonContains('genre_ids->genre', $this->sortByGenre);
+
+            //   $e->each(function($img)  {
+            //     if (count(array_intersect($this->sortByGenre, json_decode($img['genre_ids'])->genre)) > 0) {
+            //            $img->get();
+            //         }
+            //  });
+
+
+
+
+
             })
             ->take($this->itemsPerPage)->get();
 

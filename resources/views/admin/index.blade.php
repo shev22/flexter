@@ -1,677 +1,134 @@
 <x-admin-layout>
-<!-- partial -->
-<div class="main-panel">
-    <div class="content-wrapper">
-      <div class="row">
-        <div class="col-12 grid-margin stretch-card">
-          <div class="card corona-gradient-card">
-            <div class="card-body py-0 px-0 px-sm-3">
-              <div class="row align-items-center">
-                <div class="col-4 col-sm-3 col-xl-2">
-                  <img src="assets/images/dashboard/Group126@2x.png" class="gradient-corona-img img-fluid" alt="">
-                </div>
-                <div class="col-5 col-sm-7 col-xl-8 p-0">
-                  <h4 class="mb-1 mb-sm-0">Want even more features?</h4>
-                  <p class="mb-0 font-weight-normal d-none d-sm-block">Check out our Pro version with 5 unique layouts!</p>
-                </div>
-                <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
-                  <span>
-                    <a href="https://www.bootstrapdash.com/product/corona-admin-template/" target="_blank" class="btn btn-outline-light btn-rounded get-started-btn">Upgrade to PRO</a>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-9">
-                  <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$12.34</h3>
-                    <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <div class="icon icon-box-success ">
-                    <span class="mdi mdi-arrow-top-right icon-item"></span>
-                  </div>
-                </div>
-              </div>
-              <h6 class="text-muted font-weight-normal">Potential growth</h6>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-9">
-                  <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$17.34</h3>
-                    <p class="text-success ml-2 mb-0 font-weight-medium">+11%</p>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <div class="icon icon-box-success">
-                    <span class="mdi mdi-arrow-top-right icon-item"></span>
-                  </div>
-                </div>
-              </div>
-              <h6 class="text-muted font-weight-normal">Revenue current</h6>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-9">
-                  <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$12.34</h3>
-                    <p class="text-danger ml-2 mb-0 font-weight-medium">-2.4%</p>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <div class="icon icon-box-danger">
-                    <span class="mdi mdi-arrow-bottom-left icon-item"></span>
-                  </div>
-                </div>
-              </div>
-              <h6 class="text-muted font-weight-normal">Daily Income</h6>
-            </div>
-          </div>
-        </div>
-        <div class="col-xl-3 col-sm-6 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col-9">
-                  <div class="d-flex align-items-center align-self-start">
-                    <h3 class="mb-0">$31.53</h3>
-                    <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
-                  </div>
-                </div>
-                <div class="col-3">
-                  <div class="icon icon-box-success ">
-                    <span class="mdi mdi-arrow-top-right icon-item"></span>
-                  </div>
-                </div>
-              </div>
-              <h6 class="text-muted font-weight-normal">Expense current</h6>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-4 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Transaction History</h4>
-              <canvas id="transaction-history" class="transaction-chart"></canvas>
-              <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                <div class="text-md-center text-xl-left">
-                  <h6 class="mb-1">Transfer to Paypal</h6>
-                  <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
-                </div>
-                <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                  <h6 class="font-weight-bold mb-0">$236</h6>
-                </div>
-              </div>
-              <div class="bg-gray-dark d-flex d-md-block d-xl-flex flex-row py-3 px-4 px-md-3 px-xl-4 rounded mt-3">
-                <div class="text-md-center text-xl-left">
-                  <h6 class="mb-1">Tranfer to Stripe</h6>
-                  <p class="text-muted mb-0">07 Jan 2019, 09:12AM</p>
-                </div>
-                <div class="align-self-center flex-grow text-right text-md-center text-xl-right py-md-2 py-xl-0">
-                  <h6 class="font-weight-bold mb-0">$593</h6>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-8 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex flex-row justify-content-between">
-                <h4 class="card-title mb-1">Open Projects</h4>
-                <p class="text-muted mb-1">Your data status</p>
-              </div>
-              <div class="row">
-                <div class="col-12">
-                  <div class="preview-list">
-                    <div class="preview-item border-bottom">
-                      <div class="preview-thumbnail">
-                        <div class="preview-icon bg-primary">
-                          <i class="mdi mdi-file-document"></i>
-                        </div>
-                      </div>
-                      <div class="preview-item-content d-sm-flex flex-grow">
-                        <div class="flex-grow">
-                          <h6 class="preview-subject">Admin dashboard design</h6>
-                          <p class="text-muted mb-0">Broadcast web app mockup</p>
-                        </div>
-                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                          <p class="text-muted">15 minutes ago</p>
-                          <p class="text-muted mb-0">30 tasks, 5 issues </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="preview-item border-bottom">
-                      <div class="preview-thumbnail">
-                        <div class="preview-icon bg-success">
-                          <i class="mdi mdi-cloud-download"></i>
-                        </div>
-                      </div>
-                      <div class="preview-item-content d-sm-flex flex-grow">
-                        <div class="flex-grow">
-                          <h6 class="preview-subject">Wordpress Development</h6>
-                          <p class="text-muted mb-0">Upload new design</p>
-                        </div>
-                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                          <p class="text-muted">1 hour ago</p>
-                          <p class="text-muted mb-0">23 tasks, 5 issues </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="preview-item border-bottom">
-                      <div class="preview-thumbnail">
-                        <div class="preview-icon bg-info">
-                          <i class="mdi mdi-clock"></i>
-                        </div>
-                      </div>
-                      <div class="preview-item-content d-sm-flex flex-grow">
-                        <div class="flex-grow">
-                          <h6 class="preview-subject">Project meeting</h6>
-                          <p class="text-muted mb-0">New project discussion</p>
-                        </div>
-                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                          <p class="text-muted">35 minutes ago</p>
-                          <p class="text-muted mb-0">15 tasks, 2 issues</p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="preview-item border-bottom">
-                      <div class="preview-thumbnail">
-                        <div class="preview-icon bg-danger">
-                          <i class="mdi mdi-email-open"></i>
-                        </div>
-                      </div>
-                      <div class="preview-item-content d-sm-flex flex-grow">
-                        <div class="flex-grow">
-                          <h6 class="preview-subject">Broadcast Mail</h6>
-                          <p class="text-muted mb-0">Sent release details to team</p>
-                        </div>
-                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                          <p class="text-muted">55 minutes ago</p>
-                          <p class="text-muted mb-0">35 tasks, 7 issues </p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="preview-item">
-                      <div class="preview-thumbnail">
-                        <div class="preview-icon bg-warning">
-                          <i class="mdi mdi-chart-pie"></i>
-                        </div>
-                      </div>
-                      <div class="preview-item-content d-sm-flex flex-grow">
-                        <div class="flex-grow">
-                          <h6 class="preview-subject">UI Design</h6>
-                          <p class="text-muted mb-0">New application planning</p>
-                        </div>
-                        <div class="mr-auto text-sm-right pt-2 pt-sm-0">
-                          <p class="text-muted">50 minutes ago</p>
-                          <p class="text-muted mb-0">27 tasks, 4 issues </p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-4 grid-margin">
-          <div class="card">
-            <div class="card-body">
-              <h5>Revenue</h5>
-              <div class="row">
-                <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                  <div class="d-flex d-sm-block d-md-flex align-items-center">
-                    <h2 class="mb-0">$32123</h2>
-                    <p class="text-success ml-2 mb-0 font-weight-medium">+3.5%</p>
-                  </div>
-                  <h6 class="text-muted font-weight-normal">11.38% Since last month</h6>
-                </div>
-                <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                  <i class="icon-lg mdi mdi-codepen text-primary ml-auto"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 grid-margin">
-          <div class="card">
-            <div class="card-body">
-              <h5>Sales</h5>
-              <div class="row">
-                <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                  <div class="d-flex d-sm-block d-md-flex align-items-center">
-                    <h2 class="mb-0">$45850</h2>
-                    <p class="text-success ml-2 mb-0 font-weight-medium">+8.3%</p>
-                  </div>
-                  <h6 class="text-muted font-weight-normal"> 9.61% Since last month</h6>
-                </div>
-                <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                  <i class="icon-lg mdi mdi-wallet-travel text-danger ml-auto"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-sm-4 grid-margin">
-          <div class="card">
-            <div class="card-body">
-              <h5>Purchase</h5>
-              <div class="row">
-                <div class="col-8 col-sm-12 col-xl-8 my-auto">
-                  <div class="d-flex d-sm-block d-md-flex align-items-center">
-                    <h2 class="mb-0">$2039</h2>
-                    <p class="text-danger ml-2 mb-0 font-weight-medium">-2.1% </p>
-                  </div>
-                  <h6 class="text-muted font-weight-normal">2.27% Since last month</h6>
-                </div>
-                <div class="col-4 col-sm-12 col-xl-4 text-center text-xl-right">
-                  <i class="icon-lg mdi mdi-monitor text-success ml-auto"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row ">
-        <div class="col-12 grid-margin">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Order Status</h4>
-              <div class="table-responsive">
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <th>
-                        <div class="form-check form-check-muted m-0">
-                          <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                          </label>
-                        </div>
-                      </th>
-                      <th> Client Name </th>
-                      <th> Order No </th>
-                      <th> Product Cost </th>
-                      <th> Project </th>
-                      <th> Payment Mode </th>
-                      <th> Start Date </th>
-                      <th> Payment Status </th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <div class="form-check form-check-muted m-0">
-                          <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                          </label>
-                        </div>
-                      </td>
-                      <td>
-                        <img src="assets/images/faces/face1.jpg" alt="image" />
-                        <span class="pl-2">Henry Klein</span>
-                      </td>
-                      <td> 02312 </td>
-                      <td> $14,500 </td>
-                      <td> Dashboard </td>
-                      <td> Credit card </td>
-                      <td> 04 Dec 2019 </td>
-                      <td>
-                        <div class="badge badge-outline-success">Approved</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="form-check form-check-muted m-0">
-                          <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                          </label>
-                        </div>
-                      </td>
-                      <td>
-                        <img src="assets/images/faces/face2.jpg" alt="image" />
-                        <span class="pl-2">Estella Bryan</span>
-                      </td>
-                      <td> 02312 </td>
-                      <td> $14,500 </td>
-                      <td> Website </td>
-                      <td> Cash on delivered </td>
-                      <td> 04 Dec 2019 </td>
-                      <td>
-                        <div class="badge badge-outline-warning">Pending</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="form-check form-check-muted m-0">
-                          <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                          </label>
-                        </div>
-                      </td>
-                      <td>
-                        <img src="assets/images/faces/face5.jpg" alt="image" />
-                        <span class="pl-2">Lucy Abbott</span>
-                      </td>
-                      <td> 02312 </td>
-                      <td> $14,500 </td>
-                      <td> App design </td>
-                      <td> Credit card </td>
-                      <td> 04 Dec 2019 </td>
-                      <td>
-                        <div class="badge badge-outline-danger">Rejected</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="form-check form-check-muted m-0">
-                          <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                          </label>
-                        </div>
-                      </td>
-                      <td>
-                        <img src="assets/images/faces/face3.jpg" alt="image" />
-                        <span class="pl-2">Peter Gill</span>
-                      </td>
-                      <td> 02312 </td>
-                      <td> $14,500 </td>
-                      <td> Development </td>
-                      <td> Online Payment </td>
-                      <td> 04 Dec 2019 </td>
-                      <td>
-                        <div class="badge badge-outline-success">Approved</div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="form-check form-check-muted m-0">
-                          <label class="form-check-label">
-                            <input type="checkbox" class="form-check-input">
-                          </label>
-                        </div>
-                      </td>
-                      <td>
-                        <img src="assets/images/faces/face4.jpg" alt="image" />
-                        <span class="pl-2">Sallie Reyes</span>
-                      </td>
-                      <td> 02312 </td>
-                      <td> $14,500 </td>
-                      <td> Website </td>
-                      <td> Credit card </td>
-                      <td> 04 Dec 2019 </td>
-                      <td>
-                        <div class="badge badge-outline-success">Approved</div>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6 col-xl-4 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <div class="d-flex flex-row justify-content-between">
-                <h4 class="card-title">Messages</h4>
-                <p class="text-muted mb-1 small">View all</p>
-              </div>
-              <div class="preview-list">
-                <div class="preview-item border-bottom">
-                  <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face6.jpg" alt="image" class="rounded-circle" />
-                  </div>
-                  <div class="preview-item-content d-flex flex-grow">
-                    <div class="flex-grow">
-                      <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                        <h6 class="preview-subject">Leonard</h6>
-                        <p class="text-muted text-small">5 minutes ago</p>
-                      </div>
-                      <p class="text-muted">Well, it seems to be working now.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="preview-item border-bottom">
-                  <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face8.jpg" alt="image" class="rounded-circle" />
-                  </div>
-                  <div class="preview-item-content d-flex flex-grow">
-                    <div class="flex-grow">
-                      <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                        <h6 class="preview-subject">Luella Mills</h6>
-                        <p class="text-muted text-small">10 Minutes Ago</p>
-                      </div>
-                      <p class="text-muted">Well, it seems to be working now.</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="preview-item border-bottom">
-                  <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face9.jpg" alt="image" class="rounded-circle" />
-                  </div>
-                  <div class="preview-item-content d-flex flex-grow">
-                    <div class="flex-grow">
-                      <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                        <h6 class="preview-subject">Ethel Kelly</h6>
-                        <p class="text-muted text-small">2 Hours Ago</p>
-                      </div>
-                      <p class="text-muted">Please review the tickets</p>
-                    </div>
-                  </div>
-                </div>
-                <div class="preview-item border-bottom">
-                  <div class="preview-thumbnail">
-                    <img src="assets/images/faces/face11.jpg" alt="image" class="rounded-circle" />
-                  </div>
-                  <div class="preview-item-content d-flex flex-grow">
-                    <div class="flex-grow">
-                      <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                        <h6 class="preview-subject">Herman May</h6>
-                        <p class="text-muted text-small">4 Hours Ago</p>
-                      </div>
-                      <p class="text-muted">Thanks a lot. It was easy to fix it .</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6 col-xl-4 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Portfolio Slide</h4>
-              <div class="owl-carousel owl-theme full-width owl-carousel-dash portfolio-carousel" id="owl-carousel-basic">
-                <div class="item">
-                  <img src="assets/images/dashboard/Rectangle.jpg" alt="">
-                </div>
-                <div class="item">
-                  <img src="assets/images/dashboard/Img_5.jpg" alt="">
-                </div>
-                <div class="item">
-                  <img src="assets/images/dashboard/img_6.jpg" alt="">
-                </div>
-              </div>
-              <div class="d-flex py-4">
-                <div class="preview-list w-100">
-                  <div class="preview-item p-0">
-                    <div class="preview-thumbnail">
-                      <img src="assets/images/faces/face12.jpg" class="rounded-circle" alt="">
-                    </div>
-                    <div class="preview-item-content d-flex flex-grow">
-                      <div class="flex-grow">
-                        <div class="d-flex d-md-block d-xl-flex justify-content-between">
-                          <h6 class="preview-subject">CeeCee Bass</h6>
-                          <p class="text-muted text-small">4 Hours Ago</p>
-                        </div>
-                        <p class="text-muted">Well, it seems to be working now.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <p class="text-muted">Well, it seems to be working now. </p>
-              <div class="progress progress-md portfolio-progress">
-                <div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12 col-xl-4 grid-margin stretch-card">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">To do list</h4>
-              <div class="add-items d-flex">
-                <input type="text" class="form-control todo-list-input" placeholder="enter task..">
-                <button class="add btn btn-primary todo-list-add-btn">Add</button>
-              </div>
-              <div class="list-wrapper">
-                <ul class="d-flex flex-column-reverse text-white todo-list todo-list-custom">
-                  <li>
-                    <div class="form-check form-check-primary">
-                      <label class="form-check-label">
-                        <input class="checkbox" type="checkbox"> Create invoice </label>
-                    </div>
-                    <i class="remove mdi mdi-close-box"></i>
-                  </li>
-                  <li>
-                    <div class="form-check form-check-primary">
-                      <label class="form-check-label">
-                        <input class="checkbox" type="checkbox"> Meeting with Alita </label>
-                    </div>
-                    <i class="remove mdi mdi-close-box"></i>
-                  </li>
-                  <li class="completed">
-                    <div class="form-check form-check-primary">
-                      <label class="form-check-label">
-                        <input class="checkbox" type="checkbox" checked> Prepare for presentation </label>
-                    </div>
-                    <i class="remove mdi mdi-close-box"></i>
-                  </li>
-                  <li>
-                    <div class="form-check form-check-primary">
-                      <label class="form-check-label">
-                        <input class="checkbox" type="checkbox"> Plan weekend outing </label>
-                    </div>
-                    <i class="remove mdi mdi-close-box"></i>
-                  </li>
-                  <li>
-                    <div class="form-check form-check-primary">
-                      <label class="form-check-label">
-                        <input class="checkbox" type="checkbox"> Pick up kids from school </label>
-                    </div>
-                    <i class="remove mdi mdi-close-box"></i>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-body">
-              <h4 class="card-title">Visitors by Countries</h4>
-              <div class="row">
-                <div class="col-md-5">
-                  <div class="table-responsive">
-                    <table class="table">
-                      <tbody>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-us"></i>
-                          </td>
-                          <td>USA</td>
-                          <td class="text-right"> 1500 </td>
-                          <td class="text-right font-weight-medium"> 56.35% </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-de"></i>
-                          </td>
-                          <td>Germany</td>
-                          <td class="text-right"> 800 </td>
-                          <td class="text-right font-weight-medium"> 33.25% </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-au"></i>
-                          </td>
-                          <td>Australia</td>
-                          <td class="text-right"> 760 </td>
-                          <td class="text-right font-weight-medium"> 15.45% </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-gb"></i>
-                          </td>
-                          <td>United Kingdom</td>
-                          <td class="text-right"> 450 </td>
-                          <td class="text-right font-weight-medium"> 25.00% </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-ro"></i>
-                          </td>
-                          <td>Romania</td>
-                          <td class="text-right"> 620 </td>
-                          <td class="text-right font-weight-medium"> 10.25% </td>
-                        </tr>
-                        <tr>
-                          <td>
-                            <i class="flag-icon flag-icon-br"></i>
-                          </td>
-                          <td>Brasil</td>
-                          <td class="text-right"> 230 </td>
-                          <td class="text-right font-weight-medium"> 75.00% </td>
-                        </tr>
-                      </tbody>
-                    </table>
-                  </div>
-                </div>
-                <div class="col-md-7">
-                  <div id="audience-map" class="vector-map"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- content-wrapper ends -->
-    <!-- partial:partials/_footer.html -->
-    <footer class="footer">
-      <div class="d-sm-flex justify-content-center justify-content-sm-between">
-        <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-        <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
-      </div>
-    </footer>
-    <!-- partial -->
-  </div>      
-</x-admin-layout>
 
+    <main class="h-full overflow-y-auto">
+        <div class="container px-6 mx-auto grid">
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                Dashboard
+            </h2>
+
+            <div class="grid gap-6 mb-8 md:grid-cols-2 xl:grid-cols-4">
+                <!-- Card -->
+                <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                    <div
+                        class="p-3 mr-4 text-orange-500 bg-orange-100 rounded-full dark:text-orange-100 dark:bg-orange-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                            Total clients
+                        </p>
+                        <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                            {{ $users }}
+                        </p>
+                    </div>
+                </div>
+                <!-- Card -->
+                <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                    <div
+                        class="p-3 mr-4 text-green-500 bg-green-100 rounded-full dark:text-green-100 dark:bg-green-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M4 4a2 2 0 00-2 2v4a2 2 0 002 2V6h10a2 2 0 00-2-2H4zm2 6a2 2 0 012-2h8a2 2 0 012 2v4a2 2 0 01-2 2H8a2 2 0 01-2-2v-4zm6 4a2 2 0 100-4 2 2 0 000 4z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                            Total Movies
+                        </p>
+                        <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                            {{ $movies }}
+                        </p>
+                    </div>
+                </div>
+                <!-- Card -->
+                <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                    <div class="p-3 mr-4 text-blue-500 bg-blue-100 rounded-full dark:text-blue-100 dark:bg-blue-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path
+                                d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z">
+                            </path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                            Total Series
+                        </p>
+                        <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                            {{ $series }}
+                        </p>
+                    </div>
+                </div>
+                <!-- Card -->
+                <div class="flex items-center p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                    <div class="p-3 mr-4 text-teal-500 bg-teal-100 rounded-full dark:text-teal-100 dark:bg-teal-500">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd"
+                                d="M18 5v8a2 2 0 01-2 2h-5l-5 4v-4H4a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2zM7 8H5v2h2V8zm2 0h2v2H9V8zm6 0h-2v2h2V8z"
+                                clip-rule="evenodd"></path>
+                        </svg>
+                    </div>
+                    <div>
+                        <p class="mb-2 text-sm font-medium text-gray-600 dark:text-gray-400">
+                            Actors
+                        </p>
+                        <p class="text-lg font-semibold text-gray-700 dark:text-gray-200">
+                            {{ $actors }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Charts -->
+            <h2 class="my-6 text-2xl font-semibold text-gray-700 dark:text-gray-200">
+                Charts
+            </h2>
+            <div class="grid gap-6 mb-8 md:grid-cols-2">
+                <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                    <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+                        Revenue
+                    </h4>
+                    <canvas id="pie"></canvas>
+                    <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
+                        <!-- Chart legend -->
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-blue-500 rounded-full"></span>
+                            <span>Shirts</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"></span>
+                            <span>Shoes</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"></span>
+                            <span>Bags</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="min-w-0 p-4 bg-white rounded-lg shadow-xs dark:bg-gray-800">
+                    <h4 class="mb-4 font-semibold text-gray-800 dark:text-gray-300">
+                        Traffic
+                    </h4>
+                    <canvas id="line"></canvas>
+                    <div class="flex justify-center mt-4 space-x-3 text-sm text-gray-600 dark:text-gray-400">
+                        <!-- Chart legend -->
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-teal-600 rounded-full"></span>
+                            <span>Organic</span>
+                        </div>
+                        <div class="flex items-center">
+                            <span class="inline-block w-3 h-3 mr-1 bg-purple-600 rounded-full"></span>
+                            <span>Paid</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+</x-admin-layout>

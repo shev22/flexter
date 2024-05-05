@@ -25,6 +25,7 @@ trait SearchTrait
             $searchResults = Http::pool(function (Pool $pool) use ($url, $nbPages) {
                 return collect()
                     ->range(1, $nbPages)
+                    // ->map(fn ($page) => $pool->withToken(config('services.tmdb.token'))->get($url . "&page={$page}"));
                     ->map(fn ($page) => $pool->withToken(config('services.tmdb.token'))->get($url . "&page={$page}"));
             });
 

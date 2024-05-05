@@ -1,13 +1,25 @@
 <div>
-
+{{-- {{ dd($trending[10]) }} --}}
     <div id="featured-slider">
         <div class="MS-content">
-            @foreach ($trending as $movie)
+            @foreach ($trending ?? [] as $movie)
                 <div class="item ">
 
                     <div class="featured-content">
                         <img src="https://image.tmdb.org/t/p/w1280/{{ $movie['backdrop_path'] }}"
                             style="width:100%; height:100%; ">
+
+{{-- 
+                            @if ($movie['logo']['video'] !== []) --}}
+                                   {{-- <iframe  height="100%" width="100%" 
+                            src="https://youtube.com/embed/{{ $movie['logo']['video']}}?autoplay=1&mute=1&loop=1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                         >
+                          </iframe>  --}}
+
+                          {{-- <iframe  src="https://youtube.com/embed/{{ $movie['logo']['video']}}?autoplay=1&mute=1&loop=1" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+                            @endif --}}
+                        
 
                         {{-- <button class="wishlist-featured-button" wire:click="wishlist({{ $movie }})" style=" font-size: 25px;" wire:ignore> 
                                 <i class="wishlist-featured  fas fa-bookmark {{ $this->isWishListed($movie['id']) ? 'wishlisted' : '' }}"></i>
@@ -18,16 +30,16 @@
 
 
 
-                            @if ($movie['logo'] == false)
+                            @if ($movie['logo']['logo'] == false)
                                 <h1 class="featured-title"> {{ $movie['title'] }}</h1>
                             @else
-                                <img class="featured-title" src="https://image.tmdb.org/t/p/original/{{ $movie['logo'] }}"
+                                <img class="featured-title" src="https://image.tmdb.org/t/p/original/{{ $movie['logo']['logo']  }}"
                                     alt="">
-                            @endif
+                            @endif 
 
 
 
-                            <div>
+                          <div>
                                 <h5>
                                     <span class="imdb"> IMDB </span>
                                     <i style="margin: 3px; color:yellow" class='fa fa-star'> </i>
@@ -36,7 +48,7 @@
                                         {{ $movie['vote_average'] }} |
                                         {{ $movie['release_date'] }} |
                                         {{ ucfirst($movie['media_type']) }} |
-                                        @foreach (json_decode($movie['genre_ids']) as $genre)
+                                        @foreach (json_decode($movie['genre_ids'])->genre as $genre)
                                             {{ $this->genres()->get($genre) }}
                                             @if (!$loop->last)
                                                 ,

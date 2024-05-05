@@ -10,7 +10,7 @@
         <div class="content">
             <h3>{{ $movie['title'] }}</h3>
             <p>
-                @foreach (json_decode($movie['genre_ids'] ) as $genre)
+                @foreach (json_decode($movie['genre_ids'])->genre as $genre)
                     {{ $this->genres()->get($genre) }}
                     {{-- @if (!$loop->last)
                         ,

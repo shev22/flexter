@@ -17,7 +17,11 @@ class MediaBuffer3
     public function buffer()
     {
         $this->mediaService->popularMovies();
-        $this->mediaService->getActors();
+
+        $this->mediaService->movie_genres();
+        $this->mediaService->languages();
+        $this->mediaService->tv_genres();
+       $this->mediaService->topRatedTv();
        
 
         // for ($i = 0; $i < 1000; $i++) {

@@ -623,7 +623,6 @@ body {
 
 #featured-slider {
     position: relative; /* recommended */
-    
 }
 #featured-slider .MS-content {
     white-space: nowrap; /* required */
@@ -826,7 +825,6 @@ body {
 #trending {
     position: relative; /* recommended */
     box-shadow: 0px 0px 120px -55px rgba(19, 160, 134, 0.6);
-
 }
 #trending .MS-content {
     white-space: nowrap; /* required */
@@ -834,7 +832,7 @@ body {
     padding-top: 5px;
 }
 
-#trending .MS-content a{
+#trending .MS-content a {
     text-decoration: none;
 }
 
@@ -873,7 +871,6 @@ body {
 #airing-today {
     position: relative; /* recommended */
     box-shadow: 0px 0px 120px -55px rgba(19, 160, 134, 0.6);
-
 }
 #airing-today .MS-content {
     white-space: nowrap; /* required */
@@ -881,7 +878,7 @@ body {
     padding-top: 5px;
 }
 
-#airing-today .MS-content a{
+#airing-today .MS-content a {
     text-decoration: none;
 }
 #airing-today .MS-content .item {
@@ -927,7 +924,6 @@ body {
     width: 100%;
     overflow-y: scroll;
     box-shadow: 0px 0px 120px -55px rgba(19, 160, 134, 0.6);
-
 }
 
 /* box-shadow: 20px 20px 30px 3px rgba(172, 172, 172, 0.55);  */
@@ -1475,44 +1471,19 @@ input:focus {
     margin-bottom: 20px;
 }
 
-
-.comment-similar{
- 
-    display: flex; 
-    margin-top:5px; 
-  
-    /* padding:10px;  */
-    justify-content: center; 
+.comment-similar {
+    display: flex;
+    margin-top: 5px;
+    height: 750px;
+    justify-content: center;
 }
-
 
 .movie-comment-container {
-    width:70%;
+    width: 70%;
     /* background-color: blueviolet; */
-    box-shadow: 0px 0px 150px -45px rgba(19, 160, 134, 0.6);;
-    border-radius: 10px 0px 0px 10px; 
-    
+    box-shadow: 0px 0px 150px -45px rgba(19, 160, 134, 0.6);
+    border-radius: 10px 0px 0px 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 word
 
@@ -1641,22 +1612,19 @@ word
     text-align: justify;
 }
 
-.card_right__social{
+.card_right__social {
     padding: 10px 10px 10px 40px;
 }
 
 .card_right__social a {
-
     text-decoration: none;
     margin-right: 3px;
- 
 
     -webkit-transition-property: all;
     transition-property: all;
     -webkit-transition-duration: 0.5s;
     transition-duration: 0.5s;
-  }
-
+}
 
 .paginator-container {
     position: relative;
@@ -1888,6 +1856,10 @@ word
         overflow-y: auto;
         height: 80%;
     }
+
+    .movie-list-title {
+        font-size: 15px;
+    }
 }
 
 @media screen and (max-width: 985px) {
@@ -1896,6 +1868,7 @@ word
     }
     .comment-similar {
         flex-direction: column;
+        height: 900px;
     }
 
     .recently-updated {
@@ -1906,7 +1879,6 @@ word
     }
     .filter-panel {
         display: none;
-
     }
     .filter-panel-mobile {
         display: flex;
@@ -1914,11 +1886,10 @@ word
     .filter-panel .search-filter {
         margin: 3px;
     }
-    .movie-comment-container {
-        width:100%;
-    }
-        
 
+    .movie-comment-container {
+        width: 100%;
+    }
 }
 
 @media screen and (max-width: 830px) {
@@ -2129,12 +2100,10 @@ word
       } */
     .movie_card .info_section .movie_header .type {
         font-size: 14px;
-      }
+    }
     .movie_card .info_section .movie_desc .text {
         font-size: 14px;
-      }
-
-
+    }
 }
 /* @media only screen and (min-height: 768px) {
     .movie_header {
@@ -2142,42 +2111,6 @@ word
         min-height:80%;
       }
 } */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .movie_card {
     position: relative;
@@ -2188,12 +2121,12 @@ word
     overflow: hidden;
     border-radius: 10px;
     transition: all 0.4s;
-  }
-  .movie_card:hover {
+}
+.movie_card:hover {
     transform: scale(1.02);
     transition: all 0.4s;
-  }
-  .movie_card .info_section {
+}
+.movie_card .info_section {
     position: relative;
     width: 100%;
     height: 100%;
@@ -2201,22 +2134,22 @@ word
     z-index: 2;
     border-radius: 10px;
     overflow-y: auto;
-  }
-  .movie_card .info_section .movie_header {
+}
+.movie_card .info_section .movie_header {
     position: relative;
     padding: 25px;
     height: 40%;
     /* overflow-y: auto; */
-  }
-  .movie_card .info_section .movie_header h1 {
+}
+.movie_card .info_section .movie_header h1 {
     color: #d1d1d1;
     font-weight: 400;
-  }
-  .movie_card .info_section .movie_header h4 {
+}
+.movie_card .info_section .movie_header h4 {
     color: #88adad;
     font-weight: 400;
-  }
-  .movie_card .info_section .movie_header .minutes {
+}
+.movie_card .info_section .movie_header .minutes {
     display: inline-block;
     margin-top: 10px;
     color: #a2bab9;
@@ -2225,51 +2158,40 @@ word
     font-weight: bold;
     border-radius: 5px;
     border: 1px solid rgba(255, 255, 255, 0.13);
-  }
-  .movie_card .info_section .movie_header .type {
+}
+.movie_card .info_section .movie_header .type {
     /* display: inline-block; */
-    color: #719d9d ;
-    /* margin-left: 10px; */
-  }
-  .movie_card .info_section .movie_header .locandina {
+    color: #719d9d;
+}
+.movie_card .info_section .movie_header .locandina {
     position: relative;
     float: left;
     margin-right: 20px;
     height: 120px;
-   
+
     box-shadow: 0 0 20px -10px rgba(0, 0, 0, 0.5);
-  }
-  .movie_card .info_section .movie_desc {
+}
+.movie_card .info_section .movie_desc {
+    /* margin-top: 30px; */
     padding: 25px;
     height: 50%;
-  }
-  .movie_card .info_section .movie_desc .text {
+}
+.movie_card .info_section .movie_desc .text {
     color: #afafb0;
-  }
-  .movie_card .info_section .movie_social {
+}
+.movie_card .info_section .movie_social {
     height: 10%;
-    
     padding-left: 15px;
-    padding-bottom: 20px;
-  }
-  /* .movie_card .info_section .movie_social ul {
-    list-style: none;
-    padding: 0;
-  } */
-  .movie_card .info_section p {
+    padding-bottom: 10px;
+}
+
+.movie_card .info_section p {
     font-size: 14px;
     color: rgb(154, 154, 154);
     margin: 0 10px;
-  }
-  /* .movie_card .info_section .movie_social ul li:hover {
-    transition: color 0.3s;
-    color: rgba(255, 255, 255, 0.8);
-  }
-  .movie_card .info_section .movie_social ul li i {
-    font-size: 19px;
-    cursor: pointer;
-  } */
-  .movie_card .blur_back {
+}
+
+.movie_card .blur_back {
     position: absolute;
     top: 0;
     z-index: 1;
@@ -2277,167 +2199,235 @@ word
     right: 0;
     background-size: cover;
     border-radius: 11px;
-  }
+}
 
-  .movie_card .blur_back iframe{
-    width:130% ;
-    height:100%
-  }
+.movie_card .blur_back iframe {
+    width: 130%;
+    height: 100%;
+}
 
-  @media screen and (min-width: 768px) {
-
+@media screen and (min-width: 768px) {
     .movie_card {
-      width: 95%;
-      min-height: 80vh;
-      /* height: auto; */
+        width: 95%;
+        min-height: 80vh;
+        /* height: auto; */
     }
     .movie_header {
-      width: 60%;
-    
+        width: 60%;
     }
 
     .movie_card .info_section .movie_header h1 {
         margin-top: 20px;
         font-weight: bold;
-      }
-      .movie_card .info_section .movie_header h4 {
+    }
+    .movie_card .info_section .movie_header h4 {
         font-weight: bold;
         font-size: 13px;
         margin-top: 10px;
-      }
+    }
 
-
-
-
-      .movie_card .info_section .movie_header .type {
+    .movie_card .info_section .movie_header .type {
         margin-top: 10px;
-  
-   
-      }
+    }
 
-      .movie_card .info_section .movie_header .locandina {
-        border-radius: 6px 0 0 0 ;
+    .movie_card .info_section .movie_header .locandina {
+        border-radius: 6px 0 0 0;
         height: 220px;
-
-      }
-
-    
+    }
 
     .movie_desc {
-      width: 60%;
-    
-     
+        width: 60%;
     }
     .info_section {
-      background: linear-gradient(to right, #0d0d0c 45%, transparent 70%);
+        background: linear-gradient(to right, #0d0d0c 45%, transparent 70%);
     }
     .blur_back {
-      width: 80%;
- 
-      background-position: -100% 10% !important;
+        width: 80%;
+
+        background-position: -100% 10% !important;
     }
-  }
-  @media screen and (max-width: 768px) {
+}
+@media screen and (max-width: 768px) {
     .movie_card {
-      width: 95%;
-      margin: 40px auto;
-      min-height: 350px;
-      height: auto;
+        width: 95%;
+        margin: 40px auto;
+        min-height: 350px;
+        height: auto;
     }
     .blur_back {
-      width: 100%;
-      background-position: 50% 50% !important;
+        width: 100%;
+        background-position: 50% 50% !important;
     }
 
     .movie_card .info_section .movie_header h1 {
         margin-top: 10px;
         font-weight: bold;
-      }
-      .movie_card .info_section .movie_header h4 {
+    }
+    .movie_card .info_section .movie_header h4 {
         font-weight: bold;
         font-size: 12px;
-      }
+    }
 
-
-      .movie_card .info_section .movie_header .minutes {
-     
+    .movie_card .info_section .movie_header .minutes {
         color: #dfdddd;
         font-size: 12px;
         margin-top: 5px;
         font-weight: bold;
-      }
+    }
 
-      .movie_card .info_section .movie_header .type {
+    .movie_card .info_section .movie_header .type {
         margin-top: 5px;
         font-size: 14px;
-      }
-    
+    }
+
     .movie_card .info_section .movie_header .locandina {
-        border-radius: 6px ;
+        border-radius: 6px;
         margin-right: 15px;
         height: 180px;
+    }
 
-      }
+    .movie_card .info_section .movie_desc {
+        padding: 0 10px 10px 10px;
+    }
 
-      .movie_card .info_section .movie_desc {
-        padding:0 10px 10px 10px;
-      }
-
-  .movie_card .blur_back iframe{
-    width:100% ;
-  }
+    .movie_card .blur_back iframe {
+        width: 100%;
+    }
     .movie_header {
-      width: 100%;
-      margin-top: 85px;
+        width: 100%;
+        margin-top: 85px;
     }
     .movie_desc {
-      width: 100%;
-      font-size: 14px;
+        width: 100%;
+        font-size: 14px;
     }
     .info_section {
-      background: linear-gradient(to top, #141413 0%, transparent 100%);
-      display: inline-grid;
+        background: linear-gradient(to top, #141413 0%, transparent 100%);
+        display: inline-grid;
     }
-  }
-  #tomb {
+
+    .movie_card .info_section .movie_social p {
+        font-size: 13px;
+    }
+}
+#tomb {
     box-shadow: 0px 0px 150px -45px rgba(19, 160, 134, 0.6);
-  }
-  #tomb:hover {
+}
+#tomb:hover {
     box-shadow: 0px 0px 120px -55px rgba(19, 160, 134, 0.6);
-  }
-  /* .tomb_back {
+}
+/* .tomb_back {
     background: url("https://fsmedia.imgix.net/cd/c9/5e/ba/4817/4d9a/93f0/c776ec32ecbc/lara-crofts-neck-looks-unnatural-in-the-new-poster-for-tomb-raider.png");
   } */
+
+
+
+
+
+
+
+
   
 
 
 
+  .checkbox-wrapper-47 input[type="checkbox"] {
+    display: none;
+    visibility: hidden;
+  }
+
+  .checkbox-wrapper-47 label {
+    position: relative;
+    padding-left: 1.6em;
+    /* line-height: 2; */
+    cursor: pointer;
+    display: inline-flex;
+  }
+
+  .checkbox-wrapper-47 label:before {
+    box-sizing: border-box;
+    content: " ";
+    position: absolute;
+    top: 0.1rem;
+    left: 0;
+    display: block;
+    width: 1em;
+    height: 1em;
+    border: 1.5px solid #9098A9;
+    border-radius: 3px;
+    z-index: -1;
+  }
+
+  .checkbox-wrapper-47 input[type=checkbox]:checked + label {
+    padding-left: 1em;
+    color: #0f5229;
+  }
+  .checkbox-wrapper-47 input[type=checkbox]:checked + label:before {
+    top: 0;
+    width: 110%;
+    height: 1.5em;
+    background: #cbd4cd;
+    border-color: #67766c;
+  
+  }
+
+  .checkbox-wrapper-47 label,
+  .checkbox-wrapper-47 label::before {
+    transition: 0.25s all ease;
+  }
 
 
 
 
 
+  .checkbox-wrapper-48 input[type="radio"] {
+    display: none;
+    visibility: hidden;
+  }
+
+  .checkbox-wrapper-48 label {
+    position: relative;
+    padding-left: 1.6em;
+    /* line-height: 2; */
+    cursor: pointer;
+    display: inline-flex;
+  }
+
+  .checkbox-wrapper-48 label:before {
+    box-sizing: border-box;
+    content: " ";
+    position: absolute;
+    top: 0.1rem;
+    left: 0;
+    display: block;
+    width: 1em;
+    height: 1em;
+    border: 1.5px solid #9098A9;
+    border-radius: 9px;
+    z-index: -1;
+  }
+
+  .checkbox-wrapper-48 input[type=radio]:checked + label {
+    padding-left: 1em;
+    color: #0f5229;
+  }
+  .checkbox-wrapper-48 input[type=radio]:checked + label:before {
+    top: 0;
+    width: 110%;
+    height: 1.5em;
+    background: #cbd4cd;
+    border-color: #67766c;
+  
+  }
+
+  .checkbox-wrapper-48 label,
+  .checkbox-wrapper-48 label::before {
+    transition: 0.25s all ease;
+  }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  /**
+  *ADMINNNN
+  */
 
 

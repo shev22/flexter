@@ -54,13 +54,13 @@ class HomeView extends Component
 
 
 
-        // $this->popular = $this->formatData(Cache::get('movies-popular')->take(30), 'movie');
-        // $this->upcoming = $this->formatData(Cache::get('movies-upcoming')->take(30), 'movie');
-        // $this->nowPlayingMovies = $this->formatData(Cache::get('movies-nowplaying')->take(50), 'movie');
+        // $this->popular = $this->formatData(Cache::get('movies-popular')?->take(30), 'movie');
+        // $this->upcoming = $this->formatData(Cache::get('movies-upcoming')?->take(30), 'movie');
+        // $this->nowPlayingMovies = $this->formatData(Cache::get('movies-nowplaying')?->take(50), 'movie');
 
         // $this->airingToday = $this->formatData(Cache::get('tv-airingtoday'), 'tv');
-        // $this->onair = $this->formatData(Cache::get('tv-onair')->take(30), 'tv');
-        // $this->popularTv = $this->formatData(Cache::get('tv-popular')->take(30), 'tv');
+        // $this->onair = $this->formatData(Cache::get('tv-onair')?->take(30), 'tv');
+        // $this->popularTv = $this->formatData(Cache::get('tv-popular')?->take(30), 'tv');
 
     }
 

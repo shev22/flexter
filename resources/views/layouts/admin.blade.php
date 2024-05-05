@@ -1,67 +1,48 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Corona Admin</title>
-    <!-- plugins:css -->
-    <link rel="stylesheet" href="{{ asset('assets/vendors/mdi/css/materialdesignicons.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/css/vendor.bundle.base.css') }}">
-    <!-- endinject -->
-    <!-- Plugin css for this page -->
-    <link rel="stylesheet" href="{{ asset('assets/vendors/jvectormap/jquery-jvectormap.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/flag-icon-css/css/flag-icon.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/owl-carousel-2/owl.carousel.min.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendors/owl-carousel-2/owl.theme.default.min.css') }}">
-    <!-- End plugin css for this page -->
-    <!-- inject:css -->
-    <!-- endinject -->
-    <!-- Layout styles -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <!-- End layout styles -->
-    <link rel="shortcut icon" href="{{ asset('assets/images/favicon.png') }}" />
-  
-  </head>
-  <body>
-    <div class="container-scroller">
+<html :class="{ 'theme-dark': dark }" x-data="data()" lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Windmill Dashboard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="{{ asset('./assets/css/tailwind.output.css') }}" />
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+    <script src="{{ asset('./assets/js/init-alpine.js') }}"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" defer></script>
+    <script src="{{ asset('./assets/js/charts-lines.js') }}" defer></script>
+    <script src="{{ asset('./assets/js/charts-pie.js') }}" defer></script>
+    <style>
+        #dropdown {
+            display: none
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: rgba(49, 49, 49, 0.5);
+            border-radius: 15px;
+            border: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="flex h-screen bg-gray-50 dark:bg-gray-900" :class="{ 'overflow-hidden': isSideMenuOpen }">
         @include('admin/inc/sidebar')
- 
-        <div class="container-fluid page-body-wrapper">
+        <div class="flex flex-col flex-1 w-full">
             @include('admin/inc/navbar')
-    <main >
-        {{ $slot }}
-    </main>
-    <footer class="footer">
-        <div class="d-sm-flex justify-content-center justify-content-sm-between">
-          <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © bootstrapdash.com 2020</span>
-          <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center"> Free <a href="https://www.bootstrapdash.com/bootstrap-admin-template/" target="_blank">Bootstrap admin templates</a> from Bootstrapdash.com</span>
+            {{ $slot }}
         </div>
-      </footer>
-      <!-- partial -->
-  <!-- page-body-wrapper ends -->
-</div>
-</div>
-<!-- container-scroller -->
-<!-- plugins:js -->
-<script src="{{ asset('assets/vendors/js/vendor.bundle.base.js') }}"></script>
-<!-- endinject -->
-<!-- Plugin js for this page -->
-<script src="{{ asset('assets/vendors/chart.js/Chart.min.js') }}"></script>
-<script src="{{ asset('assets/vendors/progressbar.js/progressbar.min.js') }}"></script>
-<script src="{{ asset('assets/vendors/jvectormap/jquery-jvectormap.min.js') }}"></script>
-<script src="{{ asset('assets/vendors/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
-<script src="{{ asset('assets/vendors/owl-carousel-2/owl.carousel.min.js') }}"></script>
-<!-- End plugin js for this page -->
-<!-- inject:js -->
-<script src="{{ asset('assets/js/off-canvas.js') }}"></script>
-<script src="{{ asset('assets/js/hoverable-collapse.js') }}"></script>
-<script src="{{ asset('assets/js/misc.js') }}"></script>
-<script src="{{ asset('assets/js/settings.js') }}"></script>
-<script src="{{ asset('assets/js/todolist.js') }}"></script>
-<!-- endinject -->
-<!-- Custom js for this page -->
-<script src="{{ asset('assets/js/dashboard.js') }}"></script>
-<!-- End custom js for this page -->
+    </div>
 </body>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 </html>

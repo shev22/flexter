@@ -244,35 +244,32 @@ $('.checkbox-filter').on( 'click', 'input', function() {
  *   top rated, search page, watchlist
  */
 
-// $(".checkbox-filter button").on("click", function(){
+$(".search-panel button").on("click", function(){
+  $(".search-panel button").removeClass("active-filter");
+  $(this).addClass("active-filter");
 
-//   $(".checkbox-filter button").removeClass("active-filter");
-//   $(this).addClass("active-filter");
-
-// });
+ });
 
 
-$("#watchlist-movies ").click(function () {
+$("#movies ").click(function () {
 
-  $(".tv").hide(500);
-  $(".movie").show(300);
-  $(".person").hide(400);
 
+  $(".movie").show(400);
+  $(".person").hide(100);
+  $(".tv").hide(100);
 });
 
-$("#watchlist-tv").click(function () {
-
-  $(".movie").hide(500);
+$("#tv").click(function () {
   $(".tv").show(400);
-  $(".person").hide(400);
+  $(".movie").hide(100);
+  $(".person").hide(100);
 });
 
-$("#watchlist-actors").click(function () {
+$("#actors").click(function () {
 
-  $(".movie").hide(500);
-  $(".tv").hide(400);
   $(".person").show(400);
-
+  $(".movie").hide(100);
+  $(".tv").hide(100);
 });
 /**
  * 

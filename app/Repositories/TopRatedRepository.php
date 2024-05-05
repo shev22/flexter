@@ -3,6 +3,8 @@
 
 namespace App\Repositories;
 
+use Carbon\Carbon;
+use App\Models\Repository;
 use GuzzleHttp\Promise\Utils;
 use Illuminate\Http\Client\Pool;
 use Illuminate\Support\Facades\Http;
@@ -35,15 +37,56 @@ class TopRatedRepository{
         //     }
         // })->collapse();
 
-        for ($i = 1; $i <= $pages; $i++) {
-            $promises[] = Http::withToken(config('services.tmdb.token'))->async()->get('https://api.themoviedb.org/3/'.$mediaType.'/top_rated?page=' . $i);
-        }
-        $responses = Utils::unwrap($promises);
+        // for ($i = 1; $i <= $pages; $i++) {
+        //     $promises[] = Http::withToken(config('services.tmdb.token'))->async()->get('https://api.themoviedb.org/3/'.$mediaType.'/top_rated?page=' . $i);
+        // }
+        // $responses = Utils::unwrap($promises);
 
-        return collect($responses)->map(function ($response) {
-            if (array_key_exists("results", $response->json())) {
-                return $response["results"];
-            }
-        })->collapse();
+        // return collect($responses)->map(function ($response) {
+        //     if (array_key_exists("results", $response->json())) {
+        //         return $response["results"];
+        //     }
+        // })->collapse();
+
+
+
+
+        $time = time();
+        $statistics = [
+            'repository' => 'toprated-' . $mediaType,
+            'quantity' => null,
+            'duration' => null,
+            'status' => null,
+            'error_message' => null,
+            'date' => Carbon::now()->format('d-m-y'),
+        ];
+
+
+
+        try {
+
+            for ($i = 1; $i <= $pages; $i++) {
+             $promises[] = Http::withToken(config('services.tmdb.token'))->async()->get('https://api.themoviedb.org/3/'.$mediaType.'/top_rated?page=' . $i);
+    }
+            $responses = Utils::unwrap($promises);
+
+            $media = collect($responses)->map(function ($response) {
+                if (array_key_exists("results", $response->json())) {
+                    return $response["results"];
+                }
+            })->collapse();
+
+            $statistics['status'] = 'success';
+            $statistics['quantity'] = count($media).' / '.$pages;
+            $statistics['duration'] =  (time() - $time);
+
+            Repository::create($statistics);
+            return $media;
+        } catch (\Throwable $th) {
+            $statistics['status'] = 'failed';
+            $statistics['error_message'] = $th->getMessage();
+            $statistics['duration'] =  (time() - $time);
+            Repository::create($statistics);
+        }
     }
 }

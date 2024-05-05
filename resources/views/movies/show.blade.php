@@ -6,7 +6,9 @@
 
         <div class="content-container" style="padding-top: 1px; ">
 
-
+            <a class="stream">
+                <i class="pulse fa fa-play-circle" ></i>
+            </a>
             <x-iframe-player :id="$movie['id']" :media="$movie['media']" />
 
             {{--     
@@ -61,9 +63,7 @@
                     </div>
                     </div>
               
-                    <a class="stream">
-                        <i class="pulse fa fa-play-circle" ></i>
-                    </a>
+                  
                         @if ($movie['videos']['results'])
                         <div class="blur_back">
                             
@@ -174,14 +174,6 @@
                     </div>
                 </div>
 
-                {{-- <div class="blur_back tomb_back"></div> --}}
-
-
-
-                {{-- <iframe width="100%" height="100%"
-                        src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0">
-                        </iframe> --}}
-
                 @if ($movie['videos']['results'])
                     <div class="blur_back">
 
@@ -193,10 +185,8 @@
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                             allowfullscreen>
                         </iframe>
-
-
-
                     </div>
+                  
                 @else
                     @if ($movie['images'])
                         <div class="blur_back"
@@ -208,32 +198,7 @@
                         </div>
                     @endif
                 @endif
-
-
-
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             <div class="comment-similar">
 
@@ -242,13 +207,6 @@
                         COMMENTS
                         <i class='fa fa-comment'></i>
                     </h3>
-
-
-
-
-
-
-
                     <div id="disqus_thread" style="color:white"></div>
                     <script>
                         /**
@@ -275,8 +233,6 @@
                 <div class="recently-updated" style="width: 25%">
                     <h3 class="movie-list-title {{ session('nightmode') ? 'active' : '' }}" style="padding: 10px">
                         SIMILAR MOVIES
-
-
                         <i class='fa fa-film'></i>
 
                     </h3>

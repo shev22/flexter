@@ -44,6 +44,11 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/wishlist', [PagesController::class, 'wishlist'])->name('wishlist');
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+    Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin/settings');
+    Route::get('/admin/statistics', [AdminController::class, 'statistics'])->name('statistics');
+    Route::post('/admin/statistics', [AdminController::class, 'statistics'])->name('statistics');
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('users');
+
 });
 
 require __DIR__.'/auth.php';

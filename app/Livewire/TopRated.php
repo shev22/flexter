@@ -18,7 +18,7 @@ class TopRated extends Component
     public $itemsPerPage = 25;
     public $popularity = false;
     public $latest     = false;
-    public $showmovies ;
+    public $showmovies;
     public $showtv;
     public $eighties;
     public $seventies;
@@ -27,8 +27,8 @@ class TopRated extends Component
     public $language    = [];
     public $sortByGenre = [];
     public $sortByYears = [];
-  
-      public function loadMore()
+
+    public function loadMore()
     {
         $this->itemsPerPage += 20;
     }
@@ -36,8 +36,8 @@ class TopRated extends Component
     {
         $movie_genre = $this->getGenres(Cache::get('movies-genre'));
         $tv_genre = $this->getGenres(Cache::get('tv-genre'));
-        $genre =  $movie_genre->union($tv_genre );
-        return( $genre);
+        $genre =  $movie_genre->union($tv_genre);
+        return ($genre);
 
 
         return $this->getGenres(Cache::get('tv-genre'));
@@ -83,16 +83,15 @@ class TopRated extends Component
 
     public function updateShowmovies()
     {
-       $this->showmovies= true;
-       $this->showtv= false;
-       
+        $this->showmovies = true;
+        $this->showtv = false;
     }
 
     public function updateShowtv()
     {
-       
-       $this->showtv= true;
-       $this->showmovies= false;
+
+        $this->showtv = true;
+        $this->showmovies = false;
     }
 
 
@@ -100,43 +99,40 @@ class TopRated extends Component
 
     public function render()
     {
-        $movies = ModelsTopRated::when($this->showmovies == true , function($e){
+        $movies = ModelsTopRated::when($this->showmovies == true, function ($e) {
             $this->showtv = false;
             $e->where('media_type', 'movie');
         })
-        ->when($this->showtv ==true , function($e){
-            $this->showmovies == false;
-            $e->where('media_type', 'tv');
-        })
-        
-        ->when($this->sortByImdb , function($e){
+            ->when($this->showtv == true, function ($e) {
+                $this->showmovies == false;
+                $e->where('media_type', 'tv');
+            })
 
+            ->when($this->sortByImdb, function ($e) {
+            })
 
-        })
-        
-        ->when($this->sortByImdb, function ($e) {
+            ->when($this->sortByImdb, function ($e) {
 
-            $e->when($this->sortByImdb == 'acending', function ($e2) {
+                $e->when($this->sortByImdb == 'acending', function ($e2) {
 
-                $e2->orderBy('vote_average', 'DESC');
-            });
-            $e->when($this->sortByImdb == 'decending', function ($e2) {
+                    $e2->orderBy('vote_average', 'DESC');
+                });
+                $e->when($this->sortByImdb == 'decending', function ($e2) {
 
-                $e2->orderBy('vote_average', 'asc');
-            });
-            $e->when($this->sortByImdb == 'normal', function ($e2) {
-                $this->sortByImdb = null;
-            });
-        })
+                    $e2->orderBy('vote_average', 'asc');
+                });
+                $e->when($this->sortByImdb == 'normal', function ($e2) {
+                    $this->sortByImdb = null;
+                });
+            })
 
 
             /**
              * Sort by years
              */
             ->when($this->sortByYears, function ($e) {
-                
+
                 $e->whereIn('year', $this->sortByYears);
-                
             })
 
             ->when($this->latest, function ($e) {
@@ -179,7 +175,7 @@ class TopRated extends Component
             ->when($this->latest, function ($e) {
                 $e->orderBy('year', 'DESC');
             })
-          
+
             ->when($this->language, function ($e) {
                 $e->whereIn('original_language', $this->language);
             })
@@ -194,15 +190,15 @@ class TopRated extends Component
                     // dd( );
 
                     if (count(array_intersect($this->sortByGenre, json_decode($item['genre_ids']))) > 0) {
-                       // dd($item);
+                        // dd($item);
                     }
                 });
             })
             ->take($this->itemsPerPage)->get();
-      
-   
 
-       
+
+
+
 
         return view('livewire.top-rated', ['movies' => $movies->unique('id')]);
     }

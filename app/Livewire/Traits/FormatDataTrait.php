@@ -49,7 +49,7 @@ trait FormatDataTrait
                     $media_type = $mediaType;
                 }
 
-        
+
                 return collect($media)->merge([
 
                     'title' => $title,
@@ -57,7 +57,8 @@ trait FormatDataTrait
                         ? 'https://image.tmdb.org/t/p/w500/' . $media['poster_path']
                         : 'https://fakeimg.pl/600x400/080505/4f4d4d?text=image&font=lobster',
                     'backdrop_path' => $media['backdrop_path'],
-                    'genre_ids' => json_encode( $media['genre_ids']),
+                    // 'genre_ids' => json_encode( $media['genre_ids']),
+                        'genre_ids' => json_encode( ['genre' => preg_filter('/^/', '', $media['genre_ids'])]),
                     'vote_average' => round($media['vote_average'], 1),
                     'release_date' => Carbon::parse($release_date)->format('M , Y'),
                 ])->only([

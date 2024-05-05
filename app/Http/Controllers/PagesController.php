@@ -33,29 +33,29 @@ class PagesController extends Controller
 
         // $movies =  MovieModel::all()->pluck('id')->toArray();
         // dump(count($movies));
-       //Cache::flush();
+    // Cache::flush();
         // // dd($this->nightMode->checkActiveBackground());
        // // $time  = time ();
-      // ( $this->buffer->trendingAll());
-        //     ( $this->buffer->airingToday());
+     // ( $this->buffer->trendingAll());
+          //   ( $this->buffer->airingToday());
         //   ($this->buffer->onAir()); ;
         // $this->buffer->trending_tv();
         //     $this->buffer->topRatedTv();
         //      $this->buffer->tv_genres();
         //   $this->buffer->popularTv();
-        // $this->buffer->trending_movies();
-        //  ($this->buffer->popularMovies()) ;
+       // $this->buffer->trending_movies();
+        // ($this->buffer->popularMovies()) ;
         //   $this->buffer->up_comingMovies();
-         //   $this->buffer->movie_genres();
+        //    $this->buffer->movie_genres();
         //  $this->buffer->nowPlayingMovies();
         // $this->buffer->top_ratedMovies();
     // //  ($this->buffer->changes_movies()) ;
         // ($this->buffer->getActors()) ;
-        //($this->buffer->movies()) ;
+    //    ($this->buffer->movies()) ;
       //  ($this->buffer->topRated()) ;
         //    ($this->buffer->tv()) ;
 
- //dd( Cache::get('all-trending' ) );
+  //dd( Cache::get('tv-airingtoday' ) );
             // dump(time() - $time);
         //    dd($this->buffer->discover());
        // $data = [2];

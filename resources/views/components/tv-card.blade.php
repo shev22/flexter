@@ -12,7 +12,7 @@
             <div class="content">
                 <h3>{{ $tvshow['title'] }}</h3>
                 <p>
-                    @foreach (json_decode($tvshow['genre_ids'] ) as $genre)
+                    @foreach (json_decode($tvshow['genre_ids'] )->genre as $genre)
                         {{ $this->genres()->get($genre) }}
                         {{-- @if (!$loop->last)
                             ,

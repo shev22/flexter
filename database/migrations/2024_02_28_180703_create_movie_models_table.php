@@ -15,7 +15,7 @@ return new class extends Migration
        
             $table->string('backdrop_path')->nullable();;
 
-            // $table->string('logo')->nullable();;
+            $table->string('logo')->nullable();;
             $table->json('genre_ids')->nullable();
             $table->unsignedBigInteger('id');
             $table->string('original_language')->nullable();

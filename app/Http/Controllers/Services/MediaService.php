@@ -2,20 +2,20 @@
 
 namespace App\Http\Controllers\Services;
 
+use Carbon\Carbon;
 use App\Models\TvModel;
+use App\Models\Settings;
+use App\Models\TopRated;
 use App\Models\ActorModel;
 use App\Models\MovieModel;
+use App\Models\Repository;
 use Illuminate\Support\Str;
-use GuzzleHttp\Promise\Utils;
-use Illuminate\Http\Client\Pool;
-use Illuminate\Support\Facades\Http;
 use App\Repositories\GenreRepository;
 use App\Repositories\OnAirRepository;
 use Illuminate\Support\Facades\Cache;
 use App\Repositories\ActorsRepository;
 use App\Repositories\ChangesRepository;
 use App\Livewire\Traits\FormatDataTrait;
-use App\Models\TopRated;
 use App\Repositories\LanguageRepository;
 use App\Repositories\PorpularRepository;
 use App\Repositories\TopRatedRepository;
@@ -27,6 +27,7 @@ use App\Repositories\AiringTodayRepository;
 class MediaService
 {
     use FormatDataTrait;
+    private $count = [];
 
 
     public function __construct(
@@ -49,12 +50,6 @@ class MediaService
 
 
 
-
-
-
-
-
-
     /**
      * MOVIES SECTION
      *
@@ -63,62 +58,48 @@ class MediaService
 
     public function trending_movies()
     {
-        Cache::put('movies-trending',  $this->trending->trending('movie', 'day'));
-        // return Cache::rememberForever('movies-trending', function () {
-        //     return  $this->trending->trending('movie', 'day');
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->movies_trending;
+        Cache::put('movies-trending',  $this->trending->trending('movie', $data));
     }
-
-    // public function changes_movies()
-    // {
-    //     Cache::put('languages', $this->languages->languages());// return  $this->changes->changes('movie');
-    //     return Cache::rememberForever('movies-changes', function () {
-    //         return  $this->changes->changes('movie');
-    //     });
-    // }
 
     public function popularMovies()
     {
-        // return   $this->porpular->porpular('movie', 5);
-        Cache::put('movies-popular',  $this->porpular->porpular('movie', 500));
-        // return  Cache::rememberForever('movies-popular', function () {
-        //     return   $this->porpular->porpular('movie', 500);
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->movies_popular;
+         Cache::put('movies-popular',  $this->porpular->porpular('movie',   $data));
     }
 
     public function top_ratedMovies()
     {
-        Cache::put('movies-toprated', $this->topRated->topRated('movie', 466));
-        // return Cache::rememberForever('movies-toprated', function () {
-        //     return $this->topRated->topRated('movie', 459);
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->movies_toprated;
+        Cache::put('movies-toprated', $this->topRated->topRated('movie',  $data));
     }
 
     public function up_comingMovies()
     {
-        Cache::put('movies-upcoming',  $this->upComing->upComing('movie', 51));
-        // $this->upComing->upComing('movie', 100);
-        // return Cache::rememberForever('movies-upcoming', function () {
-        //     return    $this->upComing->upComing('movie', 39);
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->movies_upcoming;
+        Cache::put('movies-upcoming',  $this->upComing->upComing('movie',  $data));
     }
 
     public function movie_genres()
     {
         Cache::put('movies-genre', $this->genre->genre('movie'));
-        // return  Cache::rememberForever('movies-genre', function () {
-        //     return   $this->genre->genre('movie');
-        // });
-        // return Cache::get('movie-genre');
     }
 
 
     public function nowPlayingMovies()
     {
-        Cache::put('movies-nowplaying', $this->nowPlaying->nowPlaying('movie', 209));
-        // return  Cache::rememberForever('movies-nowplaying', function () {
-        //     return   $this->nowPlaying->nowPlaying('movie', 167);
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->movies_nowplaying;
+        Cache::put('movies-nowplaying', $this->nowPlaying->nowPlaying('movie',  $data));
     }
 
 
@@ -130,237 +111,245 @@ class MediaService
      */
     public function trending_tv()
     {
-        Cache::put('tv-trending', $this->trending->trending('tv', 'day'));
-        // Cache::rememberForever('tv-trending', function () {
-        //     return $this->trending->trending('tv', 'day');
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->tv_trending;
+        Cache::put('tv-trending', $this->trending->trending('tv',  $data));;
     }
-
-    // public function changes_tv()
-    // {
-    //     return Cache::rememberForever('tv-changes', function () {
-    //         return  $this->changes->changes('tv');
-    //     });
-    // }
 
     public function popularTv()
     {
-        Cache::put('tv-popular', $this->porpular->porpular('tv', 500));
-        // return  $this->porpular->porpular('tv', 50);
-        // Cache::rememberForever('tv-popular', function () {
-        //     return  $this->porpular->porpular('tv', 500);
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->tv_popular;
+        Cache::put('tv-popular', $this->porpular->porpular('tv',  $data));
     }
 
     public function topRatedTv()
     {
-        Cache::put('tv-toprated', $this->topRated->topRated('tv', 98));
-        // Cache::rememberForever('tv-toprated', function () {
-        //     return $this->topRated->topRated('tv', 95);
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->tv_toprated;
+        Cache::put('tv-toprated', $this->topRated->topRated('tv',  $data));
     }
 
     public function airingToday()
     {
-        Cache::put('tv-airingtoday', $this->airingToday->airingToday('tv', 17));
-        // return  $this->airingToday->airingToday('tv', 16);
-        // Cache::rememberForever('tv-airingtoday', function () {
-        //     return  $this->airingToday->airingToday('tv', 17);
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->tv_airingtoday;
+        Cache::put('tv-airingtoday', $this->airingToday->airingToday('tv',  $data));
     }
 
     public function onAir()
     {
-        Cache::put('tv-onair', $this->onAir->onAir('tv', 62));
-        // return $this->onAir->onAir('tv', 100);
-        // Cache::rememberForever('tv-onair', function () {
-        //     return $this->onAir->onAir('tv', 60);
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->tv_onair;
+        Cache::put('tv-onair', $this->onAir->onAir('tv',  $data));
     }
 
     public function tv_genres()
     {
+
         Cache::put('tv-genre', $this->genre->genre('tv'));
-        // Cache::rememberForever('tv-genre', function () {
-        //     return $this->genre->genre('tv');
-        // });
     }
-
-
-
-
 
 
     public function trendingAll()
     {
-        Cache::put('all-trending', $this->trending->trending('all', 'day'));
-        // return Cache::rememberForever('all-trending', function () {
-        //     return  $this->trending->trending('all', 'day');
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->all_trending;
+        Cache::put('all-trending', $this->trending->trending('all', $data));
     }
 
     public function languages()
     {
 
         Cache::put('languages', $this->languages->languages());
-        // return  $this->languages->languages();
-        // return Cache::rememberForever('languages', function () {
-        //     return  $this->languages->languages();
-        // });
     }
 
 
     public function getActors()
     {
-
-        Cache::put('actors', $this->actors->actors('500'));
-        // return Cache::rememberForever('actors', function () {
-        //     return  $this->actors->actors('500');
-        // });
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data->repository->actors;
+        Cache::put('actors', $this->actors->actors($data));
     }
 
 
-
-
-
-
-
-
-
-
-
-
-    // private function popular()
-    // {
-    //     return Cache::get('movies-popular');
-    // }
-
-    // private function upcoming()
-    // {
-    //     return Cache::get('movies-upcoming');
-    // }
-
-    // private function toprated()
-    // {
-    //     return Cache::get('movies-toprated');
-    // }
-
-    // private function trending()
-    // {
-    //     return Cache::get('movies-trending');
-    // }
-
-    // private function nowplaying()
-    // {
-    //     return Cache::get('movies-nowplaying');
-    // }
-
-
-
-
-
-
     public function movies()
-    {  
-        
-       
-        $merged = Cache::get('movies-trending')->merge(Cache::get('movies-nowplaying'));
-        $merged = $merged->merge(Cache::get('movies-upcoming'));
-        $merged = $merged->merge(Cache::get('movies-popular'));
-        $merged = $merged->merge(Cache::get('movies-toprated'));
-        $movies =  MovieModel::all()->pluck('id')->toArray();
-        // dump(count($movies));
-        foreach (array_chunk($this->formatData($merged, 'movie')->unique('id')->toArray(), 1000) as $t) {
-            collect($t)->map(function ($movie) use ($movies) {
-                if (!in_array($movie['id'], $movies)) {
-                    MovieModel::create($movie);
-                }
-            });
+    {
+        $time = time();
+
+        $statistics = [
+            'repository' => 'movie-db',
+            'quantity' => null,
+            'duration' => null,
+            'status' => null,
+            'error_message' => null,
+            'date' => Carbon::now()->format('d-m-y'),
+        ];
+        try {
+            $merged = collect(Cache::get('movies-trending'))->merge(Cache::get('movies-nowplaying'));
+            $merged = $merged->merge(Cache::get('movies-upcoming'));
+            $merged = $merged->merge(Cache::get('movies-popular'));
+            $merged = $merged->merge(Cache::get('movies-toprated'));
+            $movies =  MovieModel::all()->pluck('id')->toArray();
+
+
+            foreach (array_chunk($this->formatData($merged, 'movie')->unique('id')->toArray(), 1000) as $t) {
+                collect($t)->map(function ($movie) use ($movies) {
+                    if (!in_array($movie['id'], $movies)) {
+                        $this->count[] = $movie;
+                        MovieModel::create($movie);
+                    }
+                });
+            }
+
+            $statistics['quantity'] = count($this->count);
+            $statistics['status'] = 'success';
+            $statistics['duration'] =  (time() - $time);
+        } catch (\Throwable $th) {
+
+            $statistics['status'] = 'failed';
+            $statistics['error_message'] = $th->getMessage();
+            $statistics['duration'] =  (time() - $time);
         }
-      
+        Repository::create($statistics);
     }
 
 
     public function topRated()
     {
-        $movies =  $this->formatData(Cache::get('movies-toprated'), 'movie');
-        $tv =  $this->formatData(Cache::get('tv-toprated'), 'tv');
-        $merged =  $movies->merge($tv);
 
-        $movies =  TopRated::all()->pluck('id')->toArray();
-        foreach (array_chunk($merged->unique('id')->toArray(), 1000) as $t) {
-            collect($t)->map(function ($movie) use ($movies) {
-                if (!in_array($movie['id'], $movies)) {
-                    TopRated::create($movie);
-                }
-            });
+        $time = time();
+        $statistics = [
+            'repository' => 'toprated-db',
+            'quantity' => null,
+            'duration' => null,
+            'status' => null,
+            'error_message' => null,
+            'date' => Carbon::now()->format('d-m-y'),
+        ];
+        try {
+            $movies =  $this->formatData(Cache::get('movies-toprated'), 'movie');
+            $tv =  $this->formatData(Cache::get('tv-toprated'), 'tv');
+            $merged =  $movies->merge($tv);
+
+            $movies =  TopRated::all()->pluck('id')->toArray();
+            foreach (array_chunk($merged->unique('id')->toArray(), 1000) as $t) {
+                collect($t)->map(function ($movie) use ($movies) {
+                    if (!in_array($movie['id'], $movies)) {
+                        $this->count[] = $movie;
+                        TopRated::create($movie);
+                    }
+                });
+            }
+            $statistics['quantity'] = count($this->count);
+            $statistics['status'] = 'success';
+            $statistics['duration'] =  (time() - $time);
+        } catch (\Throwable $th) {
+
+            $statistics['status'] = 'failed';
+            $statistics['error_message'] = $th->getMessage();
+            $statistics['duration'] =  (time() - $time);
         }
-
+        Repository::create($statistics);
     }
 
 
 
     public function tv()
     {
+        $time = time();
+        $statistics = [
+            'repository' => 'movie-db',
+            'quantity' => null,
+            'duration' => null,
+            'status' => null,
+            'error_message' => null,
+            'date' => Carbon::now()->format('d-m-y'),
+        ];
+        try {
 
 
-        $merged = Cache::get('tv-trending')->merge(Cache::get('tv-airingtoday'));
-        $merged = $merged->merge(Cache::get('tv-onair'));
-        $merged = $merged->merge(Cache::get('tv-popular'));
-        $merged = $merged->merge(Cache::get('tv-toprated'));
-        $tvs =  TvModel::all()->pluck('id')->toArray();
+            $merged = collect(Cache::get('tv-trending'))->merge(Cache::get('tv-airingtoday'));
+            $merged = $merged->merge(Cache::get('tv-onair'));
+            $merged = $merged->merge(Cache::get('tv-popular'));
+            $merged = $merged->merge(Cache::get('tv-toprated'));
+            $tvs =  TvModel::all()->pluck('id')->toArray();
 
-        foreach (array_chunk($this->formatData($merged, 'tv')->unique('id')->toArray(), 1000) as $t) {
-            collect($t)->map(function ($tv) use ($tvs) {
-                if (!in_array($tv['id'], $tvs)) {
-                    TvModel::create($tv);
-                }
-            });
+            foreach (array_chunk($this->formatData($merged, 'tv')->unique('id')->toArray(), 1000) as $t) {
+                collect($t)->map(function ($tv) use ($tvs) {
+                    if (!in_array($tv['id'], $tvs)) {
+                        $this->count[] = $tv;
+                        TvModel::create($tv);
+                    }
+                });
+            }
+            $statistics['quantity'] = count($this->count);
+            $statistics['status'] = 'success';
+            $statistics['duration'] =  (time() - $time);
+        } catch (\Throwable $th) {
+
+            $statistics['status'] = 'failed';
+            $statistics['error_message'] = $th->getMessage();
+            $statistics['duration'] =  (time() - $time);
         }
-        // foreach (array_chunk($this->formatData($merged, 'movie')->unique('id')->toArray(), 1000) as $t) {
-        //     MovieModel::insert($t);
-        // }
-
+        Repository::create($statistics);
     }
 
 
 
-
-
-
-
-
-
-
-
-
-   
     public function actors()
     {
-          
-        $actors =   Cache::get('actors');
-        $actormodel = ActorModel::all()->pluck('id')->toArray();
 
-        $data = $actors->map(function ($actor) {
-            return collect($actor)->merge([
-                'profile_path' => $actor['profile_path']
-                    ? 'https://image.tmdb.org/t/p/w235_and_h235_face' . $actor['profile_path']
-                    : 'https://ui-avatars.com/api/?size=235&name=' . $actor['name'],
-                'known_for' => collect($actor['known_for'])->where('media_type', 'movie')->pluck('title')->union(
-                    collect($actor['known_for'])->where('media_type', 'tv')->pluck('name')
-                )->implode(', '),
-            ])->only([
-                'name', 'id', 'profile_path', 'known_for',
-            ])->put('slug',  Str::of($actor['name'])->slug('-'));
-        });
+        $time = time();
+        $statistics = [
+            'repository' => 'movie-db',
+            'quantity' => null,
+            'duration' => null,
+            'status' => null,
+            'error_message' => null,
+            'date' => Carbon::now()->format('d-m-y'),
+        ];
+        try {
+            $actors =   Cache::get('actors');
+            $actormodel = ActorModel::all()->pluck('id')->toArray();
 
-        foreach (array_chunk($data->unique('id')->toArray(), 1000) as $t) {
-            collect($t)->map(function ($actor) use ($actormodel) {
-                if (!in_array($actor['id'], $actormodel)) {
-                    ActorModel::create($actor);
-                }
+            $data = $actors->map(function ($actor) {
+                return collect($actor)->merge([
+                    'profile_path' => $actor['profile_path']
+                        ? 'https://image.tmdb.org/t/p/w235_and_h235_face' . $actor['profile_path']
+                        : 'https://ui-avatars.com/api/?size=235&name=' . $actor['name'],
+                    'known_for' => collect($actor['known_for'])->where('media_type', 'movie')->pluck('title')->union(
+                        collect($actor['known_for'])->where('media_type', 'tv')->pluck('name')
+                    )->implode(', '),
+                ])->only([
+                    'name', 'id', 'profile_path', 'known_for',
+                ])->put('slug',  Str::of($actor['name'])->slug('-'));
             });
+
+            foreach (array_chunk($data->unique('id')->toArray(), 1000) as $t) {
+                collect($t)->map(function ($actor) use ($actormodel) {
+                    if (!in_array($actor['id'], $actormodel)) {
+                        ActorModel::create($actor);
+                    }
+                });
+            }
+            $statistics['quantity'] = count($this->count);
+            $statistics['status'] = 'success';
+            $statistics['duration'] =  (time() - $time);
+        } catch (\Throwable $th) {
+
+            $statistics['status'] = 'failed';
+            $statistics['error_message'] = $th->getMessage();
+            $statistics['duration'] =  (time() - $time);
         }
+        Repository::create($statistics);
         //ActorModel::insert($data->toArray());
 
     }
