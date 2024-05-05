@@ -33,7 +33,7 @@ class PagesController extends Controller
 
         // $movies =  MovieModel::all()->pluck('id')->toArray();
         // dump(count($movies));
-    // Cache::flush();
+     //Cache::flush();
         // // dd($this->nightMode->checkActiveBackground());
        // // $time  = time ();
      // ( $this->buffer->trendingAll());
@@ -43,7 +43,7 @@ class PagesController extends Controller
         //     $this->buffer->topRatedTv();
         //      $this->buffer->tv_genres();
         //   $this->buffer->popularTv();
-       // $this->buffer->trending_movies();
+    //    $this->buffer->trending_movies();
         // ($this->buffer->popularMovies()) ;
         //   $this->buffer->up_comingMovies();
         //    $this->buffer->movie_genres();
@@ -94,38 +94,7 @@ class PagesController extends Controller
 
     public function nightMode()
     {
-        //  $nightmode = ['nightmode'=> true];
-        //     session()->put('nightmode', $nightmode);
-
-        // if (Auth::check()) {
-        //     $settings = Settings::where('user_id', Auth::id())->where('config_block_id', 1)->first();
-
-        //     $data = json_decode($settings->config_data);
-
-        //     if ($data->nightmode == true) {
-        //         $data->nightmode = false;
-        //         $settings->config_data = json_encode($data);
-        //         $settings->save();
-        //     } else {
-        //         $data->nightmode = true;
-        //         $settings->config_data = json_encode($data);
-        //         $settings->save();
-        //     }
-
-        //     $result = [
-        //         "nightmode" =>   $data->nightmode,
-        //         "status" => "success",
-        //     ];
-        // } else {
-        //     $result = [
-        //         "status" => "fail",
-        //     ];
-        // }
-
-        // return response()->json($result);
-        //  dd(session('nightmode'));
-
-
+        
         if (session('nightmode') == false || session('nightmode') == null) {
             session()->put('nightmode', true);
         } else {

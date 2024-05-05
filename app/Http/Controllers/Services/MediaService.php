@@ -60,7 +60,7 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->movies_trending;
+        $data =  $data[9]->pages;
         Cache::put('movies-trending',  $this->trending->trending('movie', $data));
     }
 
@@ -68,15 +68,15 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->movies_popular;
-         Cache::put('movies-popular',  $this->porpular->porpular('movie',   $data));
+        $data =  $data[6]->pages;
+        Cache::put('movies-popular',  $this->porpular->porpular('movie',   $data));
     }
 
     public function top_ratedMovies()
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->movies_toprated;
+        $data =  $data[8]->pages;
         Cache::put('movies-toprated', $this->topRated->topRated('movie',  $data));
     }
 
@@ -84,7 +84,7 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->movies_upcoming;
+        $data =  $data[10]->pages;
         Cache::put('movies-upcoming',  $this->upComing->upComing('movie',  $data));
     }
 
@@ -98,7 +98,7 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->movies_nowplaying;
+        $data =  $data[11]->pages;
         Cache::put('movies-nowplaying', $this->nowPlaying->nowPlaying('movie',  $data));
     }
 
@@ -113,7 +113,7 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->tv_trending;
+        $data =  $data[4]->pages;
         Cache::put('tv-trending', $this->trending->trending('tv',  $data));;
     }
 
@@ -121,7 +121,7 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->tv_popular;
+        $data =  $data[2]->pages;
         Cache::put('tv-popular', $this->porpular->porpular('tv',  $data));
     }
 
@@ -129,7 +129,7 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->tv_toprated;
+        $data =  $data[3]->pages;
         Cache::put('tv-toprated', $this->topRated->topRated('tv',  $data));
     }
 
@@ -137,7 +137,7 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->tv_airingtoday;
+        $data =  $data[7]->pages;
         Cache::put('tv-airingtoday', $this->airingToday->airingToday('tv',  $data));
     }
 
@@ -145,7 +145,7 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->tv_onair;
+        $data =  $data[1]->pages;
         Cache::put('tv-onair', $this->onAir->onAir('tv',  $data));
     }
 
@@ -160,13 +160,12 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->all_trending;
+        $data =  $data[5]->pages;
         Cache::put('all-trending', $this->trending->trending('all', $data));
     }
 
     public function languages()
     {
-
         Cache::put('languages', $this->languages->languages());
     }
 
@@ -175,7 +174,7 @@ class MediaService
     {
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
-        $data =  $data->repository->actors;
+        $data =  $data[0]->pages;
         Cache::put('actors', $this->actors->actors($data));
     }
 

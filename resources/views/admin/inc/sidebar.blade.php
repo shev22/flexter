@@ -5,7 +5,7 @@
     <div class="py-4 text-gray-500 dark:text-gray-400">
       <a
         class="ml-6 text-lg font-bold "
-        href="{{ route('admin') }}"
+        href="{{ route('/') }}"
       >
         flexter
       </a>
