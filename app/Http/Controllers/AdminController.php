@@ -32,28 +32,35 @@ class AdminController extends Controller
 
     public function settings(Request $request)
     {
-        $repositories =  Settings::where('config_block_id', 1)->first();
+        $query =  Settings::all();
+        $repositories = $query->where('config_block_id', 1)->first();
+        $homeSettings = $query->where('config_block_id', 2)->first();
         if ($request->input() != []) {
 
             $data = json_decode($repositories->config_data);
-
-            $data[0]->pages = $request->input('Actors');
-            $data[1]->pages = $request->input('tv_onair');
-            $data[2]->pages = $request->input('tv_popular');
-            $data[3]->pages = $request->input('tv_toprated');
-            $data[4]->pages = $request->input('tv_trending');
-            $data[5]->pages = $request->input('all_trending');
-            $data[6]->pages = $request->input('movies_popular');
-            $data[7]->pages = $request->input('tv_airingtoday');
-            $data[8]->pages = $request->input('movies_toprated');
-            $data[9]->pages = $request->input('movies_trending');
-            $data[10]->pages = $request->input('movies_upcoming');
-            $data[11]->pages = $request->input('movies_nowplaying');
+            foreach ($data  as $key => $value) {
+                $value->pages  = $request->input($value->repository);
+            }
             $repositories->config_data = json_encode($data);
-
             ($repositories->save());
         }
-        return view('admin.settings', ['repositories' => $repositories]);
+        return view('admin.settings', ['repositories' => $repositories, 'homeSettings' => $homeSettings]);
+    }
+
+    public function homeSettings(Request $request)
+    {
+
+
+        $repositories =  Settings::where('config_block_id', 2)->first();
+
+        $data = json_decode($repositories->config_data);
+        foreach ($data  as $key => $value) {
+            $value->pages  = $request->input($value->repository);
+        }
+        $repositories->config_data = json_encode($data);
+
+        ($repositories->save());
+        return redirect()->back();
     }
 
     public function statistics(Request $request)
@@ -68,7 +75,7 @@ class AdminController extends Controller
             $latest_update = $updates->last()?->date;
         }
 
-        $stats = Repository::where('date', $latest_update)->get();
+        $stats = Repository::where('date', $latest_update)->paginate(8);
         return view('admin.statistics', [
             'stats' => $stats,
             'updates' => $updates,
@@ -76,10 +83,22 @@ class AdminController extends Controller
     }
 
 
-    public function users()
+    public function users(Request $request)
     {
-        return view('admin.users');
+        
+        if ($request->has('id')) {
+            $user = User::findOrFail($request->input('id'));
+            if ($user->role == 'admin') {
+                $user->role = 'user';
+                $user->update();
+            } else {
+                $user->role = 'admin';
+                $user->update();
+            }
+            return redirect()->back();
+        }
+
+        $users = User::paginate(5);
+        return view('admin.users', ['users' => $users]);
     }
 }
-
-

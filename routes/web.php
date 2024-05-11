@@ -43,20 +43,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::get('/wishlist', [PagesController::class, 'wishlist'])->name('wishlist');
-
-    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
-
-    Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin/settings');
-    Route::post('/admin/settings', [AdminController::class, 'settings'])->name('admin/settings');
-
-    Route::get('/admin/statistics', [AdminController::class, 'statistics'])->name('statistics');
-    Route::post('/admin/statistics', [AdminController::class, 'statistics'])->name('statistics');
-
-    Route::get('/admin/users', [AdminController::class, 'users'])->name('users');
-
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 
 
 Route::get('/', [PagesController::class, 'index'])->name('/');
@@ -67,7 +56,7 @@ Route::get('movies', [MoviesController::class, 'movies'])->name('movies');
 Route::get('/movie/{slug}/{id}', [MoviesController::class, 'show'])->name('movie.show');
 
 
-Route::get('/tv/page/{page?}',[TvController::class, 'tv']);
+Route::get('/tv/page/{page?}', [TvController::class, 'tv']);
 Route::get('tv', [TvController::class, 'tv'])->name('tv');
 Route::get('/tv/{slug}/{id}', [TvController::class, 'show'])->name('tv.show');
 
@@ -76,8 +65,23 @@ Route::get('/actors/{slug}/{id}', [ActorsController::class, 'show'])->name('acto
 
 Route::get('/search/{query?}',  [PagesController::class, 'search'])->name('search');
 
- Route::get('/toprated',  [PagesController::class, 'toprated'])->name('toprated');
+Route::get('/toprated',  [PagesController::class, 'toprated'])->name('toprated');
 
 Route::post('night-mode',  [PagesController::class, 'nightMode'])->name('settings');
 // Route::post('background',  [PagesController::class, 'checkActiveBackground'])->name('background');
 
+
+Route::middleware(['auth', 'isAdmin'])->group(function () {
+
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin');
+
+    Route::get('/admin/settings', [AdminController::class, 'settings'])->name('admin/settings');
+    Route::post('/admin/settings', [AdminController::class, 'settings'])->name('admin/settings');
+    Route::post('/admin/homesettings', [AdminController::class, 'homeSettings'])->name('admin/homesettings');
+
+    Route::get('/admin/statistics', [AdminController::class, 'statistics'])->name('statistics');
+    Route::post('/admin/statistics', [AdminController::class, 'statistics'])->name('statistics');
+
+    Route::get('/admin/users', [AdminController::class, 'users'])->name('users');
+    Route::post('/admin/role', [AdminController::class, 'users'])->name('role');
+});

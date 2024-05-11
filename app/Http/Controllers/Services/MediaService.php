@@ -265,7 +265,7 @@ class MediaService
     {
         $time = time();
         $statistics = [
-            'repository' => 'movie-db',
+            'repository' => 'tv-db',
             'quantity' => null,
             'duration' => null,
             'status' => null,
@@ -308,7 +308,7 @@ class MediaService
 
         $time = time();
         $statistics = [
-            'repository' => 'movie-db',
+            'repository' => 'actors-db',
             'quantity' => null,
             'duration' => null,
             'status' => null,

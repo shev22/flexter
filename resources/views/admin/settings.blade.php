@@ -151,12 +151,21 @@
                                         <input value=" {{ $item->pages }}" name="{{$item->repository  }}"
                                             class=" w-32 pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input">
                                     </td>
+                                    
 
                                 </tr>
                             @endforeach
 
                             <tr class="text-gray-700 dark:text-gray-400">
-                                <td class="px-4 py-3 text-sm">
+                                <td class="px-4 py-3 text-sm text-center">
+                                    <div>
+                                        <span role="button"
+                                            class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                            Cancel
+                                    </span>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-3 text-sm text-center">
                                     <div>
                                         <button type="submit"
                                             class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
@@ -207,8 +216,90 @@
 
             <!-- Validation inputs -->
             <h4 class="mb-4 text-lg font-semibold text-gray-600 dark:text-gray-300">
-                Validation
+                Home settings
             </h4>
+
+
+
+            <div class="w-full overflow-hidden rounded-lg shadow-xs mb-8">
+                <div class="w-full overflow-x-auto">
+                    <table class="w-full whitespace-no-wrap">
+                        <thead>
+                            <tr
+                                class="text-xs font-semibold tracking-wide text-left text-gray-500 uppercase border-b dark:border-gray-700 bg-gray-50 dark:text-gray-400 dark:bg-gray-800">
+                                <th class="px-4 py-3">Repository</th>
+                                <th class="px-4 py-3">Pages</th>
+
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y dark:divide-gray-700 dark:bg-gray-800">
+
+                            @foreach (json_decode($homeSettings->config_data) as $item)
+                                <tr class="text-gray-700 dark:text-gray-400">
+                                    <td class="px-4 py-3">
+                                        <div class="flex items-center text-sm">
+                                            <!-- Avatar with inset shadow -->
+
+                                            <div>
+                                                <p class="font-semibold">{{ $item->repository }}</p>
+
+                                            </div>
+                                        </div>
+                                    </td>
+
+                                    <form method="post" action="{{ route('admin/homesettings') }}">
+                                      @csrf
+                                    <td class="px-4 py-3 text-sm">
+                                        <input value=" {{ $item->pages }}" name="{{$item->repository  }}"
+                                            class=" w-32 pl-10 mt-1 text-sm text-black dark:text-gray-300 dark:border-gray-600 dark:bg-gray-700 focus:border-purple-400 focus:outline-none focus:shadow-outline-purple dark:focus:shadow-outline-gray form-input">
+                                    </td>
+                                    
+
+                                </tr>
+                            @endforeach
+
+                            <tr class="text-gray-700 dark:text-gray-400">
+                                <td class="px-4 py-3 text-sm text-center">
+                                    <div>
+                                        <span role="button"
+                                            class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-red-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                            Cancel
+                                    </span>
+                                    </div>
+                                </td>
+                                <td class="px-4 py-3 text-sm text-center">
+                                    <div>
+                                        <button type="submit"
+                                            class="px-3 py-1 text-sm font-medium leading-5 text-white transition-colors duration-150 bg-purple-600 border border-transparent rounded-md active:bg-purple-600 hover:bg-purple-700 focus:outline-none focus:shadow-outline-purple">
+                                            Save
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                          </form>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="px-4 py-3 mb-8 bg-white rounded-lg shadow-md dark:bg-gray-800">
                 <!-- Invalid input -->
                 <label class="block text-sm">

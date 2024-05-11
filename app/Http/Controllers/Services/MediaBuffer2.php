@@ -30,9 +30,6 @@ class MediaBuffer2
         $this->mediaService->popularTv();
     }
 
-    public function flashBuffer()
-    {
-        Cache::flush();
-    }
+
 
 }

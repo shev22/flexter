@@ -1706,7 +1706,7 @@ word
     color: white;
     font-weight: 500;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     gap: 0.2rem;
     position: relative;
