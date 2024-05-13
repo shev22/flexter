@@ -8,6 +8,7 @@ use App\Models\Settings;
 use App\Models\ActorModel;
 use App\Models\MovieModel;
 use App\Models\Repository;
+use App\Models\TopRated;
 use Illuminate\Http\Request;
 use App\ViewModels\TvViewModel;
 
@@ -20,13 +21,15 @@ class AdminController extends Controller
         $movies = MovieModel::all()->count();
         $series = TvModel::all()->count();
         $actors = ActorModel::all()->count();
+        $toprated = TopRated::all()->count();
 
 
         return view('admin.index', [
             'actors' => $actors,
             'movies' => $movies,
             'series' => $series,
-            'users' => $users
+            'users' => $users,
+            'toprated' => $toprated 
         ]);
     }
 

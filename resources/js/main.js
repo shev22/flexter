@@ -566,14 +566,17 @@ $("#actors").click(function () {
 
   $(".stream").click(function () {
 
-
+  
     $(".movie_card").fadeOut(1000);
     $(".modal-frame").fadeIn();
+    $(".stream").hide();
   });
 
   $(".modal-close").click(function () {
+ 
     $(".modal-frame").slideUp();
     $(".movie_card").fadeIn();
+    $(".stream").show();
 
   });
 

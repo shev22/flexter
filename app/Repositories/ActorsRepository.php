@@ -75,7 +75,7 @@ class ActorsRepository{
             })->collapse();
 
             $statistics['status'] = 'success';
-            $statistics['quantity'] = count($media).' / '.$pages;
+            $statistics['quantity'] = count($media).' / '.$pages * 20;
             $statistics['duration'] =  (time() - $time);
 
             Repository::create($statistics);

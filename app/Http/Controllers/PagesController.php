@@ -44,18 +44,18 @@ class PagesController extends Controller
         //      $this->buffer->tv_genres();
         //   $this->buffer->popularTv();
     //    $this->buffer->trending_movies();
-        // ($this->buffer->popularMovies()) ;
+    //    ($this->buffer->popularMovies()) ;
         //   $this->buffer->up_comingMovies();
         //    $this->buffer->movie_genres();
         //  $this->buffer->nowPlayingMovies();
         // $this->buffer->top_ratedMovies();
-    // //  ($this->buffer->changes_movies()) ;
+   //  ($this->buffer->changes_movies()) ;
         // ($this->buffer->getActors()) ;
     //    ($this->buffer->movies()) ;
       //  ($this->buffer->topRated()) ;
         //    ($this->buffer->tv()) ;
 
-  //dd( Cache::get('tv-airingtoday' ) );
+  //dd( Cache::get('movies-popular' ) );
             // dump(time() - $time);
         //    dd($this->buffer->discover());
        // $data = [2];

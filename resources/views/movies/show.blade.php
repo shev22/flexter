@@ -173,7 +173,7 @@
                         </p>
                     </div>
                 </div>
-
+              
                 @if ($movie['videos']['results'])
                     <div class="blur_back">
 

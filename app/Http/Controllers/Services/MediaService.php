@@ -17,7 +17,7 @@ use App\Repositories\ActorsRepository;
 use App\Repositories\ChangesRepository;
 use App\Livewire\Traits\FormatDataTrait;
 use App\Repositories\LanguageRepository;
-use App\Repositories\PorpularRepository;
+use App\Repositories\PopularRepository;
 use App\Repositories\TopRatedRepository;
 use App\Repositories\TrendingRepository;
 use App\Repositories\UpComingRepository;
@@ -36,7 +36,7 @@ class MediaService
         private GenreRepository $genre,
         private ActorsRepository $actors,
         private ChangesRepository $changes,
-        private PorpularRepository $porpular,
+        private PopularRepository $popular,
         private UpComingRepository $upComing,
         private TopRatedRepository $topRated,
         private TrendingRepository $trending,
@@ -47,7 +47,6 @@ class MediaService
 
     ) {
     }
-
 
 
     /**
@@ -69,7 +68,7 @@ class MediaService
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
         $data =  $data[6]->pages;
-        Cache::put('movies-popular',  $this->porpular->porpular('movie',   $data));
+        Cache::put('movies-popular',  $this->popular->popular('movie',   $data));
     }
 
     public function top_ratedMovies()
@@ -122,7 +121,7 @@ class MediaService
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
         $data =  $data[2]->pages;
-        Cache::put('tv-popular', $this->porpular->porpular('tv',  $data));
+        Cache::put('tv-popular', $this->popular->popular('tv',  $data));
     }
 
     public function topRatedTv()

@@ -722,7 +722,7 @@ body {
 }
 
 .featured-title {
-    width: 600px;
+    max-width: 600px;
     z-index: 3;
     color: #fff(221, 221, 221);
     margin: 0 0 20px 0;
@@ -1434,6 +1434,61 @@ input:focus {
     color: rgb(206, 206, 206);
 }
 
+
+
+
+
+
+/**
+* play button
+
+*/
+
+
+.stream{
+    position: absolute;
+    font-size:6rem;
+    opacity: 0.2;
+    z-index: 7;
+    left: 65%;
+    top: 40%;
+    transform: scale(1);
+	animation: pulse 2s infinite;
+
+
+}
+
+.stream:hover{
+    opacity: 0.4;
+    cursor: pointer;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.95);
+
+	}
+
+	70% {
+		transform: scale(1);
+
+	}
+
+	100% {
+		transform: scale(0.95);
+	
+	}
+}
+
+
+
+
+
+
+
+
+
+
 /*--------------------------------------------------------------
 	# player show section
 	--------------------------------------------------------------*/
@@ -1462,6 +1517,7 @@ input:focus {
 
 .modal-close:hover {
     cursor: pointer;
+    color: rgb(141, 64, 64);
 }
 
 .modal-frame iframe {
