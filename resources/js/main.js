@@ -102,14 +102,15 @@ $(document).ready(function () {
   );
 
   ball.addEventListener("click", () => {
-    items.forEach((item) => {
-      item.classList.toggle("active");
-    });
-     ball.classList.toggle("active");
+  //   items.forEach((item) => {
+  //     item.classList.toggle("active");
+  //   });
+  //    ball.classList.toggle("active");
 
-     axios.post('/night-mode', {
+  //    axios.post('/night-mode', {
      
-  })
+  // })
+  alert()
   });
 
 

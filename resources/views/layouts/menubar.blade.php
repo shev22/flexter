@@ -24,10 +24,10 @@
         Series
     </a>
 
-    <a href="{{ route('movies') }} ">
+    <a href="{{ route('toprated') }} ">
         <i @class([
             ' fas fa-arrow-up',
-            'menubar-selected' => Request::is('movies'),
+            'menubar-selected' => Request::is('toprated'),
         ])>
         </i>
         Top Rated
@@ -39,7 +39,7 @@
     <i class=" fas fa-arrow-up"> Top Rated</i> --}}
 
     <span class="login"> <i class=" fas fa-user"> Login </i> </span>
-    <i class=" fas fa-sun"></i>
+   <span class=""><i class=" fas fa-sun "></i></span> 
 
 
 
