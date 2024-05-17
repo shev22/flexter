@@ -20,28 +20,30 @@
 
 </head>
 
-<body >
+<body>
 
     @include('layouts.navigation')
     @include('layouts.sidebar')
-    @include('layouts.menubar')
+
 
     <!-- Page Heading -->
     {{-- @if (isset($header))
                 <header class="bg-white dark:bg-gray-800 shadow">
                     <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
                         {{ $header }}
-                    </div>
+                    </div>a
                 </header>
             @endif --}}
 
     <!-- Page Content -->
-    <main >
-        {{ $slot }}
-    </main>
+    <div class="container {{ session('nightmode') ? 'active' : '' }}">
+        <div class="content-container">
+            {{ $slot }}
+            @include('layouts.menubar')
+        </div>
+    </div>
 
-  
-    
+
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="{{ asset('js/multislider/multislider.min.js') }}"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>

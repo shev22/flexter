@@ -1,11 +1,6 @@
 <x-app-layout>
-    <div class="container {{ session('nightmode') ? 'active' : '' }}">
-        <div class="content-container">
             <livewire:home-view>
-        </div>
-
-    </div>
-    @include('layouts.footer')
+    {{-- @include('layouts.footer') --}}
 </x-app-layout>
 
 @if (request()->routeIs('/'))

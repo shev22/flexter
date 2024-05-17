@@ -1,33 +1,72 @@
-<div class="menubar ">
-  {{-- <a href="{{ route('/') }}"><i class="left-menu-icon fas fa-home"></i></a>  
-    <i class="left-menu-icon fas fa-users"></i>
-    <i class="left-menu-icon fas fa-bookmark"></i>
-    <i class="left-menu-icon fas fa-tv"></i>
-    <i class="left-menu-icon fas fa-hourglass-start"></i>
-    <i class="left-menu-icon fas fa-shopping-cart"></i>
- --}}
+<div class="menubar {{ session('nightmode') ? 'active' : '' }}">
+    {{-- <a href="{{ route('/') }}"><i class="left-menu-icon fas fa-home"></i></a>   --}}
+    {{-- <div class="toggle {{ session('nightmode')? 'active' : '' }}">
+    <i class="fas fa-moon toggle-icon"></i>
+    <i class="fas fa-sun toggle-icon"></i>
+    <div class="toggle-ball {{ session('nightmode') ? 'active' : '' }}"></div>
+</div> --}}
+
+
+
+    <a href="{{ route('movies') }} ">
+        <i @class([
+            ' fas fa-play',
+            'menubar-selected' => Request::is('movies'),
+            'active' => session('nightmode'),
+        ])>
+        </i>
+        Movies
+    </a>
+
+    <a href="{{ route('tv') }} ">
+        <i @class([' fas fa-tv ', 'menubar-selected' => Request::is('tv')])>
+        </i>
+        Series
+    </a>
+
+    <a href="{{ route('movies') }} ">
+        <i @class([
+            ' fas fa-arrow-up',
+            'menubar-selected' => Request::is('movies'),
+        ])>
+        </i>
+        Top Rated
+    </a>
+
+    {{-- <a href=""><i class=" fas fa-play"> Movies</i></a> --}}
+
+    {{-- <i class=" fas fa-tv active"> Series</i>
+    <i class=" fas fa-arrow-up"> Top Rated</i> --}}
+
+    <span class="login"> <i class=" fas fa-user"> Login </i> </span>
+    <i class=" fas fa-sun"></i>
 
 
 
 
 
-    <ul class="">
-        <x-nav-link :href="route('/')" :selected="request()->routeIs('/')">
+
+
+    {{-- <ul class="">
+        <li>
+            <x-nav-link :href="route('/')" :selected="request()->routeIs('/')">
             {{ __('Home') }}
-        </x-nav-link>
+        </x-nav-link> 
+        </li>
+       
 
         <x-nav-link :href="route('movies')" :selected="request()->routeIs('movies')">
             {{ __('Movies') }}
         </x-nav-link>
 
         <x-nav-link :href="route('tv')" :selected="request()->routeIs('tv')">
-            {{ __('TV Shows') }}
+            {{ __('Shows') }}
         </x-nav-link>
 
 
         <x-auth-navlink :href="route('actors.index')" :selected="request()->routeIs('actors.index')">
             {{ __('Actors') }}
-        </x-auth-navlink>
+        </x-auth-navlink> 
 
         {{-- <x-auth-navlink>
             {{ __('Popular') }}
@@ -37,9 +76,8 @@
             {{ __('Trends') }}
         </x-auth-navlink> --}}
 
-        {{-- <x-nav-link>
+    {{-- <x-nav-link>
       
-        </x-nav-link>  --}}
-    </ul>
+        {{-- </x-nav-link>  --}}
+    {{-- </ul> --}}
 </div>
-

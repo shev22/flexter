@@ -33,14 +33,16 @@
                         class="z-10  bg-white divide-y divide-gray-100 rounded-lg shadow  dark:bg-gray-700 absolute "
                         style="margin-top: 20px;width:7rem">
 
-                        <ul class="py-2  text-gray-700 dark:text-gray-200 ">
+                        <ul class="py-1  text-gray-700 dark:text-gray-200 text-center ">
                             @foreach ($updates as $item)
-                                <li>
+                                <li >
                                     <form method="post" action="{{ route('statistics') }}">
                                         @csrf
                                         <input type="hidden" value="{{ $item->date }}" name="date">
                                         <button type="submit"
-                                            class=" px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-800 text-xs">{{ $item->date }}</button>
+                                            class=" px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800 dark:hover:text-gray-800 text-xs w-full">
+                                            {{ $item->date }}
+                                        </button>
                                     </form>
 
                                 </li>
@@ -49,6 +51,8 @@
                         </ul>
 
                     </div>
+
+                    
                 </div>
 
             </div>

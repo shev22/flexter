@@ -369,7 +369,7 @@ $("#actors").click(function () {
   //side men bar
   $(".menu-dropdown").click(function () {
     event.stopPropagation();
-    $('.menubar').animate({ width: 'toggle' }, 200).css({ display: 'flex' });
+    $('.menubar').slideToggle('fast').css({ display: 'flex' });
   });
 
 

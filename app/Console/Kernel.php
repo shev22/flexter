@@ -14,31 +14,29 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule): void
     {
         $schedule->command('app:buffer1')
-        ->timezone('Europe/Minsk')
-        ->dailyAt("10:45")
-        ->appendOutputTo('scheduler.log');
+            ->timezone('Europe/Minsk')
+            ->dailyAt("01:09")
+            ->appendOutputTo('scheduler.log');
 
         $schedule->command('app:buffer2')
             ->timezone('Europe/Minsk')
-        ->dailyAt("10:12")
-        ->appendOutputTo('scheduler.log');
+            ->dailyAt("01:23")
+            ->appendOutputTo('scheduler.log');
 
         $schedule->command('app:buffer3')
             ->timezone('Europe/Minsk')
-        ->dailyAt("10:21")
-        ->appendOutputTo('scheduler.log');
+            ->dailyAt("01:49")
+            ->appendOutputTo('scheduler.log');
 
         $schedule->command('app:buffer5')
             ->timezone('Europe/Minsk')
-        ->dailyAt("10:30")
-        ->appendOutputTo('scheduler.log');
+            ->dailyAt("02:09")
+            ->appendOutputTo('scheduler.log');
 
         $schedule->command('app:buffer4')
             ->timezone('Europe/Minsk')
-        ->dailyAt("10:54")
-        ->appendOutputTo('scheduler.log');
-
-
+            ->dailyAt("02:22 ")
+            ->appendOutputTo('scheduler.log');
     }
 
 
@@ -47,7 +45,7 @@ class Kernel extends ConsoleKernel
      */
     protected function commands(): void
     {
-        $this->load(__DIR__.'/Commands');
+        $this->load(__DIR__ . '/Commands');
 
         require base_path('routes/console.php');
     }

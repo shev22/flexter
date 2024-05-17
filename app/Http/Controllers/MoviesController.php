@@ -8,17 +8,18 @@ use App\ViewModels\MovieViewModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\Services\PagesService;
+use PhpParser\Node\Stmt\TryCatch;
 
 class MoviesController extends Controller
 {
-    
+
 
     /**
      * Show the form for creating a new resource.
      */
     public function movies()
     {
-   
+
         // Cache::flush();
 
         // $this->mediaService->logo('movie', 817187);
@@ -53,32 +54,42 @@ class MoviesController extends Controller
      */
     public function show($slug, $id)
     {
-       
-     
-      
+
+
+
         // $movie = Http::withToken(config('services.tmdb.token'))
         //     ->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images')
         //     ->json();
         // $related =  Http::withToken(config('services.tmdb.token'))
         //     ->get('https://api.themoviedb.org/3/movie/' . $id . '/similar')
         //     ->json()['results'];
+        try {
+            $responses = Http::pool(fn (Pool $pool) => [
+                $pool->withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images'),
+                $pool->withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/movie/' . $id . '/similar'),
+            ]);
+            $movie = $responses[0]->json();
 
-     
-        $responses = Http::pool(fn (Pool $pool) => [
-            $pool->withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images'),
-            $pool->withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/movie/' . $id . '/similar'),
-     
-        ]);
+            $related = $responses[1]->json()['results'];
 
-        $movie = $responses[0]->json();
-        $related = $responses[1]->json()['results'];
+            if (array_key_exists("results", $responses[1]->json())) {
+                $related = $responses[1]->json()['results'];
+            } else {
+                $related = [];
+            }
+        } catch (\Throwable $th) {
+             dd ($th);
+        }
+
+
+
 
 
 
         //  dd(  $movie,      $related  );
 
         $viewModel = new MovieViewModel($movie,  $related);
-   
+
         return view('movies.show', $viewModel);
     }
 

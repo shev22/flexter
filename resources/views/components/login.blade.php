@@ -27,6 +27,7 @@
 
      <div class="btns">
         <button type="submit">Login</button>
+        <a class="register" style="font-style:italic; color:white; font-size:11px">Register</a>
        </div>
 
    

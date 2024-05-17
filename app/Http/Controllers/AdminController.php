@@ -10,7 +10,7 @@ use App\Models\MovieModel;
 use App\Models\Repository;
 use App\Models\TopRated;
 use Illuminate\Http\Request;
-use App\ViewModels\TvViewModel;
+
 
 class AdminController extends Controller
 {
@@ -29,7 +29,7 @@ class AdminController extends Controller
             'movies' => $movies,
             'series' => $series,
             'users' => $users,
-            'toprated' => $toprated 
+            'toprated' => $toprated
         ]);
     }
 
@@ -88,7 +88,7 @@ class AdminController extends Controller
 
     public function users(Request $request)
     {
-        
+
         if ($request->has('id')) {
             $user = User::findOrFail($request->input('id'));
             if ($user->role == 'admin') {
