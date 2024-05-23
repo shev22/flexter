@@ -1,97 +1,5 @@
 
 
-// function setbackground()
-// {
-//   $.ajaxSetup({
-//   headers: {
-//       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//   }
-// });
-
-// $.ajax({
-//   method: "POST",
-//   url: "/background",
-//   success: function (response) {
-// const ball = document.querySelector(".toggle-ball");
-// const items = document.querySelectorAll(
-// ".container,.search-results, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
-// );
-//     if(response.nightmode == true)
-//     {
-//         items.forEach((item) => {
-//             item.classList.toggle("active",1200);
-//           });
-//            ball.classList.toggle("active",2000);
-//     }
-
-//   }
-
-// })
-
-// }
-
-
-
-
-
-
-// const arrowsRight = document.querySelectorAll(".arrow-right");
-// const arrowsLeft = document.querySelectorAll(".arrow-left");
-// const movieLists = document.querySelectorAll(".movie-list");
-
-// arrowsRight.forEach((arrow, i) => {
-//   const itemNumber = movieLists[i].querySelectorAll("img").length;
-//   let clickCounter = 0;
-//   arrow.addEventListener("click", () => {
-//     const ratio = Math.floor(window.innerWidth / 270);
-//     clickCounter++;
-//     if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
-//       movieLists[i].style.transform = `translateX(${
-//         movieLists[i].computedStyleMap().get("transform")[0].x.value - 600
-//       }px)`;
-//     } else {
-//       movieLists[i].style.transform = "translateX(0)";
-//       clickCounter = 0;
-//     }
-//   });
-
-//   console.log(Math.floor(window.innerWidth / 270));
-// });
-
-
-// arrowsLeft.forEach((arrow, i) => {
-//   const itemNumber = movieLists[i].querySelectorAll("img").length;
-//   let clickCounter = 0;
-//   arrow.addEventListener("click", () => {
-//     const ratio = Math.floor(window.innerWidth / 270);
-//     clickCounter++;
-//     if (itemNumber - (4 + clickCounter) + (4 - ratio) >= 0) {
-//       movieLists[i].style.transform = `translateX(${
-//         movieLists[i].computedStyleMap().get("transform")[0].x.value + 600
-//       }px)`;
-//     } else {
-//       movieLists[i].style.transform = "translateX(0)";
-//       clickCounter = 0;
-//     }
-//   });
-
-//   console.log(Math.floor(window.innerWidth / 270));
-// });
-
-// $('#ca-container').contentcarousel({
-// 	// speed for the sliding animation
-// 	sliderSpeed		: 500,
-// 	// easing for the sliding animation
-// 	sliderEasing	: 'easeOutExpo',
-// 	// speed for the item animation (open / close)
-// 	itemSpeed		: 500,
-// 	// easing for the item animation (open / close)
-// 	itemEasing		: 'easeOutExpo',
-// 	// number of items to scroll at a time
-// 	scroll			: 1	
-// });
-
-
 $(document).ready(function () {
 
 
@@ -102,110 +10,18 @@ $(document).ready(function () {
   );
 
   ball.addEventListener("click", () => {
-  //   items.forEach((item) => {
-  //     item.classList.toggle("active");
-  //   });
-  //    ball.classList.toggle("active");
+    items.forEach((item) => {
+      item.classList.toggle("active");
+    });
+     ball.classList.toggle("active");
 
-  //    axios.post('/night-mode', {
+     axios.post('/night-mode', {
      
-  // })
-  alert()
+  })
+
   });
 
 
-
-
-
-  // var $grid = $('.main-section').isotope({
-
-  //   // itemSelector:'.card',
-  //   getSortData:{rating: '.rating '},
-  //   sortAscending: false,
-  //   // layoutMode: 'fitRows',
-
-  
- 
-  // });
-
-//   var $checkboxes = $('.check-box-filter li input');
-
-  
-
-
-//   $checkboxes.change( function() {
-//     // map input values to an array
-//     var inclusives = [];
-    
-//     // inclusive filters from checkboxes
-//     $checkboxes.each( function( i, elem ) {
-//       // if checkbox, use value if checked
-//       if ( elem.checked ) {
-//         inclusives.push( elem.value );
-//       }
-//     });
-
-//   // combine inclusive filters
-//   var filterValue = inclusives.length ? inclusives.join(', ') : '*';
-
-//   $grid.isotope({ filter: filterValue })
-// });
-
-
-
-
-// $('.rating-wrapper').on( 'click', 'input', function() {
-
-//   var sortValue = $(this).attr('data-sort-by');
-
-//   $grid.isotope({ sortBy: sortValue });
-// });
-
-
-
-// $('.filter-button-group').on( 'click', 'button', function() {
-//   var filterValue = $(this).attr('data-filter');
-// //  alert(filterValue)
-//    $grid.isotope({ filter: filterValue });
-// });
-
-
-
-
-
-//   $(".toggle-ball").on("click", function (e) {
-//     e.preventDefault();
-//     const ball = document.querySelector(".toggle-ball");
-//     const items = document.querySelectorAll(
-//       ".container,.search-results, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
-//     )
-
-//     $.ajaxSetup({
-//         headers: {
-//             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//         }
-//     });
-
-//     $.ajax({
-//         method: "POST",
-//         url: "/night-mode",
-//         success: function (response) {
-       
-//           var nightmode = (response.nightmode);
-//           var status = (response.status);
-//           console.log(status)
-         
-//             items.forEach((item) => {
-//               item.classList.toggle("active");
-//             });
-//             ball.classList.toggle("active");
-          
-      
-//         }
-
-//     })
-
-// })
 
 
 
