@@ -202,7 +202,7 @@ class MediaService
             $merged = $merged->merge(Cache::get('movies-toprated'));
             $movies =  MovieModel::all()->pluck('id')->toArray();
 
-            foreach (array_chunk($this->formatData($merged, 'movie')->toArray(), 1000) as $t) {
+            foreach (array_chunk($this->formatData($merged->unique('id'), 'movie')->toArray(), 1000) as $t) {
                 collect($t)->map(function ($movie) use ($movies) {
                     if (!in_array($movie['id'], $movies)) {
                         $this->count[] = $movie;
@@ -214,6 +214,7 @@ class MediaService
             $statistics['quantity'] = count($this->count);
             $statistics['status'] = 'success';
             $statistics['duration'] =  (time() - $time);
+            $this->count = null;
         } catch (\Throwable $th) {
 
             $statistics['status'] = 'failed';
@@ -253,6 +254,7 @@ class MediaService
             $statistics['quantity'] = count($this->count);
             $statistics['status'] = 'success';
             $statistics['duration'] =  (time() - $time);
+            $this->count = null;
         } catch (\Throwable $th) {
 
             $statistics['status'] = 'failed';
@@ -295,6 +297,7 @@ class MediaService
             $statistics['quantity'] = count($this->count);
             $statistics['status'] = 'success';
             $statistics['duration'] =  (time() - $time);
+            $this->count = null;
         } catch (\Throwable $th) {
 
             $statistics['status'] = 'failed';
@@ -346,6 +349,7 @@ class MediaService
             $statistics['quantity'] = count($this->count);
             $statistics['status'] = 'success';
             $statistics['duration'] =  (time() - $time);
+            $this->count = null;
         } catch (\Throwable $th) {
 
             $statistics['status'] = 'failed';
