@@ -334,6 +334,7 @@ class MediaService
             foreach (array_chunk($data->unique('id')->toArray(), 1000) as $t) {
                 collect($t)->map(function ($actor) use ($actormodel) {
                     if (!in_array($actor['id'], $actormodel)) {
+                        $this->count[] = $actor;
                         ActorModel::create($actor);
                     }
                 });
