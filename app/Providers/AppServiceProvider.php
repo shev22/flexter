@@ -12,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-      app()->usePublicPath(base_path() . '/public_html');
+     // app()->usePublicPath(base_path() . '/public_html');
     }
 
     /**

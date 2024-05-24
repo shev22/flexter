@@ -51,7 +51,7 @@ class PagesController extends Controller
         // $this->buffer->top_ratedMovies();
    //  ($this->buffer->changes_movies()) ;
         // ($this->buffer->getActors()) ;
-    //    ($this->buffer->movies()) ;
+        ($this->buffer->movies()) ;
       //  ($this->buffer->topRated()) ;
         //    ($this->buffer->tv()) ;
 
