@@ -8,6 +8,6 @@ class AiringTodayRepository extends Repository
 
     public function airingToday($mediaType, $pages)
     {
-        return $this->tmdb('airingtoday', $mediaType, $pages);
+        return $this->tmdb('airing_today', $mediaType, $pages);
     }
 }

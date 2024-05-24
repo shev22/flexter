@@ -43,15 +43,15 @@ class PagesController extends Controller
         //     $this->buffer->topRatedTv();
         //      $this->buffer->tv_genres();
         //   $this->buffer->popularTv();
-    //    $this->buffer->trending_movies();
-    //    ($this->buffer->popularMovies()) ;
+      //  $this->buffer->trending_movies();
+      //  ($this->buffer->popularMovies()) ;
         //   $this->buffer->up_comingMovies();
         //    $this->buffer->movie_genres();
-        //  $this->buffer->nowPlayingMovies();
-        // $this->buffer->top_ratedMovies();
+       //   $this->buffer->nowPlayingMovies();
+       //  $this->buffer->top_ratedMovies();
    //  ($this->buffer->changes_movies()) ;
         // ($this->buffer->getActors()) ;
-        ($this->buffer->movies()) ;
+    //    ($this->buffer->movies()) ;
       //  ($this->buffer->topRated()) ;
         //    ($this->buffer->tv()) ;
 

@@ -25,7 +25,7 @@ abstract class Repository
         try {
 
             for ($i = 1; $i <= $pages; $i++) {
-                $promises[] = Http::withToken(config('services.tmdb.token'))->async()->get('https://api.themoviedb.org/3/' . $mediaType . '/popular?page=' . $i);
+                $promises[] = Http::withToken(config('services.tmdb.token'))->async()->get('https://api.themoviedb.org/3/' . $mediaType . '/' .$mediaRepo.'?page=' . $i);
             }
             $responses = Utils::unwrap($promises);
 

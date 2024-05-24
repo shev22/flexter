@@ -8,6 +8,6 @@ class TopRatedRepository extends Repository
 
     public function topRated($mediaType,  $pages)
     {
-        return $this->tmdb('toprated', $mediaType, $pages);
+        return $this->tmdb('top_rated', $mediaType, $pages);
     }
 }

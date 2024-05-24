@@ -57,6 +57,7 @@ class MediaService
 
     public function trending_movies()
     {
+
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
         $data =  $data[9]->pages;
@@ -73,6 +74,7 @@ class MediaService
 
     public function top_ratedMovies()
     {
+
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
         $data =  $data[8]->pages;
@@ -87,19 +89,22 @@ class MediaService
         Cache::put('movies-upcoming',  $this->upComing->upComing('movie',  $data));
     }
 
+    public function nowPlayingMovies()
+    {
+
+        $data = Settings::where('config_block_id', 1)->first();
+        $data = json_decode($data->config_data);
+        $data =  $data[11]->pages;
+        Cache::put('movies-nowplaying', $this->nowPlaying->nowPlaying('movie',  $data));
+    }
+
     public function movie_genres()
     {
         Cache::put('movies-genre', $this->genre->genre('movie'));
     }
 
 
-    public function nowPlayingMovies()
-    {
-        $data = Settings::where('config_block_id', 1)->first();
-        $data = json_decode($data->config_data);
-        $data =  $data[11]->pages;
-        Cache::put('movies-nowplaying', $this->nowPlaying->nowPlaying('movie',  $data));
-    }
+
 
 
 
@@ -197,7 +202,7 @@ class MediaService
             $merged = $merged->merge(Cache::get('movies-toprated'));
             $movies =  MovieModel::all()->pluck('id')->toArray();
 
-            foreach (array_chunk($this->formatData($merged, 'movie')->unique('id')->toArray(), 1000) as $t) {
+            foreach (array_chunk($this->formatData($merged, 'movie')->toArray(), 1000) as $t) {
                 collect($t)->map(function ($movie) use ($movies) {
                     if (!in_array($movie['id'], $movies)) {
                         $this->count[] = $movie;
