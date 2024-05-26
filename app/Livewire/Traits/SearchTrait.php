@@ -14,18 +14,11 @@ trait SearchTrait
     {
 
         if (strlen($query) >= 2) {
-            // $searchResults = Http::withToken(config('services.tmdb.token'))
-            //     ->get('https://api.themoviedb.org/3/search/multi?query=' . $query)
-            //     ->json()['results'];
-            //  return( $this->transformSearchResult($searchResults)) ;
-
             $url = 'https://api.themoviedb.org/3/search/multi?query=' . $query;
             $nbPages = 10;
-            // $media = array();
             $searchResults = Http::pool(function (Pool $pool) use ($url, $nbPages) {
                 return collect()
                     ->range(1, $nbPages)
-                    // ->map(fn ($page) => $pool->withToken(config('services.tmdb.token'))->get($url . "&page={$page}"));
                     ->map(fn ($page) => $pool->withToken(config('services.tmdb.token'))->get($url . "&page={$page}"));
             });
 

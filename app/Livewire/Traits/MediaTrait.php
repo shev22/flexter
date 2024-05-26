@@ -1,8 +1,10 @@
 <?php
+
 /**
  * 05.02.2024 11:20pm
  * Francis Okoroafor
  */
+
 namespace App\Livewire\Traits;
 
 use App\Models\WishListModel;
@@ -28,11 +30,11 @@ trait MediaTrait
 
     public function wish_list($movie)
     {
-       
+
         if (Auth::check()) {
             $movie['user_id'] = Auth::id();
             $result = WishListModel::where('id', $movie['id'])->where('user_id', Auth::id())->first();
-    
+
 
             if (!$result) {
                 WishListModel::create($movie);
@@ -40,7 +42,6 @@ trait MediaTrait
                 $result->delete();
             }
         }
-    
     }
 
     public function is_WishListed($id)
@@ -54,5 +55,3 @@ trait MediaTrait
         }
     }
 }
-
-

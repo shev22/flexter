@@ -11,6 +11,7 @@ class NowPlayingRepository extends Repository
 
     public function nowPlaying($mediaType,  $pages)
     {
+      
         return $this->tmdb('now_playing', $mediaType, $pages);
         
     }

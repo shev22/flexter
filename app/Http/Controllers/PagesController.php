@@ -2,17 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TvModel;
-use App\Models\Settings;
-use App\Models\MovieModel;
 use Illuminate\Http\Request;
-use App\ViewModels\TvViewModel;
-
-use App\ViewModels\HomeViewModel;
-use App\ViewModels\MoviesViewModel;
 use App\Livewire\Traits\SearchTrait;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Cache;
 use App\Http\Controllers\Services\MediaService;
 
 
@@ -31,45 +22,32 @@ class PagesController extends Controller
     public function index()
     {   
 
+      
         // $movies =  MovieModel::all()->pluck('id')->toArray();
         // dump(count($movies));
      //Cache::flush();
         // // dd($this->nightMode->checkActiveBackground());
        // // $time  = time ();
      // ( $this->buffer->trendingAll());
-          //   ( $this->buffer->airingToday());
-        //   ($this->buffer->onAir()); ;
+           // ( $this->buffer->airingToday());
+         // ($this->buffer->onAir()); ;
         // $this->buffer->trending_tv();
-        //     $this->buffer->topRatedTv();
+        //    $this->buffer->topRatedTv();
         //      $this->buffer->tv_genres();
-        //   $this->buffer->popularTv();
+        //  $this->buffer->popularTv();
       //  $this->buffer->trending_movies();
       //  ($this->buffer->popularMovies()) ;
         //   $this->buffer->up_comingMovies();
         //    $this->buffer->movie_genres();
-       //   $this->buffer->nowPlayingMovies();
+        //  $this->buffer->nowPlayingMovies();
        //  $this->buffer->top_ratedMovies();
-   //  ($this->buffer->changes_movies()) ;
         // ($this->buffer->getActors()) ;
-    //    ($this->buffer->movies()) ;
+      //  ($this->buffer->movies()) ;
       //  ($this->buffer->topRated()) ;
         //    ($this->buffer->tv()) ;
 
-  //dd( Cache::get('movies-popular' ) );
-            // dump(time() - $time);
-        //    dd($this->buffer->discover());
-       // $data = [2];
-//         Cache::put('data',  $data );
-
-//             $test = [2,253];
-//         Cache::put('test', $test);
  //dd(Cache::get('all-trending'));
-        // (Cache::forget('movies-changes'));
 
-        
-        // $moviesViewModel = new MoviesViewModel;
-        // $tvViewModel = new TvViewModel;
-        // $viewModel = new HomeViewModel($moviesViewModel,  $tvViewModel,);
 
         return view('index');
     }
