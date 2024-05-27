@@ -1527,6 +1527,7 @@ color: gray;
     height: auto;
     margin: auto;
     border-radius: 8px;
+    margin-top: 20px;
     position: relative;
 }
 
@@ -1545,7 +1546,7 @@ color: gray;
 
 .modal-close:hover {
     cursor: pointer;
-    color: rgb(141, 64, 64);
+    color: rgb(211, 51, 51);
 }
 
 .modal-frame iframe {
@@ -2174,10 +2175,7 @@ color: gray;
     }
 
     .modal-frame iframe {
-
         height: 50vh;
-
-        margin-bottom: 25px;
     }
 }
 
