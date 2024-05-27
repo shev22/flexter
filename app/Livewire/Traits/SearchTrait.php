@@ -13,20 +13,25 @@ trait SearchTrait
     public function search($query)
     {
 
-        if (strlen($query) >= 2) {
-            $url = 'https://api.themoviedb.org/3/search/multi?query=' . $query;
-            $nbPages = 10;
-            $searchResults = Http::pool(function (Pool $pool) use ($url, $nbPages) {
-                return collect()
-                    ->range(1, $nbPages)
-                    ->map(fn ($page) => $pool->withToken(config('services.tmdb.token'))->get($url . "&page={$page}"));
-            });
+        try {
 
-            $response = collect($searchResults)->map(function ($response) {
-                return $response
-                    ->json()['results'];
-            })->collapse();
-            return ($this->transformSearchResult($response));
+            if (strlen($query) >= 2) {
+                $url = 'https://api.themoviedb.org/3/search/multi?query=' . $query;
+                $nbPages = 10;
+                $searchResults = Http::pool(function (Pool $pool) use ($url, $nbPages) {
+                    return collect()
+                        ->range(1, $nbPages)
+                        ->map(fn ($page) => $pool->withToken(config('services.tmdb.token'))->get($url . "&page={$page}"));
+                });
+
+                $response = collect($searchResults)->map(function ($response) {
+                    return $response
+                        ->json()['results'];
+                })->collapse();
+                return ($this->transformSearchResult($response));
+            }
+        } catch (\Throwable $th) {
+            throw $th;
         }
     }
 

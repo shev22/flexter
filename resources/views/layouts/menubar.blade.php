@@ -58,6 +58,18 @@
                 Watch List
             </a>
         </li>
+        <li>
+            <a href="{{ route('search') }} " class="auth  {{ session('nightmode') ? 'active' : '' }}">
+                <i @class([
+                  ' fas fa-search',
+                  'menubar-selected' => Request::is('search'),
+                  'active' => session('nightmode'), 
+              ])
+                >
+                </i>
+                Search Page
+              </a> 
+        </li>
     </ul>
 
     <div>

@@ -19,17 +19,6 @@ class MoviesController extends Controller
      */
     public function movies()
     {
-
-        // Cache::flush();
-
-        // $this->mediaService->logo('movie', 817187);
-        // $this->mediaService->trending_movies();
-        // $this->mediaService->popularMovies($page);
-        // $this->mediaService->movie_genres();
-        // $this->mediaService->nowPlayingMovies();
-
-
-
         return view('movies.movies');
     }
 
@@ -55,14 +44,6 @@ class MoviesController extends Controller
     public function show($slug, $id)
     {
 
-
-
-        // $movie = Http::withToken(config('services.tmdb.token'))
-        //     ->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images')
-        //     ->json();
-        // $related =  Http::withToken(config('services.tmdb.token'))
-        //     ->get('https://api.themoviedb.org/3/movie/' . $id . '/similar')
-        //     ->json()['results'];
         try {
             $responses = Http::pool(fn (Pool $pool) => [
                 $pool->withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images'),
