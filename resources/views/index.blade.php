@@ -13,14 +13,14 @@
 
             $('#trending').multislider({
                 // continuous: true,
-                // duration: 20000,
+                // duration: 10000,
                 // slideAll:true,
-                interval: 3000,
+                // interval: 3000,
             });
 
-            $('#airing-today').multislider({
-                interval: 3000,
-            });
+            // $('#airing-today').multislider({
+            //     interval: 3000,
+            // });
         });
 
 

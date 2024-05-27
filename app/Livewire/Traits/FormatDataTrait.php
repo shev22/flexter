@@ -58,10 +58,21 @@ trait FormatDataTrait
                         'release_date' => Carbon::parse($release_date)->format('M , Y'),
                     ])->only([
                         'poster_path', 'id', 'name', 'title', 'vote_average', 'logo', 'genre_ids', 'overview', 'first_air_date', 'original_language', 'release_date', 'media_type', 'backdrop_path', 'popularity', 'vote_count'
-                    ])->put('slug',  Str::of($title)->slug('-'))
+                    ])->put('slug',   $this->slugify($title))
                         ->put('year', Carbon::parse($release_date)->format('Y'))
                         ->put('media_type',   $media_type);
                 }
             }));
+    }
+
+
+    private  function slugify($title)
+    {
+        $text =  Str::of($title)->slug('-');
+
+        if ($text == "") {
+            return "media-slug";
+        }
+        return $text;
     }
 }

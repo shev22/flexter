@@ -25,17 +25,17 @@ class Kernel extends ConsoleKernel
 
         $schedule->command('app:buffer3')
             ->timezone('Europe/Minsk')
-            ->dailyAt("12:00")
+            ->dailyAt("11:53")
             ->appendOutputTo('scheduler.log');
 
         $schedule->command('app:buffer5')
             ->timezone('Europe/Minsk')
-            ->dailyAt("12:20")
+            ->dailyAt("12:04")
             ->appendOutputTo('scheduler.log');
 
         $schedule->command('app:buffer4')
             ->timezone('Europe/Minsk')
-            ->dailyAt("12:40 ")
+            ->dailyAt("12:20 ")
             ->appendOutputTo('scheduler.log');
     }
 

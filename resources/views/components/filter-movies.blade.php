@@ -8,16 +8,12 @@
 
     <div class="">
 
+        <i  wire:loading class="fa fa-spinner fa-pulse fa-fw  " style="font-weight: bold"></i>
+
+
         <button wire:click="filterByPopularity" @class(['active-filter' => $this->popularity])>
             Popularity
         </button>
-
-
-
-        {{-- <button>
-            Country
-        </button> --}}
-
 
         <button wire:click="filterByLatest" @class(['active-filter' => $this->latest])>
             Recently Added
@@ -42,19 +38,7 @@
                     @foreach ($this->genres() ?? [] as $key => $genre)
                         <li>
 
-                            {{-- <div class="checkbox-wrapper-4">
-                                <input class="inp-cbx" id="genre{{ $key }}" type="checkbox" value="{{ $key }}" wire:model.live="sortByGenre"/>
-                                <label class="cbx" for="genre{{ $key }}"><span>
-                                <svg width="12px" height="10px">
-                                  <use xlink:href="#check-4"></use>
-                                </svg></span><span>{{ $genre }}</span></label>
-                                <svg class="inline-svg" >
-                                  <symbol id="check-4" viewbox="0 0 12 10">
-                                    <polyline points="1.5 6 4.5 9 10.5 1"></polyline>
-                                  </symbol>
-                                </svg>
-                              </div> --}}
-
+                
 
                             <div class="checkbox-wrapper-47">
                                 <input type="checkbox" name="cb" id="genre{{ $key }}"
@@ -213,7 +197,7 @@
 
 
 
-@props(['title'])
+
 
 <div class="filter-panel filter-panel-mobile">
 
@@ -222,7 +206,7 @@
     justify-content: center;">
 
         <h3 class="browse-movie-list">{{ $slot }}</h3>
-
+        <i  wire:loading class="fa fa-spinner fa-pulse fa-fw  " style="font-weight: bold"></i>
 
         <div>
             <button wire:click="filterByPopularity" @class(['active-filter' => $this->popularity])>

@@ -7,7 +7,6 @@
         <div class="movie-list-wrapper" id="trending">
             <div class=" MS-content ">
                 @foreach ($nowPlaying as $movie)
-                    {{-- <x-homemovie-card :movie="$movie" /> --}}
                     <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
                     <div class="movie-list-item item" >
                             <form wire:submit="wishlist({{ $movie }})">
@@ -40,8 +39,7 @@
                                     ,
                                 @endif
                             @endforeach
-                    
-                                {{-- <small>{{  $movie['overview'] }}</small> --}}
+            
                             </div>
                        
                     
@@ -54,19 +52,20 @@
                 <button class="MS-right"><i class="fa fa-chevron-right" aria-hidden="true"></i></button>
             </div>
         </div>
+        <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}" style="padding:5px; margin-top:15px;">RECOMMENDED | TOP RATED
+            <i class='fa fa-film'></i>
+        </h3>
     </div>
 
 
 
 
     {{-- recommended --}}
-
+   
     <div class="home-recommended" >
 
         <div class="movie-list-container" >
-            <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}" style="padding:5px">RECOMMENDED | TOP RATED
-                <i class='fa fa-film'></i>
-            </h3>
+          
             <div class="movie-list " >
                 @foreach ($popular as $movie)
                 <div class="movie-list-item item" >
@@ -105,13 +104,16 @@
 
         </div>
 
+
+    
+
+        
+
+    
         <div class="recently-updated"  style="width: 30%">
-            <h3 class="movie-list-title {{ session('nightmode') ? 'active' : '' }}" style="padding: 0 5px">
+            <h3 class="movie-list-title {{ session('nightmode') ? 'active' : '' }}" style="padding: 0 5px;">
                 RECENTLY UPDATED
-
-
                 <i class='fa fa-film'></i>
-
             </h3>
             <div class="wrapper">
                 <ul>
@@ -156,7 +158,7 @@
 
 
         <div class="movie-list-container recently-updated-moblie" style=" margin-top:50px">
-            <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}" style="padding:5px;">   RECENTLY UPDATED
+            <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}" style="padding:5px; ">   RECENTLY UPDATED
                 <i class='fa fa-film'></i>
             </h3>
             <div class="movie-list " >

@@ -6,7 +6,7 @@ $(document).ready(function () {
   // TOGGLE
   const ball = document.querySelector(".toggle-ball");
   const items = document.querySelectorAll(
-    ".container,.search-results, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
+    ".container,.menubar, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
   );
 
   ball.addEventListener("click", () => {
@@ -187,12 +187,16 @@ $("#actors").click(function () {
   $(".menu-dropdown").click(function () {
     event.stopPropagation();
     $('.menubar').slideToggle('fast').css({ display: 'flex' });
+   
+
+
   });
 
 
   $(document).on('click', function (e) {
     if ($(e.target).closest(".menubar").length === 0) {
       $(".menubar").slideUp('fast');
+     
     }
   });
 

@@ -42,9 +42,9 @@
                           <div>
                                 <h5>
                                     <span class="imdb"> IMDB </span>
-                                    <i style="margin: 3px; color:yellow" class='fa fa-star'> </i>
+                                    <i style="margin: 3px; font-size:11px; color:yellow" class='fa fa-star'> </i>
 
-                                    <span style="color: #c0f8e9">
+                                    <span class="featured-content-movie-details">
                                         {{ $movie['vote_average'] }} |
                                         {{ $movie['release_date'] }} |
                                         {{ ucfirst($movie['media_type']) }} |
@@ -113,9 +113,9 @@
             <x-home-movies-section :nowPlaying="$nowPlayingMovies" :popular="$popular" :upcoming="$upcoming" />
         </div>
 
-        <div class="tv-section  " x-show="activeTab === 1" x-cloak>
+        {{-- <div class="tv-section  " x-show="activeTab === 1" x-cloak>
             <x-home-tv-section :airingToday="$airingToday" :onair="$onair" :popularTv="$popularTv" />
-        </div>
+        </div> --}}
         <hr style=" opacity:0.1">
     </div>
 

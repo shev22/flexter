@@ -6,6 +6,7 @@ use App\Models\TvModel;
 use Livewire\Component;
 use App\Livewire\Traits\MediaTrait;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Str;
 
 
 class TvView extends Component
@@ -42,6 +43,7 @@ class TvView extends Component
 
     public function wishlist($movie)
     {
+      
         $this->wish_list($movie);
     }
 
@@ -73,32 +75,13 @@ class TvView extends Component
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
 
     public function render()
     {
+
+
+
         $tv = TvModel::when($this->sortByImdb, function ($e) {
 
             $e->when($this->sortByImdb == 'acending', function ($e2) {

@@ -30,6 +30,7 @@ trait MediaTrait
 
     public function wish_list($movie)
     {
+     
 
         if (Auth::check()) {
             $movie['user_id'] = Auth::id();

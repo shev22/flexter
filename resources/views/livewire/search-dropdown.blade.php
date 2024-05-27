@@ -1,9 +1,10 @@
-<div class="search-container" x-data="{ isOpen: true }">
+<div class="search-container " x-data="{ isOpen: true }">
     <form wire:submit="searchQuery" >
 
         <input type="search" required wire:model.live="query">
-        <span wire:loading> <x-spinner /></span>
+    
         <button type="submit"><i class="fa fa-search"></i></button>
+            <i wire:loading class="fa fa-cog fa-spin fa-fw"></i>
     </form>
 
 

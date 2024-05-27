@@ -15,6 +15,8 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+
 
     @vite([ 'resources/js/app.js', 'resources/css/app.css'])
 
@@ -23,23 +25,15 @@
 <body>
 
     @include('layouts.navigation')
+    @include('layouts.menubar')
+ 
     @include('layouts.sidebar')
-
-
-    <!-- Page Heading -->
-    {{-- @if (isset($header))
-                <header class="bg-white dark:bg-gray-800 shadow">
-                    <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {{ $header }}
-                    </div>a
-                </header>
-            @endif --}}
 
     <!-- Page Content -->
     <div class="container {{ session('nightmode') ? 'active' : '' }}">
         <div class="content-container">
             {{ $slot }}
-            @include('layouts.menubar')
+        
         </div>
     </div>
 
