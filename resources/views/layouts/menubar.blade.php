@@ -29,6 +29,16 @@
             </a>
         </li>
         <li>
+            <a href="{{ route('actors.index') }} " @class([
+                '  auth ',
+                'menubar-selected' => Request::is('actors.index'),
+                'active' => session('nightmode'),
+            ])>
+
+                Actors
+            </a>
+        </li>
+        <li>
             <a href="{{ route('toprated') }} " @class([
                 '  auth ',
                 'menubar-selected' => Request::is('toprated'),
@@ -36,6 +46,16 @@
             ])>
 
                 Top Rated
+            </a>
+        </li>
+        <li>
+            <a href="{{ route('wishlist') }} " @class([
+                '  auth ',
+                'menubar-selected' => Request::is('wishlist'),
+                'active' => session('nightmode'),
+            ])>
+
+                Watch List
             </a>
         </li>
     </ul>

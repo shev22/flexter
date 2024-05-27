@@ -11,16 +11,16 @@
                 duration: 200
             });
 
-            // $('#trending').multislider({
-            //     // continuous: true,
-            //     // duration: 20000,
-            //     // slideAll:true,
-            //     interval: 3000,
-            // });
+            $('#trending').multislider({
+                // continuous: true,
+                // duration: 20000,
+                // slideAll:true,
+                interval: 3000,
+            });
 
-            // $('#airing-today').multislider({
-            //     interval: 3000,
-            // });
+            $('#airing-today').multislider({
+                interval: 3000,
+            });
         });
 
 

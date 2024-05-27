@@ -29,8 +29,8 @@
                     <img src="{{ $actor['profile_path'] }}">
                     <div class="content">
                         <h3 style="font-size: 15px">{{ $actor['name'] }}</h3>
-                        <p style="font-size: 12px; color:rgb(195, 195, 195); font-weight: bold">
-                            {{ $actor['known_for'] }}</p>
+                        {{-- <p style="font-size: 12px; color:rgb(195, 195, 195); font-weight: bold">
+                            {{ $actor['known_for'] }}</p> --}}
 
                         </h6>
 

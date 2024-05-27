@@ -16,9 +16,9 @@
     </div>
 
     <div class="movie-container">
-        <section class="main-section" style="padding-top: 10px">
+        <section class="main-section movie-view" style="padding-top: 10px">
             @foreach ($SearchResult as $movie)
-                <div class="card {{ $movie['media_type'] }}" wire:ignore.self style="width: 150px">
+                <div class="card {{ $movie['media_type'] }}" wire:ignore.self>
 
                     <a href="{{ route($movie['route'], ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
 
