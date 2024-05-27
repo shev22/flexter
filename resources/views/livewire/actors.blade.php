@@ -54,8 +54,6 @@
 
         </div>
     </section>
-    <div class="page-load-status" wire:loading>
-        <x-spinner />
+    <i  wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
 
-    </div>
 </div>

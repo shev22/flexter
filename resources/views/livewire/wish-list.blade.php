@@ -64,11 +64,8 @@
             </div>
         </section>
         {{-- {{ $popularMovies->links('custom-pagination-links') }} --}}
-        <div class="page-load-status " wire:loading>
+        <i  wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
 
-            <x-spinner />
-
-        </div>
     </div>
 
 </div>

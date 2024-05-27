@@ -15,10 +15,10 @@
         href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&family=Sen:wght@400;700;800&display=swap">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 
 
-    @vite([ 'resources/js/app.js', 'resources/css/app.css'])
+    @vite(['resources/js/app.js', 'resources/css/app.css'])
 
 </head>
 
@@ -26,14 +26,14 @@
 
     @include('layouts.navigation')
     @include('layouts.menubar')
- 
+
     @include('layouts.sidebar')
 
     <!-- Page Content -->
     <div class="container {{ session('nightmode') ? 'active' : '' }}">
         <div class="content-container">
             {{ $slot }}
-        
+
         </div>
     </div>
 
@@ -42,9 +42,6 @@
     {{-- <script src="{{ asset('js/multislider/multislider.min.js') }}"></script> --}}
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     {{-- <script> AOS.init();</script> --}}
-
-
-
 </body>
 
 </html>
