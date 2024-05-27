@@ -15,7 +15,7 @@
                 // continuous: true,
                 // duration: 20000,
                 // slideAll:true,
-                interval: 3000,
+                interval: 2000,
             });
 
             $('#airing-today').multislider({
