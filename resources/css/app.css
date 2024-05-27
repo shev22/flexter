@@ -1524,6 +1524,7 @@ color: gray;
 .modal-frame {
     display: none;
     width: 95%;
+    height: auto;
     margin: auto;
     border-radius: 8px;
     position: relative;
@@ -1544,19 +1545,20 @@ color: gray;
 
 .modal-close:hover {
     cursor: pointer;
-    color: rgb(173, 56, 56);
+    color: rgb(141, 64, 64);
 }
 
 .modal-frame iframe {
-    /* width: fill;
-    height: 10px;
+    width: fill;
+    height: 80vh;
     border-radius: 10px;
-    margin-bottom: 20px; */
+    margin-bottom: 20px;
 }
 
 .comment-similar {
     display: flex;
     margin-top: 5px;
+    height: 750px;
     justify-content: center;
 }
 
@@ -2169,6 +2171,13 @@ color: gray;
 
     .actor-card .card_right {
         width: 100%;
+    }
+
+    .modal-frame iframe {
+
+        height: 50vh;
+
+        margin-bottom: 25px;
     }
 }
 
