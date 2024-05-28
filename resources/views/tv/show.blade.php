@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div style="padding-top: 50px; ">
+    <div style="padding-top: 1px; ">
         <x-iframe-player :id="$tvshow['id']" :media="$tvshow['media']" />
 
         <div class="movie_card" id="tomb">
@@ -20,15 +20,13 @@
                             IMDB
                         </span>
 
-
                         <i style="margin: 3px; color:yellow; font-size: 12px" class='fa fa-star'>
                         </i>{{ $tvshow['vote_average'] }}
 
-
-
-
                     </h4>
                     <span class="minutes">{{ count($tvshow['seasons']) }} seasons</span>
+                    <span class="stream">Watch Now</span>
+
                     <p class="type">{{ $tvshow['genres'] }}</p>
                     {{-- <p class="type">{{ $movie['cast'] }}</p> --}}
 
@@ -66,11 +64,7 @@
                     </div>
                 @endif
             @endif
-
-
-
         </div>
-
 
         <div class="comment-similar">
 
@@ -79,12 +73,6 @@
                     COMMENTS
                     <i class='fa fa-comment'></i>
                 </h3>
-
-
-
-
-
-
 
                 <div id="disqus_thread" style="color:white"></div>
                 <script>

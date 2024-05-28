@@ -1,12 +1,6 @@
 <x-app-layout>
-
-
-
     <div style="padding-top: 1px; ">
 
-        <a class="stream">
-            <i class="pulse fa fa-play-circle"></i>
-        </a>
         <x-iframe-player :id="$movie['id']" :media="$movie['media']" />
 
         <div class="movie_card" id="tomb">
@@ -35,8 +29,8 @@
 
                     </h4>
                     <span class="minutes">{{ $movie['runtime'] }} min</span>
+                    <span class="stream">Watch Now</span>
                     <p class="type">{{ $movie['genres'] }}</p>
-                    {{-- <p class="type">{{ $movie['cast'] }}</p> --}}
 
                 </div>
                 <div class="movie_desc">

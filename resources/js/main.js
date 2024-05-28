@@ -98,57 +98,6 @@ $("#actors").click(function () {
 
 
 
-// $("#all ").click(function () {
-
-//   $(".popular ").show(400);
-//   $(".upcoming ").show(400);
-//   $(".trending ").show(400);
-//   $(".toprated ").show(400);
-//   $(".nowplaying ").show(400);
-// });
-
-
-
-
-// $("#popular ").click(function () {
-//   $(".nowplaying, .upcoming, .toprated, .trending").hide(500);
-//   $(".popular ").show(300);
-
-
-// });
-
-// $("#nowplaying").click(function () {
-
-//   $(this).addClass("active-filter");
-//   $(".popular, .upcoming, .toprated, .trending").hide(500);
-//   $(".nowplaying ").show(400);
-
-// });
-
-// $("#upcoming").click(function () {
-
-//   $(".popular, .nowplaying, .toprated, .trending").hide(500);
-//   $(".upcoming ").show(400);
-
-// });
-
-// $("#toprated").click(function () {
-
-//   $(".popular, .upcoming, .nowplaying, .trending").hide(500);
-//   $(".toprated ").show(400);
-
-// });
-
-// $("#trending").click(function () {
-
-//   $(".popular, .upcoming, .toprated, .nowplaying").hide(500);
-//   $(".trending ").show(400);
-
-// });
-
-
-
-
 
 
 
@@ -351,15 +300,6 @@ $("#actors").click(function () {
 
 
 
-  // $(".show-nowplaying").click(function () {
-  //   event.stopPropagation();
-  //   $(".nowplaying-movies").slideUp('fast');
-  //   $(".porpular-moviesr").hide('fast')
-  // });
-
-
-
-
 
 
 
@@ -388,15 +328,15 @@ $("#actors").click(function () {
   $(".stream").click(function () {
 
   
-    $(".movie_card").fadeOut(1000);
-    $(".modal-frame").fadeIn();
+    $(".movie_card").fadeOut('fast');
+    $(".modal-frame").slideToggle();
     $(".stream").hide();
   });
 
   $(".modal-close").click(function () {
  
     $(".modal-frame").slideUp();
-    $(".movie_card").fadeIn();
+    $(".movie_card").slideToggle();
     $(".stream").show();
 
   });
