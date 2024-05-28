@@ -97,10 +97,11 @@
                 </div>
 
             </div>
-            <section class="main-section" style="margin-top: 3px;">
+            <section class="main-section" style="margin-top: 3px;   height: 90vh;
+            overflow: auto;">
 
                 @foreach ($knownForMovies as $movie)
-                    <div class="card">
+                    <div class="card" >
                         <a href="{{ $movie['linkToPage'] }}">
                             <img src="{{ $movie['poster_path'] }}" alt="">
                             <div class="content">

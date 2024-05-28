@@ -410,8 +410,9 @@
 
 
 
-    <div class="movie-container movie-view">
-        <section class="main-section">
+    <div class="movie-container movie-view" style="height: 90vh;
+    overflow: auto;">
+        <section class="main-section" >
             @foreach ($movies as $movie)
                 <div class="card">
 

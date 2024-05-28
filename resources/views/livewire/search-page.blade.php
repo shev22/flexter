@@ -15,7 +15,8 @@
 
     </div>
 
-    <div class="movie-container">
+    <div class="movie-container" style="height: 90vh;
+    overflow: auto;">
         <section class="main-section movie-view" style="padding-top: 10px">
             @foreach ($SearchResult as $movie)
                 <div class="card {{ $movie['media_type'] }}" wire:ignore.self>

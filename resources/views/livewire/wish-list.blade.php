@@ -15,7 +15,8 @@
     {{-- {{ dd($wishlist ) }} --}}
 
     <div class="movie-container">
-        <section class="main-section">
+        <section class="main-section" style="height: 90vh;
+        overflow: auto;">
             @foreach ($wishlist as $movie)
                 <div class="card {{ $movie['media_type'] }}" wire:ignore.self>
                     <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">

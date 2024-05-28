@@ -3,7 +3,8 @@
         {{ __('Movies') }}
     </x-filter-movies>
 
-    <div class="movie-container movie-view">
+    <div class="movie-container movie-view" style="height: 90vh;
+    overflow: auto;">
 
         <section class="main-section">
             @foreach ($movies as $movie)

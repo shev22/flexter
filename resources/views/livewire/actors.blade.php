@@ -20,7 +20,8 @@
     </div>
 
 
-    <section class="main-section movie-view" style="margin-top:20px">
+    <section class="main-section movie-view" style="margin-top:20px; height: 90vh;
+    overflow: auto;">
 
         @foreach ($popularActors as $actor)
             <div class="card">
