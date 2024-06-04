@@ -108,7 +108,7 @@
         </div>
 
 
-        <div class="movie-section " x-show="activeTab === 0" x-cloak>
+        <div class="movie-section " x-show="activeTab === 0" x-cloak >
 
             <x-home-movies-section :nowPlaying="$nowPlayingMovies" :popular="$popular" :upcoming="$upcoming" />
         </div>
@@ -116,7 +116,6 @@
         {{-- <div class="tv-section  " x-show="activeTab === 1" x-cloak>
             <x-home-tv-section :airingToday="$airingToday" :onair="$onair" :popularTv="$popularTv" />
         </div> --}}
-        <hr style=" opacity:0.1">
     </div>
 
 </div>

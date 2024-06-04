@@ -16,8 +16,7 @@ class MoviesView extends Component
     public $popularity = false;
     public $latest     = false;
     public $search;
-    // public $eighties;
-    // public $seventies;
+
     public $earlier;
     public $sortByImdb;
     public $language    = [];
@@ -29,7 +28,7 @@ class MoviesView extends Component
 
     public function loadMore()
     {
-        $this->itemsPerPage += 20;
+        $this->itemsPerPage += 30;
     }
     public function genres()
     {
@@ -92,12 +91,6 @@ class MoviesView extends Component
 
     public function render()
     {
-
-
-        // $movies = MovieModel::get()->take(1);
-        // dd(  json_encode( json_decode($movies[0]->genre_ids)))     ;
-
-
         $movies = MovieModel::when($this->sortByImdb, function ($e) {
 
             $e->when($this->sortByImdb == 'acending', function ($e2) {

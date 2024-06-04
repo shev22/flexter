@@ -1,10 +1,12 @@
 <div class="sections ">
 
-    <div class="filter-panel" style="display: flex">
-        <div class="section-nav">
-            <h3 class="browse-movie-list">Search </h3>
+    <div class="filter-panel" style="display: flex;" id="search-panel">
+        <div class="section-nav" style="width: 85px">
+            <h3 style="display: inline" class="browse-movie-list">Search </h3>
+            <i wire:loading class="fa fa-spinner fa-pulse fa-fw  "></i>
+
         </div>
-        <div style="display: flex;flex-wrap:wrap;" class="search-panel">
+        <div style="display: flex;flex-wrap:wrap;">
             <input type="text" class="search-filter" wire:model.live="query" placeholder="Live search..."
                 style="margin-right: 10px; ">
 
@@ -15,8 +17,7 @@
 
     </div>
 
-    <div class="movie-container" style="height: 90vh;
-    overflow: auto;">
+    <div class="movie-container">
         <section class="main-section movie-view" style="padding-top: 10px">
             @foreach ($SearchResult as $movie)
                 <div class="card {{ $movie['media_type'] }}" wire:ignore.self>
@@ -55,8 +56,7 @@
 
             </div>
         </section>
-        {{-- {{ $popularMovies->links('custom-pagination-links') }} --}}
-        <i  wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
+        <i wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
 
     </div>
 

@@ -3,21 +3,79 @@
 $(document).ready(function () {
 
 
+  $('#featured-slider').multislider({
+    interval: 6000,
+    duration: 400
+  });
+
+
+
+  var owl = $('.owl-carousel');
+  owl.owlCarousel({
+    items: 4,
+    loop: true,
+    dots: false,
+    margin: 10,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+        nav: false,
+        dots: false,
+        loop:true
+      },
+      600: {
+        items: 3,
+        nav: false,
+        dots: false,
+        loop:true
+      },
+      1000: {
+        items: 5,
+        nav: false,
+        dots: false,
+        loop:true
+      }
+    }
+  });
+
+
+  owl.on('mousewheel', '.owl-stage', function (e) {
+    if (e.deltaY > 0) {
+      owl.trigger('next.owl');
+    } else {
+      owl.trigger('prev.owl');
+    }
+    e.preventDefault();
+  });
+
+
+  $('.owl-carousel__next').click(() => owl.trigger('next.owl.carousel'))
+
+  $('.owl-carousel__prev').click(() => owl.trigger('prev.owl.carousel'))
+
+
+
+
   // TOGGLE
   const ball = document.querySelector(".toggle-ball");
   const items = document.querySelectorAll(
-    ".container,.menubar, .credits, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
+    ".container,.menubar, .credits, footer, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
   );
 
   ball.addEventListener("click", () => {
     items.forEach((item) => {
       item.classList.toggle("active");
     });
-     ball.classList.toggle("active");
+    ball.classList.toggle("active");
 
-     axios.post('/night-mode', {
-     
-  })
+    axios.post('/night-mode', {
+
+    })
 
   });
 
@@ -26,77 +84,81 @@ $(document).ready(function () {
 
 
 
-/**
- * category selector
- */
+  /**
+   * category selector
+   */
 
 
-$(".home-section-controls button").on("click", function(){
+  $(".home-section-controls button").on("click", function () {
 
-  $(".home-section-controls button").removeClass("active-filter");
-  $(this).addClass("active-filter");
+    $(".home-section-controls button").removeClass("active-filter");
+    $(this).addClass("active-filter");
 
+  });
+
+
+
+
+
+  $('.checkbox-filter').on('click', 'input', function () {
+
+
+  });
+
+
+
+
+
+
+
+
+
+  /**
+   *   top rated, search page, watchlist
+   */
+
+  $(".search-panel button").on("click", function () {
+    $(".search-panel button").removeClass("active-filter");
+    $(this).addClass("active-filter");
+
+  });
+
+
+  $("#movies ").click(function () {
+
+
+    $(".movie").show(400);
+    $(".person").hide(100);
+    $(".tv").hide(100);
+  });
+
+  $("#tv").click(function () {
+    $(".tv").show(400);
+    $(".movie").hide(100);
+    $(".person").hide(100);
+  });
+
+  $("#actors").click(function () {
+
+    $(".person").show(400);
+    $(".movie").hide(100);
+    $(".tv").hide(100);
+  });
+  /**
+   * 
+   */
+
+
+/*
+*  movie filter
+**/ 
+
+
+$(".show-filter").click(function () {
+ 
+  event.stopPropagation();
+  $('#filter-content').toggle('2000').css({ display: 'flex' });;
 });
-
-
-
-
-
-$('.checkbox-filter').on( 'click', 'input', function() {
-  // $(".card ").fadeOut('fast');
-  // $(".checkbox-filter button").removeClass("active-filter");
-  // $(".checkbox-filter").addClass("active-filter");
-
-});
-
-
-
-
-
-
-
-
-
-/**
- *   top rated, search page, watchlist
- */
-
-$(".search-panel button").on("click", function(){
-  $(".search-panel button").removeClass("active-filter");
-  $(this).addClass("active-filter");
-
- });
-
-
-$("#movies ").click(function () {
-
-
-  $(".movie").show(400);
-  $(".person").hide(100);
-  $(".tv").hide(100);
-});
-
-$("#tv").click(function () {
-  $(".tv").show(400);
-  $(".movie").hide(100);
-  $(".person").hide(100);
-});
-
-$("#actors").click(function () {
-
-  $(".person").show(400);
-  $(".movie").hide(100);
-  $(".tv").hide(100);
-});
-/**
- * 
- */
-
-
-
-
-
-
 
 
 
@@ -135,8 +197,8 @@ $("#actors").click(function () {
   //side men bar
   $(".menu-dropdown").click(function () {
     event.stopPropagation();
-    $('.menubar').slideToggle('fast').css({ display: 'flex' });
-   
+    $('.menubar').slideToggle('2000').css({ display: 'flex' });
+
 
 
   });
@@ -145,7 +207,7 @@ $("#actors").click(function () {
   $(document).on('click', function (e) {
     if ($(e.target).closest(".menubar").length === 0) {
       $(".menubar").slideUp('fast');
-     
+
     }
   });
 
@@ -184,7 +246,7 @@ $("#actors").click(function () {
     event.stopPropagation();
     $(".login-form-container ").slideUp('fast');
     $(".recover-form-container").slideDown('fast');
- 
+
   });
 
 
@@ -198,7 +260,7 @@ $("#actors").click(function () {
   $(".profile").click(function () {
     event.stopPropagation();
     $(".profile-dropdown-container ").slideToggle('fast');
-  
+
   });
 
   $(document).on('click', function (e) {
@@ -219,14 +281,14 @@ $("#actors").click(function () {
     $(".movie-section ").hide(500);
     $(".tv-section ").show(500).css({ opacity: 1 });
 
-  
+
   });
 
   $("#home-movie-section").click(function () {
     event.stopPropagation();
     $(".tv-section ").hide(500);
     $(".movie-section ").show(500);
-  
+
   });
 
 
@@ -327,14 +389,14 @@ $("#actors").click(function () {
 
   $(".stream").click(function () {
 
-  
+
     $(".movie_card").fadeOut('fast');
     $(".modal-frame").slideToggle();
     $(".stream").hide();
   });
 
   $(".modal-close").click(function () {
- 
+
     $(".modal-frame").slideUp();
     $(".movie_card").slideToggle();
     $(".stream").show();

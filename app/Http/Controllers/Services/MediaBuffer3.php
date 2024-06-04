@@ -2,10 +2,6 @@
 
 namespace App\Http\Controllers\Services;
 
-use GuzzleHttp\Promise\Utils;
-use Illuminate\Support\Facades\Http;
-use Illuminate\Support\Facades\Cache;
-
 
 class MediaBuffer3
 {

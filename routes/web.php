@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TvController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActorsController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\ProfileController;
@@ -48,7 +49,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__ . '/auth.php';
 
 
-Route::get('/', [PagesController::class, 'index'])->name('/');
+Route::get('/', [HomeController::class, 'index'])->name('/');
 
 
 //  Route::get('/movies/page/{page?}',[MoviesController::class, 'movies']);
@@ -66,9 +67,9 @@ Route::get('/actors/{slug}/{id}', [ActorsController::class, 'show'])->name('acto
 Route::get('/search/{query?}',  [PagesController::class, 'search'])->name('search');
 
 Route::get('/toprated',  [PagesController::class, 'toprated'])->name('toprated');
+Route::get('/feedback',  [PagesController::class, 'feedback'])->name('feedback');
 
 Route::post('night-mode',  [PagesController::class, 'nightMode'])->name('settings');
-// Route::post('background',  [PagesController::class, 'checkActiveBackground'])->name('background');
 
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {

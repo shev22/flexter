@@ -29,13 +29,13 @@
 
                     <p class="type">{{ $tvshow['genres'] }}</p>
                     {{-- <p class="type">{{ $movie['cast'] }}</p> --}}
+                    <div class="movie_desc">
+                        <p class="text">
+                            {{ $tvshow['overview'] }}
+                        </p>
+                    </div>
+                </div>
 
-                </div>
-                <div class="movie_desc">
-                    <p class="text">
-                        {{ $tvshow['overview'] }}
-                    </p>
-                </div>
                 <div class="movie_social">
 
                     <p><span style="color: #86a7b7;text-decoration:underline">Casts</span><br> {{ $tvshow['cast'] }}
@@ -197,7 +197,7 @@
     </div>
 
 
-    @include('layouts.footer')
+
 
 
 

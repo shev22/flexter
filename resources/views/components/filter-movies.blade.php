@@ -2,13 +2,14 @@
 
 <div class="filter-panel">
 
-    <div class="section-nav">
-        <h3 class="browse-movie-list">{{ $slot }}</h3>
-    </div>
+    <span class="section-nav">
+        <h3 class="browse-movie-list">{{ $slot }}
+        </h3>
+     <i wire:loading class="fa fa-spinner fa-pulse fa-fw  " ></i>
+    </span>
 
-    <div class="">
+    <div class="" style="display: flex">
 
-        <i  wire:loading class="fa fa-spinner fa-pulse fa-fw  " style="font-weight: bold"></i>
 
 
         <button wire:click="filterByPopularity" @class(['active-filter' => $this->popularity])>
@@ -19,8 +20,10 @@
             Recently Added
 
         </button>
+        <div>
+            <input type="text" class="search-filter" placeholder=" search title..  year..." wire:model.live="search">
 
-        <input type="text" class="search-filter" placeholder=" search title..  year..." wire:model.live="search">
+        </div>
 
     </div>
 
@@ -38,24 +41,13 @@
                     @foreach ($this->genres() ?? [] as $key => $genre)
                         <li>
 
-                
+
 
                             <div class="checkbox-wrapper-47">
                                 <input type="checkbox" name="cb" id="genre{{ $key }}"
                                     value="{{ $key }}" wire:model.live="sortByGenre" />
                                 <label for="genre{{ $key }}">{{ $genre }}</label>
                             </div>
-
-
-
-
-
-
-
-
-
-
-                            {{-- <label >  <input type="checkbox"  class="checkbox"> </label>    --}}
 
                         </li>
                     @endforeach
@@ -72,45 +64,24 @@
             <div class="filter-content-year" wire:ignore.self>
                 <ul>
                     @for ($i = (int) date('Y'); $i >= 1990; $i--)
-                       <li>
-                            {{-- <input type="checkbox" value="{{ $i }}" wire:model.live="sortByYears"
-                           
-                       
-                            > --}}
+                        <li>
 
                             <div class="checkbox-wrapper-47">
                                 <input type="checkbox" name="cb" id="year{{ $i }}"
-                                    value="{{ $i }}" wire:model.live="sortByYears"
-                                    />
+                                    value="{{ $i }}" wire:model.live="sortByYears" />
                                 <label for="year{{ $i }}">{{ $i }}</label>
                             </div>
-
-
-
-
-
-
-                            
                         </li>
                     @endfor
-                    {{-- <li>
-                        <input type="checkbox" value=" 1980's" wire:model.live="eighties" >
-                        1980's
-                    </li>
-                    <li>
-                        <input type="checkbox" value=" 1970's" wire:model.live="seventies">
-                        1970's
-                    </li> --}}
+
                     <li>
 
                         <div class="checkbox-wrapper-47">
-                            <input type="checkbox" name="cb" id="year-earlier"
-                                value="earlier" wire:model.live="earlier"
-                              />
+                            <input type="checkbox" name="cb" id="year-earlier" value="earlier"
+                                wire:model.live="earlier" />
                             <label for="year-earlier">Earlier</label>
                         </div>
-                        {{-- <input type="checkbox" value=" earlier" wire:model.live="earlier" >
-                        Earlier --}}
+
                     </li>
                 </ul>
             </div>
@@ -125,15 +96,12 @@
 
             <div class="filter-content-language" wire:ignore.self>
                 <ul>
-                    @foreach ($this->languages() ?? []  as $key => $value)
+                    @foreach ($this->languages() ?? [] as $key => $value)
                         <li>
-                            {{-- <input type="checkbox" value="{{ $value['iso_639_1'] }}" wire:model.live="language">
-                            {{ $value['english_name'] }} --}}
-
                             <div class="checkbox-wrapper-47">
                                 <input type="checkbox" name="cb" id="genre{{ $key }}"
                                     value="{{ $value['iso_639_1'] }}" wire:model.live="language" />
-                                <label for="genre{{ $key }}">      {{ $value['english_name'] }}</label>
+                                <label for="genre{{ $key }}"> {{ $value['english_name'] }}</label>
                             </div>
 
 
@@ -155,13 +123,10 @@
                 <ul>
 
                     <li>
-                        {{-- <input type="radio" name="imdb" value="acending" wire:model.live="sortByImdb"
-                            class="radio">
-                        <label for="accending">Accending order</label><br> --}}
-
+             
                         <div class="checkbox-wrapper-48">
-                            <input type="radio" name="imdb" id="acending"
-                                value="acending" wire:model.live="sortByImdb" />
+                            <input type="radio" name="imdb" id="acending" value="acending"
+                                wire:model.live="sortByImdb" />
                             <label for="acending">Accending order</label>
                         </div>
 
@@ -170,20 +135,18 @@
                     </li>
 
                     <li>
-                        {{-- <input type="radio" name="imdb" value="decending" wire:model.live="sortByImdb">
-                        <label for="decending">Decending order</label> --}}
+
                         <div class="checkbox-wrapper-48">
-                            <input type="radio" name="imdb" id="decending"
-                                value="decending" wire:model.live="sortByImdb" />
+                            <input type="radio" name="imdb" id="decending" value="decending"
+                                wire:model.live="sortByImdb" />
                             <label for="decending">Decending order</label>
                         </div>
                     </li>
                     <li>
-                        {{-- <input type="radio" name="imdb" value="normal" wire:model.live="sortByImdb">
-                        <label for="normal">Original order</label> --}}
+    
                         <div class="checkbox-wrapper-48">
-                            <input type="radio" name="imdb" id="normal"
-                                value="normal" wire:model.live="sortByImdb" />
+                            <input type="radio" name="imdb" id="normal" value="normal"
+                                wire:model.live="sortByImdb" />
                             <label for="normal">Original order</label>
                         </div>
                     </li>
@@ -196,35 +159,40 @@
 </div>
 
 
+<div class=" filter-panel-mobile" wire:ignore>
 
-
-
-<div class="filter-panel filter-panel-mobile">
-
-
-    <div style="display: flex;  flex-wrap: wrap;    align-items: center;
-    justify-content: center;">
-
-        <h3 class="browse-movie-list">{{ $slot }}</h3>
-        <i  wire:loading class="fa fa-spinner fa-pulse fa-fw  " style="font-weight: bold"></i>
-
-        <div>
-            <button wire:click="filterByPopularity" @class(['active-filter' => $this->popularity])>
-                Popularity
-            </button>
+    <div class="header">
+        <div style="width: 90px" >
+             <h3>{{ $slot }} </h3>
+             <i wire:loading class="fa fa-spinner fa-pulse fa-fw  " ></i>
         </div>
+       
+
+        <input type="text" class="search-filter" placeholder=" search title. year." wire:model.live="search">
 
 
-        <div>
-            <button wire:click="filterByLatest" @class(['active-filter' => $this->latest])>
-                Recently updated
+        <h3 class="show-filter">
+            <i class='fa fa-filter'></i>
+        </h3>
+    </div>
 
-            </button>
-        </div>
+    <div class="content" id="filter-content">
 
-        <input type="text" class="search-filter" placeholder=" search title. year..." wire:model.live="search">
+        <button wire:click="filterByPopularity" @class(['active-filter' => $this->popularity])>
+            Popularity
+        </button>
 
-        <div class="genre-wrapper">
+
+        <button wire:click="filterByLatest" @class(['active-filter' => $this->latest])>
+            Recently updated
+
+        </button>
+
+
+        <span class="genre-wrapper">
+
+
+
             <button class="genre-filter {{ $this->sortByGenre ? 'active-filter' : '' }}">
                 Genre
                 <i class="fas fa-caret-down"></i>
@@ -235,8 +203,7 @@
                 <ul>
                     @foreach ($this->genres() ?? [] as $key => $genre)
                         <li>
-                            {{-- <input type="checkbox" value="{{ $key }}" wire:model.live="sortByGenre">
-                            {{ $genre }} --}}
+
 
                             <div class="checkbox-wrapper-47">
                                 <input type="checkbox" name="cb" id="genre{{ $key }}"
@@ -248,9 +215,9 @@
                     @endforeach
                 </ul>
             </div>
-        </div>
+        </span>
 
-        <div class="year-wrapper">
+        <span class="year-wrapper">
             <button class="year-filter {{ $this->sortByYears ? 'active-filter' : '' }}">
                 Year
                 <i class="fas fa-caret-down"></i>
@@ -260,41 +227,28 @@
                 <ul>
                     @for ($i = (int) date('Y'); $i >= 1990; $i--)
                         <li>
-                            {{-- <input type="checkbox" value="{{ $i }}" wire:model.live="sortByYears"
-                                @if ($this->earlier) disabled @endif>
-                            {{ $i }} --}}
+
 
                             <div class="checkbox-wrapper-47">
                                 <input type="checkbox" name="cb" id="year{{ $i }}"
-                                    value="{{ $i }}" wire:model.live="sortByYears"
-                                    />
+                                    value="{{ $i }}" wire:model.live="sortByYears" />
                                 <label for="year{{ $i }}">{{ $i }}</label>
                             </div>
                         </li>
                     @endfor
-                    {{-- <li>
-                        <input type="checkbox" value=" 1980's" wire:model.live="eighties">
-                        1980's
-                    </li>
+
                     <li>
-                        <input type="checkbox" value=" 1970's" wire:model.live="seventies">
-                        1970's
-                    </li> --}}
-                    <li>
-                        {{-- <input type="checkbox" value=" earlier" wire:model.live="earlier"
-                            {{ $this->sortByYears ? 'disabled' : '' }}>
-                        Earlier --}}
+
                         <div class="checkbox-wrapper-47">
-                            <input type="checkbox" name="cb" id="year-earlier"
-                                value="earlier" wire:model.live="earlier"
-                              />
+                            <input type="checkbox" name="cb" id="year-earlier" value="earlier"
+                                wire:model.live="earlier" />
                             <label for="year-earlier">Earlier</label>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div>
-        <div class="year-wrapper">
+        </span>
+        <span class="year-wrapper">
             <button class="language-filter {{ $this->language ? 'active-filter' : '' }}">
                 Language
                 <i class="fas fa-caret-down"></i>
@@ -304,23 +258,22 @@
                 <ul>
                     @foreach ($this->languages() ?? [] as $key => $value)
                         <li>
-                            {{-- <input type="checkbox" value="{{ $value['iso_639_1'] }}" wire:model.live="language">
-                            {{ $value['english_name'] }} --}}
+
                             <div class="checkbox-wrapper-47">
                                 <input type="checkbox" name="cb" id="genre{{ $key }}"
                                     value="{{ $value['iso_639_1'] }}" wire:model.live="language" />
-                                <label for="genre{{ $key }}">      {{ $value['english_name'] }}</label>
+                                <label for="genre{{ $key }}"> {{ $value['english_name'] }}</label>
                             </div>
-                            
+
                         </li>
                     @endforeach
 
                 </ul>
             </div>
-        </div>
+        </span>
 
 
-        <div class="rating-wrapper" style="">
+        <span class="rating-wrapper" style="">
             <button class="rating-filter {{ $this->sortByImdb ? 'active-filter' : '' }}">
                 IMDB
                 <i class="fas fa-caret-down"></i>
@@ -330,46 +283,32 @@
                 <ul>
 
                     <li>
-                        {{-- <input type="radio" name="imdb" value="acending" wire:model.live="sortByImdb"
-                            class="radio">
-                        <label for="accending">Accending order</label><br> --}}
 
                         <div class="checkbox-wrapper-48">
-                            <input type="radio" name="imdb" id="acending"
-                                value="acending" wire:model.live="sortByImdb" />
+                            <input type="radio" name="imdb" id="acending" value="acending"
+                                wire:model.live="sortByImdb" />
                             <label for="acending">Accending order</label>
                         </div>
-
-
-
                     </li>
 
                     <li>
-                        {{-- <input type="radio" name="imdb" value="decending" wire:model.live="sortByImdb">
-                        <label for="decending">Decending order</label> --}}
+
                         <div class="checkbox-wrapper-48">
-                            <input type="radio" name="imdb" id="decending"
-                                value="decending" wire:model.live="sortByImdb" />
+                            <input type="radio" name="imdb" id="decending" value="decending"
+                                wire:model.live="sortByImdb" />
                             <label for="decending">Decending order</label>
                         </div>
                     </li>
-                    <li>
-                        {{-- <input type="radio" name="imdb" value="normal" wire:model.live="sortByImdb">
-                        <label for="normal">Original order</label> --}}
-                        <div class="checkbox-wrapper-48">
-                            <input type="radio" name="imdb" id="normal"
-                                value="normal" wire:model.live="sortByImdb" />
-                            <label for="normal">Original order</label>
-                        </div>
+
+                    <div class="checkbox-wrapper-48">
+                        <input type="radio" name="imdb" id="normal" value="normal"
+                            wire:model.live="sortByImdb" />
+                        <label for="normal">Original order</label>
+                    </div>
                     </li>
 
                 </ul>
             </div>
-        </div>
-
-
     </div>
-
-
-
+    </span>
 </div>

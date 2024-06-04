@@ -11,7 +11,9 @@
     >
     </i>
   </a>
-   
+
+
+ 
     <a href="{{ route('search') }} ">
       <i @class([
         ' fas fa-search',
@@ -21,7 +23,8 @@
     ])
       >
       </i>
-    </a> 
+    
+
     
     <a href="{{ route('actors.index') }}">
         <i @class([
@@ -47,9 +50,16 @@
         </i>
     </a>
 
-
-
-    {{-- <i class=" fas fa-tv  left-menu-icon  {{ session('nightmode') ? 'active' : '' }} "></i> --}}
+    <a  href=" {{ route('feedback') }}" style="cursor: pointer;">
+      <i @class([
+          ' fa fa-mail-reply',
+          'sidebar-selected' => Request::is('feedback'),
+          'left-menu-icon' => !Request::is('feedback'),
+          'active' => session('nightmode'),
+        
+      ])>
+      </i>
+  </a>
 
     {{-- <i class=" fas fa-hourglass-start left-menu-icon {{ session('nightmode') ? 'active' : '' }}"></i> --}}
 

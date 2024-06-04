@@ -61,35 +61,26 @@
         <li>
             <a href="{{ route('search') }} " class="auth  {{ session('nightmode') ? 'active' : '' }}">
                 <i @class([
-                  ' fas fa-search',
-                  'menubar-selected' => Request::is('search'),
-                  'active' => session('nightmode'), 
-              ])
-                >
+                    ' fas fa-search',
+                    'menubar-selected' => Request::is('search'),
+                    'active' => session('nightmode'),
+                ])>
                 </i>
                 Search Page
-              </a> 
+            </a>
         </li>
     </ul>
 
     <div>
         @if (!Auth::check())
-            <span class="login"><a><i class=" fas fa-lock"> Login </i> </a> </span>
+            <span class="login "><a class="auth  {{ session('nightmode') ? 'active' : '' }}"> <span
+                        style="font-size: 13px"><i class=" fas fa-lock"></i></span></a> </span>
         @else
-            <span class="profile auth active">Welcome {{ Auth::user()->name }}
+            <span class="profile auth  {{ session('nightmode') ? 'active' : '' }}">Welcome
+                {{ explode(' ', Auth::user()->name)[0] }}
                 <i class="fas fa-caret-down"></i>
             </span>
         @endif
     </div>
-
-
-
-
-
-
-
-
-
-
 
 </div>

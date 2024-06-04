@@ -1,6 +1,7 @@
-<div >
+
+<div>
     <x-filter-movies>
-        {{ __('Tv Series') }}
+        {{ __('Series') }}
     </x-filter-movies>
     <div class="movie-container movie-view">
         <section class="main-section">
@@ -23,11 +24,7 @@
 
             </div>
         </section>
-        {{-- {{ $popularMovies->links('custom-pagination-links') }} --}}
-        <i  wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
-
+        <i wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
     </div>
-
 </div>
-
 

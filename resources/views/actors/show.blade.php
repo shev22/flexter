@@ -69,66 +69,10 @@
 
         </div>
 
+        <livewire:actors.filmography :knownForMovies="$knownForMovies" :genres="$genres"/>
 
 
-        <div class="movie-container movie-view " style="    padding-top: 5px;
-        " >
-
-            <div class="filter-actor-media">
-
-                <div>
-                    <h4>FILMOGRAPHY</h4>
-                </div>
-
-                <div>
-                    <button>
-                        Movies
-                    </button>
-                    <button>
-                        Tv
-                    </button>
-                    <button>
-                        IMDB
-                    </button>
-                    <button>
-                        Popular
-                    </button>
-
-                </div>
-
-            </div>
-            <section class="main-section" style="margin-top: 3px;   height: 90vh;
-            overflow: auto;">
-
-                @foreach ($knownForMovies as $movie)
-                    <div class="card" >
-                        <a href="{{ $movie['linkToPage'] }}">
-                            <img src="{{ $movie['poster_path'] }}" alt="">
-                            <div class="content">
-                                <h3>{{ $movie['title'] }}</h3>
-                                <p>
-                                    @foreach ($movie['genre_ids'] as $genre)
-                                        {{ $genres->get($genre) }}
-                                    @endforeach
-                                </p>
-                                <h6>
-                                    <span
-                                        style="	color: #000;
-                                                                font-weight:bold;
-                                                                font-size:10px;
-                                                            background: yellow;
-                                                            padding: 0.5px 1px;
-                                                            border-radius: 2.5px;">IMDB</span>
-                                    <i class='fa fa-star'></i><span>{{ $movie['vote_average'] }}</span> |
-                                    {{ \Carbon\Carbon::parse($movie['release_date'])->format('M, Y') }}
-                                </h6>
-                            </div>
-                        </a>
-                    </div>
-                @endforeach
-
-            </section>
-        </div>
+    
 
     </div>
 

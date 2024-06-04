@@ -1,11 +1,8 @@
-<div x-data="{ activeTab: 5 }">
+<div>
     <x-filter-movies>
         {{ __('Movies') }}
     </x-filter-movies>
-
-    <div class="movie-container movie-view" style="height: 90vh;
-    overflow: auto;">
-
+    <div class="movie-container movie-view" >
         <section class="main-section">
             @foreach ($movies as $movie)
                 <x-movie-card :movie="$movie" />
@@ -26,18 +23,6 @@
 
             </div>
         </section>
-        {{-- {{ $popularMovies->links('custom-pagination-links') }} --}}
- 
-
-   
-
-            <i  wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
-
-  
-
-
-        </div>
-
+        <i wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
+    </div>
 </div>
-
-

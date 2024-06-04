@@ -6,7 +6,9 @@
 
     <div class="filter-panel" style="display: flex">
         <div class="section-nav">
-            <h3 class="browse-movie-list">Popular Actors</h3>
+            <h3  class="browse-movie-list">Actors</h3>
+            <i  wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
+
         </div>
 
 
@@ -19,9 +21,8 @@
 
     </div>
 
-
-    <section class="main-section movie-view" style="margin-top:20px; height: 90vh;
-    overflow: auto;">
+    <div class="movie-container movie-view" >
+    <section class="main-section movie-view" >
 
         @foreach ($popularActors as $actor)
             <div class="card">
@@ -56,5 +57,5 @@
         </div>
     </section>
     <i  wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
-
+</div>
 </div>

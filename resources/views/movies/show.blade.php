@@ -30,14 +30,17 @@
                     </h4>
                     <span class="minutes">{{ $movie['runtime'] }} min</span>
                     <span class="stream">Watch Now</span>
-                    <p class="type">{{ $movie['genres'] }}</p>
+                    <p class="type">
+                        {{ $movie['genres'] }}
 
-                </div>
-                <div class="movie_desc">
-                    <p class="text">
-                        {{ $movie['overview'] }}
                     </p>
+                    <div class="movie_desc">
+                        <p class="text">
+                            {{ $movie['overview'] }}
+                        </p>
+                    </div>
                 </div>
+
                 <div class="movie_social">
 
                     <p><span style="color: #86a7b7;text-decoration:underline">Casts</span><br> {{ $movie['cast'] }}
@@ -166,7 +169,8 @@
                                         <i style="margin: 3px; color:yellow" class='fa fa-star'>
                                         </i>{{ $movie['vote_average'] }}
                                         |
-                                        {{ $movie['release_date'] }}
+                                        {{ Carbon\Carbon::parse($movie['release_date'])->format('M , Y') }}
+
                                     </p>
 
                                     <small>{{ $movie['overview'] }}</small>
