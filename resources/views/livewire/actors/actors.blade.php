@@ -21,7 +21,7 @@
 
     </div>
 
-    <div class="movie-container movie-view" >
+    <div class="movie-container " >
     <section class="main-section movie-view" >
 
         @foreach ($popularActors as $actor)

@@ -49,10 +49,11 @@
             </a>
         </li>
         <li>
-            <a href="{{ route('wishlist') }} " @class([
+            <a @if (Auth::check())  href="{{ route('wishlist') }}"@endif  @class([
                 '  auth ',
                 'menubar-selected' => Request::is('wishlist'),
                 'active' => session('nightmode'),
+                'login' => !Auth::check(),
             ])>
 
                 Watch List
@@ -66,15 +67,15 @@
                     'active' => session('nightmode'),
                 ])>
                 </i>
-                Search Page
+                Live Search 
             </a>
         </li>
     </ul>
 
     <div>
         @if (!Auth::check())
-            <span class="login "><a class="auth  {{ session('nightmode') ? 'active' : '' }}"> <span
-                        style="font-size: 13px"><i class=" fas fa-lock"></i></span></a> </span>
+            <span class="login "><a 
+                        style="font-size: 13px; color:gray"><i class=" fas fa-lock"></i></span></a> </span>
         @else
             <span class="profile auth  {{ session('nightmode') ? 'active' : '' }}">Welcome
                 {{ explode(' ', Auth::user()->name)[0] }}

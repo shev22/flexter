@@ -7,8 +7,7 @@ use Illuminate\Http\Client\Pool;
 use App\ViewModels\MovieViewModel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Http;
-use App\Http\Controllers\Services\PagesService;
-use PhpParser\Node\Stmt\TryCatch;
+
 
 class MoviesController extends Controller
 {
@@ -43,7 +42,6 @@ class MoviesController extends Controller
      */
     public function show($slug, $id)
     {
-
         try {
             $responses = Http::pool(fn (Pool $pool) => [
                 $pool->withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/movie/' . $id . '?append_to_response=credits,videos,images'),
@@ -59,18 +57,9 @@ class MoviesController extends Controller
                 $related = [];
             }
         } catch (\Throwable $th) {
-             dd ($th);
+            dd($th);
         }
-
-
-
-
-
-
-        //  dd(  $movie,      $related  );
-
         $viewModel = new MovieViewModel($movie,  $related);
-
         return view('movies.show', $viewModel);
     }
 

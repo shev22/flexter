@@ -1,7 +1,7 @@
 <div class="sections ">
 
     <div class="filter-panel" style="display: flex;" id="search-panel">
-        <div class="section-nav" style="width: 85px">
+        <div class="section-nav" style="width: 90px">
             <h3 style="display: inline" class="browse-movie-list">Search </h3>
             <i wire:loading class="fa fa-spinner fa-pulse fa-fw  "></i>
 

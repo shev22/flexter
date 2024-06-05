@@ -7,7 +7,7 @@
 
             <div style="width: 150px">
                 <h4 style="display: inline">FILMOGRAPHY</h4>
-                <i  class="fa fa-spinner fa-pulse fa-fw  "></i>
+                <i  wire:loading class="fa fa-spinner fa-pulse fa-fw  "></i>
 
             </div>
 
