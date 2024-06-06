@@ -48,10 +48,10 @@ class PagesController extends Controller
         // ($this->buffer->languages()) ;
         //    ($this->buffer->tv()) ;
 
-       //  dd(Cache::get('movies-upcoming'));
+        // dd(Cache::get('tv-onair'));
 
 
-        return view('index');
+     
     }
 
 
