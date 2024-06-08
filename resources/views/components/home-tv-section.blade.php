@@ -203,8 +203,8 @@
     <div class="movie-list-container-trending">
 
         <div class="tv-list-wrapper" id="trending">
-            <div class=" MS-content ">
-                @foreach ($airingToday as $movie)
+            <div class=" MS-content owl-carousel">
+                @foreach ($trending as $movie)
                     <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
 
                         <div class="movie-list-item item">
@@ -329,7 +329,7 @@
             </h3>
             <div class="wrapper">
                 <ul>
-                    @foreach ($popularTv as $key => $movie)
+                    @foreach ($airingToday as $key => $movie)
                         <li class="search-results-item">
                             <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
                                 <form wire:submit="wishlist({{ $movie }})">
@@ -376,7 +376,7 @@
                 <i class='fa fa-film'></i>
             </h3>
             <div class="movie-list ">
-                @foreach ($popularTv as $movie)
+                @foreach ($airingToday as $movie)
                     <div class="movie-list-item item">
                         <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
                             <form wire:submit="wishlist({{ $movie }})">
@@ -417,7 +417,7 @@
     </div>
 
 
-</div>
+
 
 
 
@@ -439,5 +439,5 @@
 
 
     </div>
-</div>
- --}}
+
+

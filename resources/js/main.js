@@ -9,68 +9,68 @@ $(document).ready(function () {
   });
 
   
-  $('#trending').multislider({
+  // $('#trending').multislider({
 
-    duration:5000,
-    continuous:true,
+  //   duration:5000,
+  //   continuous:true,
     
-  });
+  // });
 
   
-  $('.tv-list-wrapper').multislider({
+  // $('.tv-list-wrapper').multislider({
 
-    duration:5000,
-    continuous:true,
+  //   duration:5000,
+  //   continuous:true,
     
+  // });
+
+  var owl = $('.owl-carousel');
+  owl.owlCarousel({
+    items: 4,
+    loop: true,
+    dots: false,
+    margin: 10,
+    autoplay: true,
+    autoplayTimeout: 3000,
+    autoplayHoverPause: true,
+
+    responsiveClass: true,
+    responsive: {
+      0: {
+        items: 1,
+        nav: false,
+        dots: false,
+        loop:true
+      },
+      600: {
+        items: 3,
+        nav: false,
+        dots: false,
+        loop:true
+      },
+      1000: {
+        items: 5,
+        nav: false,
+        dots: false,
+        loop:true
+      }
+    }
   });
 
-  // var owl = $('.owl-carousel');
-  // owl.owlCarousel({
-  //   items: 4,
-  //   loop: true,
-  //   dots: false,
-  //   margin: 10,
-  //   autoplay: true,
-  //   autoplayTimeout: 3000,
-  //   autoplayHoverPause: true,
 
-  //   responsiveClass: true,
-  //   responsive: {
-  //     0: {
-  //       items: 1,
-  //       nav: false,
-  //       dots: false,
-  //       loop:true
-  //     },
-  //     600: {
-  //       items: 3,
-  //       nav: false,
-  //       dots: false,
-  //       loop:true
-  //     },
-  //     1000: {
-  //       items: 5,
-  //       nav: false,
-  //       dots: false,
-  //       loop:true
-  //     }
-  //   }
-  // });
+  owl.on('mousewheel', '.owl-stage', function (e) {
+    if (e.deltaY > 0) {
+      owl.trigger('next.owl');
+    } else {
+      owl.trigger('prev.owl');
+    }
+    e.preventDefault();
+  });
 
 
-  // owl.on('mousewheel', '.owl-stage', function (e) {
-  //   if (e.deltaY > 0) {
-  //     owl.trigger('next.owl');
-  //   } else {
-  //     owl.trigger('prev.owl');
-  //   }
-  //   e.preventDefault();
-  // });
+  $('.owl-carousel__next').click(() => owl.trigger('next.owl.carousel'))
 
-
-  // $('.owl-carousel__next').click(() => owl.trigger('next.owl.carousel'))
-
-  // $('.owl-carousel__prev').click(() => owl.trigger('prev.owl.carousel'))
+  $('.owl-carousel__prev').click(() => owl.trigger('prev.owl.carousel'))
 
 
 
@@ -78,7 +78,7 @@ $(document).ready(function () {
   // TOGGLE
   const ball = document.querySelector(".toggle-ball");
   const items = document.querySelectorAll(
-    ".container,.menubar, .credits, footer, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
+    ".container,.menubar, .credits, .footer, .movie-list-title,.navbar-container,.auth,.sidebar,.left-menu-icon,.toggle"
   );
 
   ball.addEventListener("click", () => {

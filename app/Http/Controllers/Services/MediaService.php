@@ -69,7 +69,7 @@ class MediaService
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
         $data =  $data[6]->pages;
-        Cache::put('movies-popular',  $this->popular->popular('movie',   500));
+        Cache::put('movies-popular',  $this->popular->popular('movie',     $data));
     }
 
     public function top_ratedMovies()
@@ -86,7 +86,7 @@ class MediaService
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
         $data =  $data[10]->pages;
-        Cache::put('movies-upcoming',  $this->upComing->upComing('movie', 600));
+        Cache::put('movies-upcoming',  $this->upComing->upComing('movie',   $data));
     }
 
     public function nowPlayingMovies()

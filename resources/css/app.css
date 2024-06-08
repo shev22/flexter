@@ -769,7 +769,7 @@ body {
     color: rgb(224, 223, 223);
     margin: 5px 0 10px 0;
 font-size: 15px;
-    height: 110px;
+    height: 120px;
     overflow-y: auto;
 
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
@@ -800,7 +800,7 @@ font-size: 15px;
 }
 
 .movie-list-container-trending .movie-list-item {
-    width: 25%;
+    /* width: 25%; */
     height: 200px;
     display: block;
     position: relative;
@@ -810,7 +810,7 @@ font-size: 15px;
 }
 
 .movie-list-container-trending .movie-list-item-img {
-    width: 100%;
+    /* width: 100%; */
     height: 100%;
     position: absolute;
     border-radius: 7px;
@@ -850,7 +850,7 @@ font-size: 15px;
 
 #trending .MS-content .item {
     display: inline-block; 
-    width: 25%;
+    width: 100%;
     position: relative; 
     vertical-align: top; 
     overflow: hidden; 
@@ -1553,7 +1553,8 @@ margin-right: 0px;
 .comment-similar {
     display: flex;
     margin-top: 5px;
-    height: 750px;
+    /* height: 750px; */
+    height: auto;
     justify-content: center;
 }
 
@@ -2022,7 +2023,7 @@ margin-right: 0px;
     }
     .comment-similar {
         flex-direction: column;
-        height: 900px;
+        /* height: 900px; */
     }
 
     .recently-updated {
@@ -2758,7 +2759,8 @@ margin-right: 0px;
   */
 
 .feedback-container {
-    padding-top: 30px;
+    /* padding-top: 30px; */
+    height: 100%;
 }
 
 .feedback-container h1 {
@@ -2819,6 +2821,14 @@ textarea:valid ~ label {
     width: 650px;
     max-width: 100%;
 }
+
+.input-container {
+    height: 700px
+}
+
+
+
+
 
 .input-container input,
 textarea {

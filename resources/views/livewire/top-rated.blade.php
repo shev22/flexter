@@ -2,7 +2,7 @@
 
  <div class="filter-panel">
 
-    <span class="section-nav" style="width:105px">
+    <span class="section-nav" style="width:115px">
         <h3 style="display: inline" class="browse-movie-list">Toprated
         </h3>
      <i wire:loading class="fa fa-spinner fa-pulse fa-fw  " ></i>
@@ -168,7 +168,7 @@
 <div class=" filter-panel-mobile" wire:ignore>
 
     <div class="header">
-        <div  style="width: 105px">
+        <div  style="width: 115px">
              <h3 style="display: inline">Toprated </h3>
              <i wire:loading class="fa fa-spinner fa-pulse fa-fw  " ></i>
         </div>

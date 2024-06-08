@@ -1,13 +1,5 @@
 <div class="footer {{ session('nightmode') ? 'active' : '' }}">
 
-    {{-- <span class="auth {{ session('nightmode') ? 'active' : '' }}">
-        &copy; <span style="color: #3c8809;">{{ date('Y') }}  </span>
-    </span> --}}
-
-    {{-- <button>
-        Feedback
-    </button> --}}
-
     <span class="auth {{ session('nightmode') ? 'active' : '' }}">
 
         <small>Powered by</small>

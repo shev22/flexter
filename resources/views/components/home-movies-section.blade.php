@@ -3,8 +3,8 @@
     <div class="movie-list-container-trending">
 
         <div class="movie-list-wrapper" id="trending">
-            <div class=" MS-content ">
-                @foreach ($nowPlaying as $movie)
+            <div class=" MS-content owl-carousel">
+                @foreach ($trending as $movie)
                     <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
 
                         <div class="movie-list-item item">
@@ -62,7 +62,8 @@
             </div>
         </div>
         <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}" style="padding:5px; margin-top:15px;">
-            RECOMMENDED | TOP RATED
+            {{-- RECOMMENDED | TOP RATED --}}
+            NOWPLAYING MOVIES
             <i class='fa fa-film'></i>
         </h3>
     </div>
@@ -77,7 +78,7 @@
         <div class="movie-list-container">
 
             <div class="movie-list ">
-                @foreach ($popular as $movie)
+                @foreach ($nowPlaying as $movie)
                     <div class="movie-list-item item">
                         <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
                             <form wire:submit="wishlist({{ $movie }})">
@@ -123,8 +124,9 @@
 
 
         <div class="recently-updated" style="width: 30%">
-            <h3 class="movie-list-title {{ session('nightmode') ? 'active' : '' }}" style="padding: 0 5px;">
-                RECENTLY UPDATED
+            <h3 class="movie-list-title {{ session('nightmode') ? 'active' : '' }}" style="margin: 5PX 0 0 5px;">
+                {{-- RECENTLY UPDATED --}}
+                UPCOMING MOVIES
                 <i class='fa fa-film'></i>
             </h3>
             <div class="wrapper">
@@ -171,8 +173,8 @@
 
 
         <div class="movie-list-container recently-updated-moblie" style=" margin-top:50px">
-            <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}" style="padding:5px; "> RECENTLY
-                UPDATED
+            <h3 class="movie-list-title  {{ session('nightmode') ? 'active' : '' }}" style="padding:5px; "> 
+                UPCOMING MOVIES
                 <i class='fa fa-film'></i>
             </h3>
             <div class="movie-list ">

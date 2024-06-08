@@ -11,9 +11,9 @@ class HomeView extends Component
 {
     use MediaTrait;
 
-    public $movies = true;
+    // public $movies = true;
     public $trending;
-    public $tv = false;
+    // public $tv = false;
 
 
     public function mount($trending)
@@ -41,31 +41,31 @@ class HomeView extends Component
         return $this->is_WishListed($id);
     }
 
-    public function showmovies()
-    {
-        $this->tv = false;
-        $this->movies = true;
-    }
+    // public function showmovies()
+    // {
+    //     $this->tv = false;
+    //     $this->movies = true;
+    // }
 
-    public function showtv()
-    {
-        $this->movies = false;
-        $this->tv = true;
-    }
+    // public function showtv()
+    // {
+    //     $this->movies = false;
+    //     $this->tv = true;
+    // }
 
     public function render()
     {
-        $media = [];
-        if ($this->movies) {
-            $this->tv = false;
-            $media['movies'] = collect(Cache::get('home-movies'))->get('movie');
-        } elseif ($this->tv) {
-            $this->movies = false;
+        // $media = [];
+        // if ($this->movies) {
+        //     $this->tv = false;
+        //     $media['movies'] = collect(Cache::get('home-movies'))->get('movie');
+        // } elseif ($this->tv) {
+        //     $this->movies = false;
 
-            $media['series'] = collect(Cache::get('home-movies'))->get('tv');
-        }
-        // dd(  collect(Cache::get('home-movies'))->get('tv'));
+        //     $media['series'] = collect(Cache::get('home-movies'))->get('tv');
+        // }
+        //  dd(  collect(Cache::get('home-movies'))->get('movie'));
 
-        return view('livewire.home-view', ['media' => $media]);
+        return view('livewire.home-view', ['media' => Cache::get('home-movies')]);
     }
 }

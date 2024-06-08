@@ -11,7 +11,7 @@ class HomeTvSection extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $airingToday, public $onair, public $popularTv)
+    public function __construct(public $airingToday, public $onair, public $trending)
     {
         //
     }

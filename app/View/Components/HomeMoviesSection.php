@@ -11,7 +11,7 @@ class HomeMoviesSection extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct(public $nowPlaying, public $popular, public $upcoming)
+    public function __construct(public $nowPlaying, public $trending, public $upcoming)
     {
    
     }
