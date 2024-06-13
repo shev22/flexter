@@ -26,10 +26,10 @@ $(document).ready(function () {
 
   var owl = $('.owl-carousel');
   owl.owlCarousel({
-    items: 4,
+    //  items: 6,
     loop: true,
     dots: false,
-    margin: 10,
+     margin: 5,
     autoplay: true,
     autoplayTimeout: 3000,
     autoplayHoverPause: true,
@@ -48,8 +48,9 @@ $(document).ready(function () {
         dots: false,
         loop:true
       },
+  
       1000: {
-        items: 5,
+        items: 4,
         nav: false,
         dots: false,
         loop:true

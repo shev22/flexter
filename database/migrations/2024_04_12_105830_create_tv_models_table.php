@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('tv_models', function (Blueprint $table) {
-            $table->string('backdrop_path')->nullable();;
+        Schema::create('tv_model', function (Blueprint $table) {
 
-            // $table->string('logo')->nullable();;
+            $table->unsignedBigInteger('id')->primary();
+            $table->string('backdrop_path')->nullable();;
             $table->json('genre_ids')->nullable();
-            $table->unsignedBigInteger('id');
             $table->string('original_language')->nullable();
             $table->longText ('overview')->nullable();
             $table->string('popularity')->nullable();

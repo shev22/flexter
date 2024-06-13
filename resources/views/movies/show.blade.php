@@ -48,13 +48,13 @@
                 </div>
             </div>
 
-            @if ($movie['videos']['results'])
+            @if ($movie['videos'])
                 <div class="blur_back">
 
 
 
                     <iframe
-                        src="https://www.youtube.com/embed/{{ $movie['videos']['results'][0]['key'] }}?autoplay=1&mute=1&loop=1&playlist={{ $movie['videos']['results'][0]['key'] }}"
+                        src="https://www.youtube.com/embed/{{ $movie['videos']['video'] }}?autoplay=1&mute=1&loop=1&playlist={{ $movie['videos']['video'] }}"
                         frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen>

@@ -117,14 +117,7 @@ class MoviesView extends Component
                 });
             })
 
-          
-  
-            // ->when($this->eighties, function ($e) {
-            //     $e->whereBetween('year', [1980, 1989]);
-            // })
-            // ->when($this->seventies, function ($e) {
-            //     $e->whereBetween('year', [1970, 1979]);
-            // })
+        
             ->when($this->earlier, function ($e) {
                 $e->where('year','<', 1990);
             })
@@ -148,55 +141,11 @@ class MoviesView extends Component
                 $e->whereIn('original_language', $this->language);
             })
 
+            ->when(($this->sortByGenre), function ($query) {
 
-
-
-            ->when($this->sortByGenre, function ($e) {
-             
-                // $e->get()->each(function ( $item, int $key) use($e){
-             //  dd($this->sortByGenre);
-                     
-// dd( $item['genre_ids']);
-
-
-
-                            // foreach($e as $genre)
-                            // {
-                            // foreach($this->sortByGenre as $item)
-                            // {
-                            //    // $e->orWhereJsonContains('genre_ids', $genre);
-
-                            //    if()
-                            //    {
-
-                            //    }
-                            // }
-                            //  }
-                            // foreach ($e as $value) {
-
-                            //     dd($value);
-                                // if (count(array_intersect($this->sortByGenre, $value['genre_ids'])) > 0) {
-                                //    return $value;
-                                // }
-                            // }
-
-                   
-
-// return $e->genre_ids;
-                // });
-
-                $e->whereJsonContains('genre_ids->genre', $this->sortByGenre);
-
-            //   $e->each(function($img)  {
-            //     if (count(array_intersect($this->sortByGenre, json_decode($img['genre_ids'])->genre)) > 0) {
-            //            $img->get();
-            //         }
-            //  });
-
-
-
-
-
+                $query->whereHas('genre', function ($q) {
+                    $q->whereIn('genre_id', $this->sortByGenre);
+                });
             })
             ->take($this->itemsPerPage)->get();
 

@@ -11,15 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('settings', function (Blueprint $table) {
-            $table->id();
-            $table->unsignedBigInteger("user_id")->nullable(); 
-            $table->integer('config_block_id');
-            $table->json('config_data');
+        Schema::create('genres', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->primary();
+            $table->string('genre');
             $table->timestamps();
-
-            
-            $table->foreign("user_id")->references("id")->on('users')->onDelete('cascade');;
         });
     }
 
@@ -28,6 +23,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('settings');
+        Schema::dropIfExists('genres');
     }
 };

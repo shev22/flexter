@@ -121,25 +121,6 @@ class TvView extends Component
             })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             ->when($this->popularity, function ($e) {
                 $e->orderBy('popularity', 'DESC');
             })
@@ -155,17 +136,10 @@ class TvView extends Component
             })
 
 
+            ->when(($this->sortByGenre), function ($query) {
 
-
-            ->when($this->sortByGenre, function ($e) {
-
-                $e->get()->each(function ($item, int $key) {
-
-                    // dd( );
-
-                    if (count(array_intersect($this->sortByGenre, json_decode($item['genre_ids']))) > 0) {
-                        dd($item);
-                    }
+                $query->whereHas('genre', function ($q) {
+                    $q->whereIn('genre_id', $this->sortByGenre);
                 });
             })
             ->take($this->itemsPerPage)->get();

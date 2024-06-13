@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Services;
 
 use Carbon\Carbon;
+use App\Models\Genre;
 use App\Models\TvModel;
 use App\Models\Settings;
 use App\Models\TopRated;
@@ -10,14 +11,15 @@ use App\Models\ActorModel;
 use App\Models\MovieModel;
 use App\Models\Repository;
 use Illuminate\Support\Str;
+use App\Livewire\Traits\MediaTrait;
 use App\Repositories\GenreRepository;
 use App\Repositories\OnAirRepository;
 use Illuminate\Support\Facades\Cache;
 use App\Repositories\ActorsRepository;
 use App\Repositories\ChangesRepository;
+use App\Repositories\PopularRepository;
 use App\Livewire\Traits\FormatDataTrait;
 use App\Repositories\LanguageRepository;
-use App\Repositories\PopularRepository;
 use App\Repositories\TopRatedRepository;
 use App\Repositories\TrendingRepository;
 use App\Repositories\UpComingRepository;
@@ -27,6 +29,7 @@ use App\Repositories\AiringTodayRepository;
 class MediaService
 {
     use FormatDataTrait;
+    use MediaTrait;
     private $count = [];
 
 
@@ -162,8 +165,6 @@ class MediaService
 
     public function trendingAll()
     {
-       
-        $this->trending->trending('all', 'day');
         $data = Settings::where('config_block_id', 1)->first();
         $data = json_decode($data->config_data);
         $data =  $data[5]->pages;
@@ -198,21 +199,24 @@ class MediaService
             'date' => Carbon::now()->format('d-m-y'),
         ];
         try {
-            $merged = collect(Cache::get('movies-trending'))->merge(Cache::get('movies-nowplaying'));
+            $merged = collect(Cache::get('movies-nowplaying'))->merge(Cache::get('movies-toprated'));
             $merged = $merged->merge(Cache::get('movies-upcoming'));
             $merged = $merged->merge(Cache::get('movies-popular'));
-            $merged = $merged->merge(Cache::get('movies-toprated'));
+            $merged = $merged->merge(Cache::get('movies-trending'));
             $movies =  MovieModel::all()->pluck('id')->toArray();
 
+         
             foreach (array_chunk($this->formatData($merged->unique('id'), 'movie')->toArray(), 1000) as $t) {
-
+      
 
                 collect($t)->map(function ($movie) use ($movies) {
-
+                  
                     if ($movie !== null) {
                         if (!in_array($movie['id'], $movies)) {
                             $this->count[] = $movie;
-                            MovieModel::create($movie);
+                         
+                           $data = MovieModel::create($movie);
+                            $data->genre()->attach(json_decode($data['genre_ids']));
                         }
                     }
                 });
@@ -250,12 +254,16 @@ class MediaService
             $merged =  $movies->merge($tv);
 
             $movies =  TopRated::all()->pluck('id')->toArray();
+
+
             foreach (array_chunk($merged->unique('id')->toArray(), 1000) as $t) {
                 collect($t)->map(function ($movie) use ($movies) {
                     if ($movie !== null) {
+
                         if (!in_array($movie['id'], $movies)) {
                             $this->count[] = $movie;
-                            TopRated::create($movie);
+                           $data = TopRated::create($movie);
+                            $data->genre()->attach(json_decode($data['genre_ids']));
                         }
                     }
                 });
@@ -300,7 +308,8 @@ class MediaService
                     if ($tv !== null) {
                         if (!in_array($tv['id'], $tvs)) {
                             $this->count[] = $tv;
-                            TvModel::create($tv);
+                          $data =  TvModel::create($tv);
+                            $data->genre()->attach(json_decode($data['genre_ids']));
                         }
                     }
                 });
@@ -350,6 +359,7 @@ class MediaService
             });
 
             foreach (array_chunk($data->unique('id')->toArray(), 1000) as $t) {
+
                 collect($t)->map(function ($actor) use ($actormodel) {
                     if (!in_array($actor['id'], $actormodel)) {
                         $this->count[] = $actor;
@@ -370,5 +380,16 @@ class MediaService
         Repository::create($statistics);
         //ActorModel::insert($data->toArray());
 
+    }
+
+    public function genre()
+    {
+        $movie_genre = $this->getGenres(Cache::get('movies-genre'));
+        $tv_genre = $this->getGenres(Cache::get('tv-genre'));
+        $genre =  $movie_genre->union($tv_genre);
+        $data = $genre->map(function ($item, $key) {
+            return ['id' => $key, 'genre' => $item];
+        })->toArray();
+        Genre::insert($data);
     }
 }

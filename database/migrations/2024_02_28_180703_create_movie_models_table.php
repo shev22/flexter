@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('movie_models', function (Blueprint $table) {
+        Schema::create('movie_model', function (Blueprint $table) {
        
+            $table->unsignedBigInteger('id')->primary();
             $table->string('backdrop_path')->nullable();;
-
             $table->string('logo')->nullable();;
             $table->json('genre_ids')->nullable();
-            $table->unsignedBigInteger('id');
             $table->string('original_language')->nullable();
             $table->longText ('overview')->nullable();
             $table->string('popularity')->nullable();

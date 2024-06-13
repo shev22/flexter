@@ -30,9 +30,6 @@ class TrendingRepository
             $media = Http::withToken(config('services.tmdb.token'))
                 ->get('https://api.themoviedb.org/3/trending/' . $mediaType . '/' . $period)
                 ->json()['results'];
-
-
-
             if ($mediaType == 'all') {
                 $media = collect($media)->map(function ($movie) use ($mediaType) {
                     $mediaType = $movie['media_type'];

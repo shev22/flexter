@@ -564,17 +564,17 @@ body {
     padding: 7px;
 }
 .profile-dropdown-container li:hover {
-    background: #292929;
+    background: #5f5f5f;
     cursor: pointer;
 }
 
 .profile-dropdown-container li a {
-    color: rgb(100, 99, 99);
+    color: rgb(156, 156, 156);
     text-decoration: none;
 }
 
 .profile-dropdown-container li a:hover {
-    color: rgb(17, 70, 20);
+    color: rgb(28, 150, 34);
 }
 
 .sidebar {
@@ -800,7 +800,7 @@ font-size: 15px;
 }
 
 .movie-list-container-trending .movie-list-item {
-    /* width: 25%; */
+    /* width: 33%; */
     height: 200px;
     display: block;
     position: relative;
@@ -2759,7 +2759,7 @@ margin-right: 0px;
   */
 
 .feedback-container {
-    /* padding-top: 30px; */
+    padding-top: 30px;
     height: 100%;
 }
 
@@ -2822,13 +2822,6 @@ textarea:valid ~ label {
     max-width: 100%;
 }
 
-.input-container {
-    height: 700px
-}
-
-
-
-
 
 .input-container input,
 textarea {
@@ -2859,7 +2852,8 @@ textarea {
 }
 
 .input-container {
-    width: 650px;
+    width:650px;
+     height: 880px;
     max-width: 100%;
     margin: 0 auto;
 }
@@ -2877,6 +2871,25 @@ textarea {
         0 2px 10px 0 rgba(0, 0, 0, 0.07);
     -webkit-transition: all 300ms ease;
     transition: all 300ms ease;
+    border: none;
+}
+
+.delete-profile {
+ 
+    padding: 7px 20px;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: inline-block;
+    background-color: #af1d1d;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.06),
+        0 2px 10px 0 rgba(0, 0, 0, 0.07);
+    -webkit-transition: all 300ms ease;
+    transition: all 300ms ease;
+    border: none;
 }
 
 .submit-btn:hover {
@@ -2900,4 +2913,138 @@ input[type="checkbox"] + label, input[type="radio"] + label  {
 input[type="checkbox"]:checked + label {
     color: #f00;
     font-style: normal;
+}
+
+.alert-error {
+    background-color: #c9473e;
+    text-align: center;
+    padding: 15px;
+    border-radius: 4px;
+  }
+  
+  .alert-success {
+    background-color: #0f5132;
+    text-align: center;
+    padding: 15px;
+    border-radius: 4px;
+  }
+
+
+
+
+
+
+  /*
+  ***404*/
+
+  #mainC {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: rgb(100, 100, 100);
+  font-family: sans-serif;
+  max-width: 340px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  -ms-user-select: none;
+      user-select: none;
+}
+#mainC .message {
+  font-size: 16px;
+  text-align: center;
+}
+#mainC .message h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 11em;
+  transform: skewY(-5deg);
+  transition: 0.4s ease-in-out all;
+}
+#mainC .message h1:hover {
+  text-shadow: 20px 20px 0 rgba(175, 211, 61, 0.1);
+}
+@media (max-width: 300px) {
+  #mainC .message h1 {
+    font-size: 50vw;
+  }
+}
+#mainC .message h3 {
+  color: #799421;
+  font-size: 0.9em;
+  font-weight: lighter;
+  line-height: 1;
+}
+@media (max-width: 300px) {
+  #mainC .message h3 {
+    font-size: 5vw;
+  }
+}
+#mainC .footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+}
+#mainC .footer a {
+  position: relative;
+  flex: 1;
+  color: rgba(146, 145, 145, 0.6);
+  text-decoration: none;
+  border-radius: 3px;
+  border: 1px solid rgba(168, 168, 168, 0.6);
+  margin: 0 20px;
+  text-align: center;
+  padding: 10px 0;
+  overflow: hidden;
+  transition: all 0.2s ease-in-out;
+  z-index: 3;
+}
+@media (max-width: 300px) {
+  #mainC .footer a {
+    flex: 5 100%;
+    width: 100%;
+  }
+}
+#mainC .footer a:hover {
+  border: 1px solid #ffffff;
+  color: #121212;
+}
+#mainC .footer a:hover span {
+  width: 310px;
+  height: 310px;
+}
+#mainC .footer a span {
+  content: '';
+  position: absolute;
+  background: #afd33d;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  transition: all 0.5s ease;
+  z-index: -1;
+}
+@media (max-width: 300px) {
+  #mainC .footer a span {
+    transition: all 0.2s ease-in;
+  }
+}
+#mainC .footer a span:active {
+  background: #c0dc67;
+}
+#mainC .footer .legal {
+  text-align: center;
+  flex: 3;
+  color: rgba(204, 204, 204, 0.5);
+}
+@media (max-width: 300px) {
+  #mainC .footer .legal {
+    font-size: 4vw;
+    flex: 5 100%;
+    padding: 5px 10px;
+  }
 }

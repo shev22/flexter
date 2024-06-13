@@ -25,7 +25,8 @@ class MovieViewModel extends ViewModel
 
     public function movie()
     {
-      
+    //    dd($this->movie
+    // );
         return collect($this->movie)->merge([
             'poster_path' => $this->movie['poster_path']
                 ? 'https://image.tmdb.org/t/p/w500/' . $this->movie['poster_path']
@@ -44,6 +45,8 @@ class MovieViewModel extends ViewModel
             // }),
             'cast' => collect($this->movie['credits']['cast'])->take(10)->pluck('name')->flatten()->implode(', '),
             'images' => $this->movie['images']['backdrops'] ? collect($this->movie['images']['backdrops'])->take(20) : [],
+
+             'videos'=>$this->getVideos($this->movie),
         
         ])->only([
             'poster_path', 'id', 'genres', 'title', 'vote_average', 'overview', 'release_date', 'credits',
@@ -71,5 +74,24 @@ class MovieViewModel extends ViewModel
 
             ])->put('slug',  Str::of( $movie['title'])->slug('-'));
         });
+    }
+
+    private function getVideos($media)
+    {
+        
+        if ($media['videos'] !== []) {
+            if ($media['videos']['results'] !== []) {
+                foreach ($media['videos']['results'] as $item) {
+                    if ($item['type'] == 'Trailer') {
+
+                        $response['video'] = $item['key'];
+                    }
+                }
+            } else {
+                $response['video'] = [];
+            }
+        }
+
+        return  $response;
     }
 }

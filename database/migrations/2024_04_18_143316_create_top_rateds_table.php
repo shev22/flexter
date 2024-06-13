@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('top_rateds', function (Blueprint $table) {
+        Schema::create('top_rated', function (Blueprint $table) {
+            $table->unsignedBigInteger('id')->primary();
             $table->string('backdrop_path')->nullable();;
-
-            // $table->string('logo')->nullable();;
             $table->json('genre_ids')->nullable();
-            $table->unsignedBigInteger('id');
             $table->string('original_language')->nullable();
             $table->longText ('overview')->nullable();
             $table->string('popularity')->nullable();

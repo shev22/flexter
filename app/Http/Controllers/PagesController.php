@@ -82,8 +82,5 @@ class PagesController extends Controller
         }
     }
 
-    public function feedback()
-    {
-        return view('feedback'); 
-    }
+
 }

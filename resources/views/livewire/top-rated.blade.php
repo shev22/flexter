@@ -356,7 +356,7 @@
                     <div class="content">
                         <h3>{{ $movie['title'] }}</h3>
                         <p>
-                            @foreach (json_decode($movie['genre_ids'])->genre as $genre)
+                            @foreach (json_decode($movie['genre_ids']) as $genre)
                                 {{ $this->genres()->get($genre) }}
                             @endforeach
                         </p>
@@ -394,6 +394,5 @@
         <i wire:loading class="fa fa-spinner fa-pulse fa-fw movies-spinner "></i>
 
     </div>
-
 
 </div>

@@ -2,12 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TvController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PagesController;
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ActorsController;
 use App\Http\Controllers\MoviesController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\FeedBackController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,9 +35,11 @@ Route::get('/test', function () {
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// Route::fallback( 'PagesController@_404')->where('catchall', '.*');
+
+Route::fallback(function () {
+   return view('404');
+});
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -67,7 +70,10 @@ Route::get('/actors/{slug}/{id}', [ActorsController::class, 'show'])->name('acto
 Route::get('/search/{query?}',  [PagesController::class, 'search'])->name('search');
 
 Route::get('/toprated',  [PagesController::class, 'toprated'])->name('toprated');
-Route::get('/feedback',  [PagesController::class, 'feedback'])->name('feedback');
+
+
+Route::get('/feedback',  [FeedBackController::class, 'feedback'])->name('feedback');
+Route::post('/sendfeedback',  [FeedBackController::class, 'sendEmail'])->name('sendEmail');
 
 Route::post('night-mode',  [PagesController::class, 'nightMode'])->name('settings');
 

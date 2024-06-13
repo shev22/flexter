@@ -38,9 +38,6 @@ class TopRated extends Component
         $tv_genre = $this->getGenres(Cache::get('tv-genre'));
         $genre =  $movie_genre->union($tv_genre);
         return ($genre);
-
-
-        return $this->getGenres(Cache::get('tv-genre'));
     }
 
     public function languages()
@@ -99,6 +96,8 @@ class TopRated extends Component
 
     public function render()
     {
+
+
         $movies = ModelsTopRated::when($this->showmovies == true, function ($e) {
             $this->showtv = false;
             $e->where('media_type', 'movie');
@@ -139,34 +138,9 @@ class TopRated extends Component
                 $e->orderBy('year', 'DESC');
             })
 
-            ->when($this->eighties, function ($e) {
-                $e->whereBetween('year', [1980, 1989]);
-            })
-            ->when($this->seventies, function ($e) {
-                $e->whereBetween('year', [1970, 1979]);
-            })
             ->when($this->earlier, function ($e) {
                 $e->where('year', '<', 1970);
             })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             ->when($this->popularity, function ($e) {
@@ -180,26 +154,14 @@ class TopRated extends Component
                 $e->whereIn('original_language', $this->language);
             })
 
+            ->when(($this->sortByGenre), function ($query) {
 
-
-
-            ->when($this->sortByGenre, function ($e) {
-
-                $e->get()->each(function ($item, int $key) {
-
-                    // dd( );
-
-                    if (count(array_intersect($this->sortByGenre, json_decode($item['genre_ids']))) > 0) {
-                        // dd($item);
-                    }
+                $query->whereHas('genre', function ($q) {
+                    $q->whereIn('genre_id', $this->sortByGenre);
                 });
             })
             ->take($this->itemsPerPage)->get();
 
-
-
-
-
-        return view('livewire.top-rated', ['movies' => $movies->unique('id')]);
+        return view('livewire.top-rated', ['movies' => $movies]);
     }
 }

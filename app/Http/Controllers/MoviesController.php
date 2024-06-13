@@ -48,16 +48,13 @@ class MoviesController extends Controller
                 $pool->withToken(config('services.tmdb.token'))->get('https://api.themoviedb.org/3/movie/' . $id . '/similar'),
             ]);
             $movie = $responses[0]->json();
-
-            $related = $responses[1]->json()['results'];
-
             if (array_key_exists("results", $responses[1]->json())) {
                 $related = $responses[1]->json()['results'];
             } else {
                 $related = [];
             }
         } catch (\Throwable $th) {
-            dd($th);
+            // dd($th);
         }
         $viewModel = new MovieViewModel($movie,  $related);
         return view('movies.show', $viewModel);
