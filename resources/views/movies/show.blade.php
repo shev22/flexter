@@ -1,4 +1,5 @@
 <x-app-layout>
+    {{-- {{ dd($movie) }} --}}
     <div style="padding-top: 1px; ">
 
         <x-iframe-player :id="$movie['id']" :media="$movie['media']" />
@@ -43,23 +44,22 @@
 
                 <div class="movie_social">
 
-                    <p><span style="color: #86a7b7;text-decoration:underline">Casts</span><br> {{ $movie['cast'] }}
+                    <p><span style="color: #86a7b7;text-decoration:underline">Casts</span><br>{{ $movie['cast'] }}
                     </p>
                 </div>
             </div>
 
             @if ($movie['videos'])
-                <div class="blur_back">
-
-
-
-                    <iframe
-                        src="https://www.youtube.com/embed/{{ $movie['videos']['video'] }}?autoplay=1&mute=1&loop=1&playlist={{ $movie['videos']['video'] }}"
-                        frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
-                </div>
+                @if ($movie['videos']['video'] != [])
+                    <div class="blur_back">
+                        <iframe
+                            src="https://www.youtube.com/embed/{{ $movie['videos']['video'] }}?autoplay=1&mute=1&loop=1&playlist={{ $movie['videos']['video'] }}"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                @endif
             @else
                 @if ($movie['images'])
                     <div class="blur_back"

@@ -9,7 +9,7 @@ class ActorModel extends Model
 {
     use HasFactory;
 
-    protected $fillable = [ 'id', 'name', 'profile_path', 'known_for', 'slug' ];
+    protected $fillable = [ 'id', 'name', 'profile_path', 'known_for', 'popularity','slug' ];
 
 
 }

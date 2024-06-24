@@ -91,6 +91,9 @@ class MoviesView extends Component
 
     public function render()
     {
+
+
+
         $movies = MovieModel::when($this->sortByImdb, function ($e) {
 
             $e->when($this->sortByImdb == 'acending', function ($e2) {
@@ -147,9 +150,9 @@ class MoviesView extends Component
                     $q->whereIn('genre_id', $this->sortByGenre);
                 });
             })
-            ->take($this->itemsPerPage)->get();
+            ->orderBy('created_at', 'desc') ->take($this->itemsPerPage)->get();
 
-            //  dd($movies);
+            //   dd(Cache::get('movies-popular'));
         return view('livewire.movies.movies-view', ['movies' => $movies]);
     }
 }

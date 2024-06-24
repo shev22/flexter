@@ -36,12 +36,13 @@ class TvShowViewModel extends ViewModel
             //             : 'https://via.placeholder.com/300x450',
             //     ]);
             // }),
-            'cast' => collect($this->tvshow['credits']['cast'])->take(10)->pluck('name')->flatten()->implode(', '),
+            // 'cast' => collect($this->tvshow['credits']['cast'])->take(10)->pluck('name')->flatten()->implode(', '),
             'images' =>$this->tvshow['images']['backdrops'] ? collect($this->tvshow['images']['backdrops'])->take(20) : [],
         ])->only([
             'poster_path', 'id', 'genres', 'name', 'vote_average', 'overview', 'first_air_date', 'credits' ,
             'videos', 'images', 'crew', 'cast', 'images', 'created_by','seasons'
-        ])->put('media','tv');
+        ])->put('media','tv')
+        ->put('slug',  Str::of($this->tvshow['name'])->slug('-'));;
     }
 
     

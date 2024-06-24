@@ -25,8 +25,9 @@ use App\Repositories\TrendingRepository;
 use App\Repositories\UpComingRepository;
 use App\Repositories\NowPlayingRepository;
 use App\Repositories\AiringTodayRepository;
+use App\Repositories\interfaces\MovieInterface;
 
-class MediaService
+class MediaService 
 {
     use FormatDataTrait;
     use MediaTrait;
@@ -50,6 +51,9 @@ class MediaService
 
     ) {
     }
+
+
+
 
 
     /**
@@ -199,29 +203,30 @@ class MediaService
             'date' => Carbon::now()->format('d-m-y'),
         ];
         try {
-            $merged = collect(Cache::get('movies-nowplaying'))->merge(Cache::get('movies-toprated'));
-            $merged = $merged->merge(Cache::get('movies-upcoming'));
+           $merged = collect(Cache::get('movies-toprated'))->merge(Cache::get('movies-upcoming'));
             $merged = $merged->merge(Cache::get('movies-popular'));
-            $merged = $merged->merge(Cache::get('movies-trending'));
+            $merged = $merged->merge(Cache::get('movies-nowplaying'));
+            $merged = $merged->merge(collect(Cache::get('movies-trending')));
             $movies =  MovieModel::all()->pluck('id')->toArray();
+//   dd(Cache::get('movies-upcoming'));
 
-         
             foreach (array_chunk($this->formatData($merged->unique('id'), 'movie')->toArray(), 1000) as $t) {
-      
-
-                collect($t)->map(function ($movie) use ($movies) {
+           
+               
+                // collect($t)->map(function ($movie) use ($movies) {
                   
-                    if ($movie !== null) {
-                        if (!in_array($movie['id'], $movies)) {
-                            $this->count[] = $movie;
-                         
-                           $data = MovieModel::create($movie);
-                            $data->genre()->attach(json_decode($data['genre_ids']));
-                        }
-                    }
-                });
+                //     if ($movie !== null) {
+                //          if (!in_array($movie['id'], $movies)) {
+                //             $this->count[] = $movie;
+                //            $data = MovieModel::create($movie);
+                //            $data->genre()->attach(json_decode($data['genre_ids']));
+                //         }
+                //     }
+                // });
+                MovieModel::insert($t);
             }
-
+     
+    
             $statistics['quantity'] = count($this->count);
             $statistics['status'] = 'success';
             $statistics['duration'] =  (time() - $time);
@@ -232,6 +237,7 @@ class MediaService
             $statistics['error_message'] = $th->getMessage();
             $statistics['duration'] =  (time() - $time);
         }
+       //dd($statistics);
         Repository::create($statistics);
     }
 
@@ -297,10 +303,10 @@ class MediaService
         try {
 
 
-            $merged = collect(Cache::get('tv-trending'))->merge(Cache::get('tv-airingtoday'));
+            $merged = collect(Cache::get('tv-popular'))->merge(Cache::get('tv-toprated'));
             $merged = $merged->merge(Cache::get('tv-onair'));
-            $merged = $merged->merge(Cache::get('tv-popular'));
-            $merged = $merged->merge(Cache::get('tv-toprated'));
+            $merged = $merged->merge(Cache::get('tv-airingtoday'));
+            $merged = $merged->merge(Cache::get('tv-trending'));
             $tvs =  TvModel::all()->pluck('id')->toArray();
 
             foreach (array_chunk($this->formatData($merged, 'tv')->unique('id')->toArray(), 1000) as $t) {
@@ -354,9 +360,10 @@ class MediaService
                         collect($actor['known_for'])->where('media_type', 'tv')->pluck('name')
                     )->implode(', '),
                 ])->only([
-                    'name', 'id', 'profile_path', 'known_for',
+                    'name', 'id', 'profile_path', 'known_for','popularity',
                 ])->put('slug',  Str::of($actor['name'])->slug('-'));
             });
+
 
             foreach (array_chunk($data->unique('id')->toArray(), 1000) as $t) {
 

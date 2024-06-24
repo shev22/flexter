@@ -31,6 +31,7 @@ class HomeView extends Component
 
     public function wishlist($movie)
     {
+       
         $this->wish_list($movie);
     }
 

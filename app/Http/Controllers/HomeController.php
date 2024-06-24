@@ -21,11 +21,11 @@ class HomeController extends Controller
     {
         
         
-        // $this->buffer->tv();
+          $this->buffer->movies();
 
 
-        //  dd($this->formatData(Cache::get('movies-toprated'), 'movie'));
-        $this->buffer->topRated();
+        // //  dd($this->formatData(Cache::get('movies-toprated'), 'movie'));
+        $this->buffer->movies();
         $movies = [];
         $trending = [];
         $repositories =  Settings::where('config_block_id', 2)->first();
@@ -42,6 +42,6 @@ class HomeController extends Controller
         //    dd(Cache::get('movies-upcoming'));
         Cache::put('home-movies', $movies);
 
-        return view('index', ['trending' => $trending]);
+        return view('index', ['trending' => $trending, 'title'=>'Home']);
     }
 }

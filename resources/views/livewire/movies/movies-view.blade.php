@@ -1,4 +1,5 @@
 <div>
+    {{-- {{ dd($movies[0], $movies[1] ) }} --}}
     <x-filter-movies>
         {{ __('Movies') }}
     </x-filter-movies>

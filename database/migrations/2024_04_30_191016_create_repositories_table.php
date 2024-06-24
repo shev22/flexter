@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('quantity')->nullable();
             $table->string('duration');
             $table->string ('date');
-            $table->string('error_message')->nullable();
+            $table->longText('error_message')->nullable();
             $table->string('status');
             $table->timestamps();
         });

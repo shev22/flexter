@@ -3,12 +3,11 @@
     <div class="movie-list-container-trending">
 
         <div class="movie-list-wrapper" id="trending">
-            <div class=" MS-content owl-carousel">
+            <div class=" MS-content owl-carousel" wire:ignore>
                 @foreach ($trending as $movie)
                     <a href="{{ route('movie.show', ['slug' => $movie['slug'], 'id' => $movie['id']]) }}">
 
                         <div class="movie-list-item item">
-
                             <form wire:submit="wishlist({{ $movie }})">
                                 <button class="wishlist-button">
 

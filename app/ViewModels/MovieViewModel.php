@@ -25,8 +25,7 @@ class MovieViewModel extends ViewModel
 
     public function movie()
     {
-    //    dd($this->movie
-    // );
+
         return collect($this->movie)->merge([
             'poster_path' => $this->movie['poster_path']
                 ? 'https://image.tmdb.org/t/p/w500/' . $this->movie['poster_path']

@@ -16,9 +16,9 @@ class MediaBuffer4
     public function buffer()
     {
         $this->mediaService->movies();
-        $this->mediaService->tv();
-        $this->mediaService->actors();
-        $this->mediaService->topRated();
+        // $this->mediaService->tv();
+        // $this->mediaService->actors();
+        // $this->mediaService->topRated();
     }
 
 

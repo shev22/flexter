@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('profile_path');
             $table->string('known_for');
+            $table->string('popularity');
             $table->string('slug');
             $table->timestamps();
         });
